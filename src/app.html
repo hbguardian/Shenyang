@@ -531,7 +531,7 @@ details.more summary::after{content:" ▾"}details.more[open] summary::after{con
   <!-- MORE -->
   <section class="view" id="v-more" aria-label="More" hidden>
         <div class="tiles">
-      <button class="mt" type="button" data-go="trip"><span class="ic" aria-hidden="true">📅</span><span><b>Today's plan</b><span class="meta">Day by day</span></span><span class="go">›</span></button>
+      <button class="mt" type="button" data-go="trip"><span class="ic" aria-hidden="true">👣</span><span><b>Today's plan</b><span class="meta">Day by day</span></span><span class="go">›</span></button>
       <button class="mt" type="button" data-go="home"><span class="ic" aria-hidden="true">🧭</span><span><b>The big picture</b><span class="meta">What we buy where, and why</span></span><span class="go">›</span></button>
       <button class="mt" type="button" data-go="machines"><span class="ic" aria-hidden="true">🩺</span><span><b>Every machine, US vs China</b><span class="meta">All 18 items</span></span><span class="go">›</span></button>
       <button class="mt" type="button" data-go="spa"><span class="ic" aria-hidden="true">♨️</span><span><b>Spa price check</b><span class="meta">Where China saves most</span></span><span class="go">›</span></button>
@@ -804,7 +804,7 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-copy]");if
   Promise.resolve().then(()=>navigator.clipboard.writeText(txt)).then(()=>toast("Copied"),()=>{const r=document.createRange();r.selectNodeContents(b.parentElement.querySelector("[lang]")||b.parentElement);const s=getSelection();s.removeAllRanges();s.addRange(r);toast("Selected. Copy it from the menu");});});
 
 const tabs=[...document.querySelectorAll(".tab")];
-const SEC={buy:["🛒","Machines to buy","What each needs · who makes it"],trip:["📅","Today","Your plan, one stop at a time"],fun:["🎉","Fun","Eat · see · relax · pray"],ask:["💬","Ask in Chinese","Show these to any supplier"],more:["☰","More","Guides, notes and extras"],home:["🧭","The big picture","What we buy where, and why"],machines:["🩺","US vs China","All 18 items compared"],spa:["♨️","Spa price check","Where China saves most"],shenyang:["📍","Shenyang places","Fairs, scan rooms, bathhouses"]};
+const SEC={buy:["🛒","Machines to buy","What each needs · who makes it"],trip:["👣","Today","Your plan, one stop at a time"],fun:["🎉","Fun","Eat · see · relax · pray"],ask:["💬","Ask in Chinese","Show these to any supplier"],more:["☰","More","Guides, notes and extras"],home:["🧭","The big picture","What we buy where, and why"],machines:["🩺","US vs China","All 18 items compared"],spa:["♨️","Spa price check","Where China saves most"],shenyang:["📍","Shenyang places","Fairs, scan rooms, bathhouses"]};
 function go(v,push){const sc=SEC[v]||SEC.buy;$("#secI").textContent=sc[0];$("#secT").textContent=sc[1];$("#secS").textContent=sc[2];
   const tv=tabs.some(t=>t.dataset.v===v)?v:"more";tabs.forEach(t=>{if(t.dataset.v===tv)t.setAttribute("aria-current","page");else t.removeAttribute("aria-current");});
   document.querySelectorAll(".view").forEach(s=>s.hidden=s.id!=="v-"+v);
@@ -1101,7 +1101,7 @@ function renderBuy(){const st=BUY.map(itemState);const ok=st.filter(x=>x.ok).len
  $("#bOk").textContent=ok+" of "+BUY.length+" machines OK for America";$("#bSub").textContent=q+" quoted · "+st.filter(x=>x.met).length+" with a maker met";
  $("#bBar").style.width=(ok/BUY.length*100).toFixed(1)+"%";$("#bRing").style.strokeDashoffset=(170*(1-ok/BUY.length)).toFixed(1);
  const nx=BUY.find((it,i)=>!st[i].ok&&!st[i].quote)||BUY.find((it,i)=>!st[i].ok);
- $("#bNext").hidden=!nx;if(nx){$("#bNext").dataset.item=nx.id;$("#bNextT").textContent=nx.ic+" "+nx.name;}
+ $("#bNext").hidden=true;if(nx){$("#bNext").dataset.item=nx.id;$("#bNextT").textContent=nx.ic+" "+nx.name;}
  $("#bChips").innerHTML=[["all","All "+BUY.length],["todo","Still to do"],["done","OK for America"]].map(f=>`<button class="chip" type="button" data-bf="${f[0]}" aria-pressed="${bF===f[0]}">${f[1]}</button>`).join("");
  const L=BUY.filter((it,i)=>bF==="all"||(bF==="done"?st[i].ok:!st[i].ok));
  $("#bList").innerHTML=L.map(it=>{const x=itemState(it),n=supsFor(it).length;return `<button class="mc${x.ok?" done":""}" type="button" data-item="${it.id}"><span class="pic">${IMG[it.id]||""}${x.ok?'<span class="okb">✓ OK for USA</span>':""}</span><span class="mc-b"><b>${esc(it.name)}</b><span class="lbl">Must have</span><span class="nd">${needs(it).map(k=>`<i>${esc(CK[k].short)}</i>`).join("")}</span><span class="lbl">Companies (${n})</span><span class="co-names">${supsFor(it).map(s=>esc(s.en.replace(/ \(.*\)$/,""))).join(" · ")||"Ask at CMEF"}</span>${pips(x)}</span></button>`;}).join("")||'<p class="muted">Nothing here yet.</p>';}
