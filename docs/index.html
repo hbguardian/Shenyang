@@ -1,0 +1,1033 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Pulse Equipment Sourcing</title>
+<meta name="theme-color" content="#2F7D6B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Pulse">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-192.png">
+<script>window.PULSE_OFFLINE=true;</script>
+
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: a pocket app — sticky header, one screen per tab, bottom tab bar; machines as tap-to-open cards with a US-vs-China split */
+:root{
+  --bg:#F2F5F4; --surface:#FFFFFF; --sunk:#E7EDEB; --ink:#14201F; --muted:#56666A; --line:#D7E0DD;
+  --accent:#2F7D6B; --accent-soft:#E0EFEA; --accent-ink:#FFFFFF;
+  --us:#2C5282; --us-soft:#E3ECF7;
+  --cn:#B23A2E; --cn-soft:#F7E4E1;
+  --good:#1D6B45; --good-soft:#E2F2E8; --care:#946010; --care-soft:#F7EDD8; --no:#A3271F; --no-soft:#F8E3E0;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1617; --surface:#162123; --sunk:#1C2A2C; --ink:#E6EEEC; --muted:#9DB0AD; --line:#283839;
+  --accent:#6CC3AC; --accent-soft:#1B3A33; --accent-ink:#06201B;
+  --us:#8FB6EC; --us-soft:#1D2C3F; --cn:#F0907F; --cn-soft:#3A201C;
+  --good:#7FD1A3; --good-soft:#16302A; --care:#E3B363; --care-soft:#352A12; --no:#F19A92; --no-soft:#3A1C1A;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1617; --surface:#162123; --sunk:#1C2A2C; --ink:#E6EEEC; --muted:#9DB0AD; --line:#283839;
+  --accent:#6CC3AC; --accent-soft:#1B3A33; --accent-ink:#06201B;
+  --us:#8FB6EC; --us-soft:#1D2C3F; --cn:#F0907F; --cn-soft:#3A201C;
+  --good:#7FD1A3; --good-soft:#16302A; --care:#E3B363; --care-soft:#352A12; --no:#F19A92; --no-soft:#3A1C1A;
+  color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{background:var(--bg);color:var(--ink);font:15.5px/1.55 var(--body);margin:0}
+.shell{max-width:620px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 calc(96px + env(safe-area-inset-bottom,0px))}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);display:flex;align-items:center;gap:12px;padding-block:12px 10px;border-bottom:1px solid var(--line)}
+.mark{width:38px;height:38px;border-radius:11px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font:800 19px var(--display);flex:0 0 38px}
+.top h1{font:700 19px/1.1 var(--display);margin:0}
+.top span{font-size:12.5px;color:var(--muted)}
+.top .grow{flex:1;min-width:0}
+h2{font:800 clamp(26px,7vw,34px)/1.08 var(--display);margin:0;text-wrap:balance;letter-spacing:-.01em}
+h3{font:700 18px/1.25 var(--display);margin:0;text-wrap:balance}
+p{margin:0}
+.lede{color:var(--muted);font-size:16px;max-width:60ch}
+.view{display:flex;flex-direction:column;gap:14px;padding-top:18px}
+.view[hidden]{display:none}
+.kick{font:500 11.5px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;min-width:0}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+.small{font-size:13.5px}
+/* route animation */
+.route{position:relative;border-radius:18px;overflow:hidden;background:linear-gradient(160deg,var(--accent-soft),var(--surface) 70%);border:1px solid var(--line);padding:16px}
+.route svg{width:100%;height:auto;display:block}
+.route .lbl{font:600 11px var(--mono);fill:var(--muted);letter-spacing:.04em}
+.route .city{font:700 13px var(--display);fill:var(--ink)}
+.route .path{fill:none;stroke:var(--accent);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:6 7}
+.route .dot{fill:var(--accent)}
+.route .ring{fill:none;stroke:var(--accent);stroke-width:1.5;opacity:.5}
+.route .ship{fill:var(--cn)}
+@media (prefers-reduced-motion:no-preference){
+  .route .path{animation:flow 2.4s linear infinite}
+  @keyframes flow{to{stroke-dashoffset:-26}}
+  .route .ring{transform-origin:center;transform-box:fill-box;animation:pulse 2.2s ease-out infinite}
+  @keyframes pulse{0%{transform:scale(.6);opacity:.7}100%{transform:scale(1.8);opacity:0}}
+  .rise{animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes rise{from{transform:translateY(10px);opacity:.35}to{transform:none;opacity:1}}
+}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;min-width:0}
+.stat b{display:block;font:800 24px/1.05 var(--display);font-variant-numeric:tabular-nums}
+.stat span{font-size:12.5px;color:var(--muted);line-height:1.3;display:block;margin-top:4px}
+@media (max-width:420px){.stats{grid-template-columns:1fr 1fr}.stats .stat:last-child{grid-column:1/-1}}
+.alert{border-radius:16px;padding:16px;background:var(--cn-soft);border:1px solid color-mix(in srgb,var(--cn) 35%,transparent);display:flex;flex-direction:column;gap:6px}
+.alert b{font:700 17px/1.25 var(--display);color:var(--ink)}
+.alert .when{font:600 12px var(--mono);color:var(--cn);letter-spacing:.05em;text-transform:uppercase}
+.steps{display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none;counter-reset:s}
+.steps li{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;counter-increment:s}
+.steps li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font:700 13px var(--mono)}
+.legend{display:flex;flex-wrap:wrap;gap:8px}
+/* verdict pills */
+.v{display:inline-flex;align-items:center;gap:6px;font:600 12px/1 var(--body);padding:6px 10px;border-radius:999px;white-space:nowrap}
+.v i{width:8px;height:8px;border-radius:50%;background:currentColor;flex:0 0 8px}
+.v.us{background:var(--us-soft);color:var(--us)}
+.v.cnus{background:var(--accent-soft);color:var(--accent)}
+.v.cn{background:var(--good-soft);color:var(--good)}
+.v.care{background:var(--care-soft);color:var(--care)}
+.v.either{background:var(--sunk);color:var(--ink)}
+.v.no{background:var(--no-soft);color:var(--no)}
+.v.no i{border-radius:2px;transform:rotate(45deg)}
+.v.care i{border-radius:2px}
+/* filters */
+.chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.chip{flex:0 0 auto;font:600 13px var(--body);padding:8px 13px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip:focus-visible,.tab:focus-visible,.m-head:focus-visible,.copy:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* machine cards */
+.m{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;min-width:0}
+.m-head{all:unset;box-sizing:border-box;width:100%;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:6px 10px;padding:14px 16px;align-items:start}
+.m-head .room{font:500 11px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.m-head h3{grid-column:1}
+.m-head .vwrap{grid-row:1/3;grid-column:2;align-self:center}
+.m-head .what{grid-column:1/-1;font-size:14px;color:var(--muted)}
+.m-head .chev{transition:transform .25s}
+.m.open .chev{transform:rotate(180deg)}
+.vs{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line)}
+.side{padding:12px 16px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.side+.side{border-left:1px solid var(--line)}
+.side .flag{font:600 11px var(--mono);letter-spacing:.07em;text-transform:uppercase}
+.side.usx .flag{color:var(--us)} .side.cnx .flag{color:var(--cn)}
+.side .pick{font-weight:600;line-height:1.3;overflow-wrap:anywhere}
+.side .price{font:500 15px var(--mono);font-variant-numeric:tabular-nums}
+.side .src{font-size:12px;color:var(--muted);overflow-wrap:anywhere}
+.tag{display:inline-block;font:600 10px var(--mono);letter-spacing:.05em;text-transform:uppercase;padding:2px 6px;border-radius:5px;vertical-align:1px}
+.tag.c{background:var(--good-soft);color:var(--good)} .tag.e{background:var(--care-soft);color:var(--care)} .tag.u{background:var(--sunk);color:var(--muted)}
+.m-body{padding:0 16px 14px;display:flex;flex-direction:column;gap:8px;font-size:14.5px}
+.m-body[hidden]{display:none}
+.m-body .why{background:var(--sunk);border-radius:10px;padding:10px 12px}
+.m-body dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:0}
+.m-body dt{font:500 12px var(--mono);color:var(--muted);padding-top:2px}
+.m-body dd{margin:0;min-width:0;overflow-wrap:anywhere}
+@media (max-width:400px){.vs{grid-template-columns:1fr}.side+.side{border-left:0;border-top:1px solid var(--line)}}
+/* places */
+.grp{font:700 13px var(--mono);letter-spacing:.07em;text-transform:uppercase;color:var(--accent);margin-top:6px}
+.place{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.place .zh{font:600 16px var(--body)}
+.place .en{font:700 15px var(--display)}
+.place .addr{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13.5px;color:var(--muted)}
+.copy{font:600 12px var(--body);border:1px solid var(--line);background:var(--sunk);color:var(--ink);border-radius:8px;padding:5px 9px;cursor:pointer}
+.place .why{font-size:14px}
+.place a{color:var(--accent);font-size:12.5px;overflow-wrap:anywhere}
+.ask{display:flex;flex-direction:column;gap:10px}
+.q{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.q .zh{font:600 17px/1.4 var(--body)}
+.q .en{font-size:13.5px;color:var(--muted)}
+.q .row{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.money{display:flex;flex-direction:column;gap:8px}
+.bar{display:grid;grid-template-columns:96px 1fr auto;gap:10px;align-items:center;font-size:13.5px}
+.track{height:12px;border-radius:6px;background:var(--sunk);overflow:hidden}
+.fill{height:100%;border-radius:6px;background:var(--us);width:var(--w)}
+.fill.cn{background:var(--cn)}
+@media (prefers-reduced-motion:no-preference){.fill{animation:grow 1s cubic-bezier(.2,.7,.2,1) both}@keyframes grow{from{width:12%}}}
+/* tab bar */
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+.tabs-in{max-width:620px;margin:0 auto;display:grid;grid-template-columns:repeat(6,1fr)}
+.tab{all:unset;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 2px 10px;font:600 11px var(--body);color:var(--muted);text-align:center}
+.tab svg{width:22px;height:22px}
+.tab[aria-current="page"]{color:var(--accent)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);font:500 13.5px var(--body);padding:8px 14px;border-radius:999px;z-index:9}
+.note{font-size:12.5px;color:var(--muted)}
+
+/* trip guide */
+.teaser{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;background:var(--ink);color:var(--bg);border-radius:18px;padding:14px 16px}
+.teaser .kick{color:color-mix(in srgb,var(--bg) 70%,var(--accent))}
+.teaser b{display:block;font:800 19px/1.2 var(--display)}
+.teaser .muted{color:color-mix(in srgb,var(--bg) 70%,transparent)}
+.teaser .t-go{font:700 28px var(--display)}
+.teaser:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.teaser .ring{color:var(--bg)}
+.ring{width:64px;height:64px;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:7}
+.ring-bg{stroke:color-mix(in srgb,currentColor 18%,transparent)}
+.ring-fg{stroke:var(--accent);stroke-linecap:round;stroke-dasharray:170;stroke-dashoffset:170;transition:stroke-dashoffset .8s cubic-bezier(.2,.7,.2,1)}
+.hero-trip{background:linear-gradient(150deg,var(--accent-soft),var(--surface) 65%);border:1px solid var(--line);border-radius:18px;padding:16px;display:grid;grid-template-columns:76px 1fr;gap:14px;align-items:center}
+.hero-trip .ring{width:76px;height:76px;color:var(--ink)}
+.hero-trip b{font:800 22px/1.15 var(--display);display:block}
+.lvlbar{height:8px;border-radius:4px;background:var(--sunk);overflow:hidden;margin-top:6px}
+.lvlbar i{display:block;height:100%;background:var(--accent);width:0;transition:width .8s cubic-bezier(.2,.7,.2,1)}
+.badges{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.badge{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:4px;width:84px;text-align:center;font:600 11.5px/1.25 var(--body);color:var(--muted)}
+.badge .b-ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--sunk);border:1px dashed var(--line);font:800 20px var(--display);color:var(--muted);transition:transform .3s}
+.badge.on{color:var(--ink)} .badge.on .b-ic{background:var(--accent);border:0;color:var(--accent-ink)}
+@media (prefers-reduced-motion:no-preference){.badge.on .b-ic{animation:pop .5s cubic-bezier(.2,1.6,.4,1)}@keyframes pop{0%{transform:scale(.6)}100%{transform:none}}}
+.day{display:flex;flex-direction:column;gap:8px}
+.day-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding-top:8px}
+.day-h h3{font:800 18px var(--display)}
+.day-h .d{font:500 12px var(--mono);color:var(--muted);white-space:nowrap}
+.day-h .city{font:500 11px var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
+.ms{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.ms.done{border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
+.ms-h{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:30px 1fr auto;gap:10px;align-items:center;padding:12px 14px}
+.ms-h:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:14px}
+.ms .ck{width:28px;height:28px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;color:var(--accent-ink)}
+.ms.done .ck{background:var(--accent);border-color:var(--accent)}
+.ms .ck svg{width:15px;height:15px;opacity:0}
+.ms.done .ck svg{opacity:1}
+.ms .tt{font-weight:600;line-height:1.3}
+.ms.done .tt{color:var(--muted)}
+.ms .ty{display:block;font:500 11px var(--mono);letter-spacing:.05em;text-transform:uppercase;margin-top:2px}
+.ty.biz{color:var(--us)} .ty.see{color:var(--cn)} .ty.prep{color:var(--care)}
+.ms .xp{font:700 12px var(--mono);padding:4px 8px;border-radius:999px;background:var(--sunk);white-space:nowrap}
+.ms.done .xp{background:var(--accent-soft);color:var(--accent)}
+.ms-b{padding:0 14px 14px;display:flex;flex-direction:column;gap:10px;font-size:14.5px}
+.ms-b[hidden]{display:none}
+.ms-b .why{background:var(--sunk);border-radius:10px;padding:10px 12px}
+.ms-b .place{padding:10px 12px;border-radius:10px}
+.ms-b .place .addr{color:var(--ink);font-size:14.5px;justify-content:space-between;flex-wrap:nowrap}
+.badge{position:relative}
+.ms-b ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+.fld{display:flex;flex-direction:column;gap:4px;font:600 12px var(--body);color:var(--muted)}
+.fld input,.fld textarea{font:15px var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:9px 10px;width:100%;min-width:0}
+.fld textarea{min-height:64px;resize:vertical}
+.fld input:focus-visible,.fld textarea:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media (max-width:400px){.row2{grid-template-columns:1fr}}
+.btn{font:700 14px var(--body);border-radius:12px;padding:12px 14px;border:0;background:var(--accent);color:var(--accent-ink);cursor:pointer}
+.btn.ghost{background:var(--sunk);color:var(--ink)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.saved{font-size:12.5px;color:var(--muted)}
+.burst{position:fixed;inset:0;pointer-events:none;z-index:20;display:grid;place-items:center}
+.burst span{position:absolute;font:800 22px var(--display);color:var(--accent);background:var(--surface);border:2px solid var(--accent);border-radius:999px;padding:8px 16px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+@media (prefers-reduced-motion:no-preference){.burst span{animation:burst 1.1s cubic-bezier(.2,.7,.2,1) both}@keyframes burst{0%{transform:scale(.5);opacity:0}20%{transform:scale(1.08);opacity:1}70%{transform:none;opacity:1}100%{transform:translateY(-40px);opacity:0}}}
+.rules{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+.rules li{display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:14.5px}
+.rules li::before{content:"";width:10px;height:10px;margin-top:6px;border-radius:3px;background:var(--cn);transform:rotate(45deg)}
+.sync{font:500 11.5px var(--mono);color:var(--muted)}
+.src-list a{display:block;color:var(--accent);font-size:12.5px;overflow-wrap:anywhere;padding:2px 0}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ask the team */
+.fab{position:fixed;right:16px;bottom:calc(84px + env(safe-area-inset-bottom,0px));z-index:8;display:flex;align-items:center;gap:8px;font:700 14.5px var(--body);background:var(--accent);color:var(--accent-ink);border:0;border-radius:999px;padding:12px 16px 12px 12px;box-shadow:0 8px 24px rgba(0,0,0,.22);cursor:pointer}
+.fab .dots{display:flex}.fab .dots i{width:22px;height:22px;border-radius:50%;margin-left:-6px;border:2px solid var(--accent);background:var(--surface);color:var(--ink);font:800 10px/18px var(--display);text-align:center;font-style:normal}
+.fab .dots i:first-child{margin-left:0}
+.fab:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.fab[hidden]{display:none}
+.askcta{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;gap:12px;background:var(--accent-soft);border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line));border-radius:16px;padding:14px 16px;width:100%}
+.askcta b{display:block;font:800 17px var(--display)}
+.askcta:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+dialog.sheet{border:0;padding:0;margin:auto auto 0;width:100%;max-width:620px;max-height:92dvh;height:92dvh;border-radius:20px 20px 0 0;background:var(--bg);color:var(--ink);display:flex;flex-direction:column}
+dialog.sheet:not([open]){display:none}
+dialog.sheet::backdrop{background:rgba(0,0,0,.45)}
+@media (prefers-reduced-motion:no-preference){dialog.sheet[open]{animation:up .35s cubic-bezier(.2,.7,.2,1)}@keyframes up{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}}
+.sh-top{display:flex;align-items:center;gap:10px;padding:14px 16px 10px;border-bottom:1px solid var(--line)}
+.sh-top h3{font:800 19px var(--display);flex:1}
+.x{all:unset;cursor:pointer;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--sunk);font:700 18px var(--body)}
+.x:focus-visible{outline:2px solid var(--accent)}
+.sh-body{flex:1;overflow-y:auto;padding:14px 16px calc(16px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:12px}
+.team{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.mem{flex:0 0 auto;width:78px;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;font:600 11px/1.2 var(--body);color:var(--muted)}
+.mem .av{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;font:800 15px var(--display);background:var(--surface);border:1px solid var(--line);color:var(--ink);transition:background .3s,transform .3s}
+.mem.on{color:var(--ink)}.mem.on .av{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+@media (prefers-reduced-motion:no-preference){.mem.on .av{transform:translateY(-3px)}.thinking .mem .av{animation:bob 1.2s ease-in-out infinite}.thinking .mem:nth-child(2) .av{animation-delay:.15s}.thinking .mem:nth-child(3) .av{animation-delay:.3s}.thinking .mem:nth-child(4) .av{animation-delay:.45s}.thinking .mem:nth-child(5) .av{animation-delay:.6s}.thinking .mem:nth-child(6) .av{animation-delay:.75s}@keyframes bob{50%{transform:translateY(-4px)}}}
+.qchips{display:flex;gap:6px;flex-wrap:wrap}
+.qchips .chip{font-size:12.5px;padding:7px 11px}
+.ans{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;font-size:15px;line-height:1.5;display:flex;flex-direction:column;gap:8px;overflow-wrap:anywhere}
+.ans h4{font:800 15px var(--display);margin-top:6px;display:flex;align-items:center;gap:8px}
+.ans h4 .av{width:24px;height:24px;border-radius:8px;display:grid;place-items:center;background:var(--accent);color:var(--accent-ink);font:800 10px var(--display);flex:0 0 auto}
+.ans ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:3px}
+.ans p{margin:0}
+.ans[hidden]{display:none}
+.ans .lead{font-weight:600}
+.ans .fl-ok{color:var(--accent);font-weight:700}.ans .fl-chk{color:var(--care);font-weight:700}
+.hist{display:flex;flex-direction:column;gap:6px}
+.sh-body>*{flex-shrink:0}
+.fab svg{width:22px;height:22px}
+.hist details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.hist summary{cursor:pointer;font-weight:600;font-size:14px}
+.hist .ans{border:0;padding:8px 0 0;background:none}
+.disc{font-size:12px;color:var(--muted)}
+
+/* trip v2: one thing at a time */
+.hud{display:grid;grid-template-columns:64px 1fr;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:12px 14px}
+.hud .ring{width:64px;height:64px;color:var(--ink)}
+.hud b{font:800 20px/1.1 var(--display);display:block}
+.daypick{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:2px}
+.dp{flex:0 0 auto;width:44px;height:52px;border-radius:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font:800 16px var(--display);cursor:pointer}
+.dp small{font:500 9.5px var(--mono);color:var(--muted);letter-spacing:.04em}
+.dp .f{width:22px;height:4px;border-radius:2px;background:var(--sunk);overflow:hidden}.dp .f i{display:block;height:100%;background:var(--accent)}
+.dp[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}.dp[aria-pressed="true"] small{color:color-mix(in srgb,var(--bg) 70%,transparent)}
+.dp:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.today-h{display:flex;justify-content:space-between;align-items:end;gap:10px}
+.today-h h3{font:800 22px/1.15 var(--display)}
+.today-h .pc{font:700 13px var(--mono);color:var(--accent);white-space:nowrap}
+.tiles{display:flex;flex-direction:column;gap:10px}
+.mt{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:14px;width:100%}
+.mt .ic{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:26px;background:var(--sunk)}
+.mt b{display:block;font:800 17px/1.2 var(--display)}
+.mt .meta{font:500 11.5px var(--mono);color:var(--muted);letter-spacing:.03em;text-transform:uppercase}
+.mt .go{font:800 13px var(--mono);padding:6px 10px;border-radius:999px;background:var(--sunk);white-space:nowrap}
+.mt.next{border:2px solid var(--accent);background:linear-gradient(150deg,var(--accent-soft),var(--surface) 70%)}
+.mt.next .go{background:var(--accent);color:var(--accent-ink)}
+.mt.done{opacity:.72}.mt.done .ic{background:var(--accent);color:var(--accent-ink)}.mt.done .go{background:var(--accent-soft);color:var(--accent)}
+.mt:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:no-preference){.mt.next .ic{animation:nudge 2.4s ease-in-out infinite}@keyframes nudge{0%,80%,100%{transform:none}88%{transform:rotate(-8deg) scale(1.06)}94%{transform:rotate(6deg) scale(1.06)}}}
+dialog.flow .f-prog{display:flex;gap:4px;flex:1}
+dialog.flow .f-prog i{flex:1;height:6px;border-radius:3px;background:var(--sunk)}
+dialog.flow .f-prog i.on{background:var(--accent)}
+.f-body{flex:1;overflow-y:auto;padding:22px 20px 12px;display:flex;flex-direction:column;gap:16px;justify-content:center}
+.f-body>*{flex-shrink:0}
+.f-lab{font:600 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.f-big{font:800 26px/1.25 var(--display)}
+.f-mid{font:600 19px/1.4 var(--body)}
+.f-emoji{font-size:64px;line-height:1;text-align:center}
+.f-foot{display:flex;gap:10px;padding:12px 16px calc(14px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
+.f-foot .btn{flex:1;font-size:17px;padding:16px}
+.f-foot .btn[hidden]{display:none}
+.f-place{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:8px}
+.f-place .zh{font:700 22px/1.3 var(--body)}
+.f-place .ad{font:500 16px/1.4 var(--body)}
+.f-place .row{display:flex;gap:8px;flex-wrap:wrap}
+.f-place a,.f-place .copy{font:700 14px var(--body)}
+.f-place a{color:var(--accent);padding:8px 12px;border-radius:999px;background:var(--accent-soft);text-decoration:none}
+.tf{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tf button{font:800 20px var(--display);padding:22px 10px;border-radius:16px;border:2px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.tf button.right{border-color:var(--accent);background:var(--accent-soft)}
+.tf button.wrong{border-color:var(--cn);background:color-mix(in srgb,var(--cn) 12%,var(--surface))}
+.fb{border-radius:14px;padding:12px 14px;font:600 16px/1.4 var(--body);background:var(--sunk)}
+.topics{display:flex;flex-wrap:wrap;gap:8px}
+.topics button{font:600 14px var(--body);padding:10px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+.topics button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.big-in{font:17px var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;width:100%}
+.big-in:focus-visible{outline:2px solid var(--accent)}
+.win{text-align:center;display:flex;flex-direction:column;gap:10px;align-items:center}
+.win .pts{font:800 44px var(--display);color:var(--accent)}
+@media (prefers-reduced-motion:no-preference){.win .f-emoji{animation:pop .6s cubic-bezier(.2,1.6,.4,1)}.f-body.anim>*{animation:fin .3s ease both}@keyframes fin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}}
+.conf{position:fixed;inset:0;pointer-events:none;z-index:30;overflow:hidden}
+.conf i{position:absolute;top:-12px;width:8px;height:14px;border-radius:2px}
+@media (prefers-reduced-motion:no-preference){.conf i{animation:fall 1.6s cubic-bezier(.3,.6,.5,1) forwards}@keyframes fall{to{transform:translateY(105vh) rotate(540deg)}}}
+.pb-list{display:flex;flex-direction:column;gap:8px}
+.lesson{display:grid;grid-template-columns:30px 1fr;gap:8px;background:var(--sunk);border-radius:12px;padding:10px 12px;font-size:14.5px}
+.lesson .em{font-size:20px}
+.lesson small{display:block;font:500 11px var(--mono);color:var(--muted);margin-top:2px}
+.pb-add{display:grid;grid-template-columns:1fr auto;gap:8px}
+.ans-short{font:800 21px/1.3 var(--display)}
+.faces{display:flex;gap:8px;flex-wrap:wrap}
+.faces button{all:unset;cursor:pointer;display:flex;align-items:center;gap:6px;padding:6px 10px 6px 6px;border-radius:999px;border:1px solid var(--line);background:var(--surface);font:600 13px var(--body)}
+.faces button .av{width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:var(--sunk);font:800 10px var(--display)}
+.faces button[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.faces button[aria-pressed="true"] .av{background:var(--accent);color:var(--accent-ink)}
+.faces button:focus-visible{outline:2px solid var(--accent)}
+.mpanel{background:var(--sunk);border-radius:12px;padding:12px 14px}
+.mpanel ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.act{border-left:4px solid var(--accent);padding:8px 12px;font-weight:600;background:var(--accent-soft);border-radius:0 12px 12px 0}
+.off .ai-only,.off .on-only,body:not(.off) .off-only{display:none!important}
+
+.co{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.co-h{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:12px 14px}
+.co-h b{font:800 16px/1.2 var(--display);display:block}
+.co-h .zh{font:500 13px var(--body);color:var(--muted)}
+.co-h:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.chip-s{font:700 11px var(--mono);padding:4px 8px;border-radius:999px;white-space:nowrap;background:var(--sunk)}
+.chip-s.ok{background:var(--accent-soft);color:var(--accent)}.chip-s.chk{background:color-mix(in srgb,var(--care) 15%,var(--surface));color:var(--care)}
+.co.met{border-color:var(--accent)}.co.met .co-h b::after{content:" ✓";color:var(--accent)}
+.co-b{padding:0 14px 14px;display:flex;flex-direction:column;gap:8px;font-size:14.5px}
+.co-b[hidden]{display:none}
+</style>
+
+<div class="shell">
+  <header class="top">
+    <div class="mark" aria-hidden="true">P</div>
+    <div class="grow"><h1>Pulse Equipment Sourcing</h1><span>510 Summit · US vs China · for Farrukh in Shenyang</span></div>
+  </header>
+
+  <!-- OVERVIEW -->
+  <section class="view" id="v-home" aria-label="Overview">
+    <div class="kick">Where we stand · Oct 14, 2026</div>
+    <h2>Buy the scan machines in the US. Buy the spa from China.</h2>
+    <p class="lede">The machines that measure a person's health need US FDA clearance, so most of them can't come from China. The spa side (saunas, pools, plunges, chairs, recovery gear) is where China saves real money.</p>
+
+    <div class="route rise" aria-label="Shipping route from Shenyang through Dalian port to New York, about 35 days by sea">
+      <svg viewBox="0 0 560 190" role="img" aria-hidden="true">
+        <path class="path" d="M75 78 C 120 50, 150 120, 190 108 C 290 70, 390 150, 480 78"/>
+        <circle class="ring" cx="75" cy="78" r="13"/><circle class="dot" cx="75" cy="78" r="8"/>
+        <circle class="dot" cx="190" cy="108" r="7"/>
+        <circle class="ring" cx="480" cy="78" r="13"/><circle class="dot" cx="480" cy="78" r="8"/>
+        <text class="city" x="75" y="42" text-anchor="middle" style="font-size:24px">Shenyang</text>
+        <text class="lbl" x="75" y="116" text-anchor="middle" style="font-size:18px">沈阳</text>
+        <text class="city" x="190" y="146" text-anchor="middle" style="font-size:21px">Dalian port</text>
+        <text class="city" x="480" y="42" text-anchor="middle" style="font-size:24px">Jersey City</text>
+        <text class="lbl" x="480" y="116" text-anchor="middle" style="font-size:17px">510 SUMMIT</text>
+        <text class="lbl" x="280" y="182" text-anchor="middle" style="font-size:17px">~30–40 DAYS BY SEA · +37.5% TARIFF</text>
+      </svg>
+    </div>
+
+    <div class="stats rise">
+      <div class="stat"><b class="mono" data-count="166367" data-pre="$">$166,367</b><span>Phase 1 clinic equipment, all bought in the US (estimate)</span></div>
+      <div class="stat"><b class="mono">37.5%</b><span>Extra US tariff on most Chinese goods, plus normal duty</span></div>
+      <div class="stat"><b class="mono" id="cntOk">–</b><span id="cntLbl">items can come from China</span></div>
+    </div>
+
+    <div class="alert rise">
+      <span class="when">Next week · Oct 21–24, 2026</span>
+      <b>CMEF Autumn in Beijing: China's biggest medical equipment fair</b>
+      <p class="small">China International Exhibition Center (Capital), Shunyi, Beijing. A train ride from Shenyang. Thousands of makers in one place: ultrasound, rehab, IV chairs, body scanners. Go with the checklist in the "Ask" tab.</p>
+    </div>
+
+    <button class="teaser rise" id="teaser" type="button" aria-label="Open Farrukh's trip guide">
+      <svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" class="ring-bg"/><circle cx="32" cy="32" r="27" class="ring-fg" id="tRing"/></svg>
+      <span class="t-body"><span class="kick">Farrukh's trip guide</span><b id="tLevel">Tourist · 0 XP</b><span class="small muted" id="tNext">Next: the first stop in Shenyang</span></span>
+      <span class="t-go" aria-hidden="true">›</span>
+    </button>
+
+    <div class="card rise">
+      <h3>How to read each machine</h3>
+      <div class="legend" style="margin-top:10px" id="legend"></div>
+      <p class="note" style="margin-top:10px">Prices: <span class="tag c">Confirmed</span> from a real listing or dealer · <span class="tag e">Estimate</span> from a guide or B2B page · <span class="tag u">Quote</span> no public price. Chinese prices are before the 37.5% tariff, duty and shipping.</p>
+    </div>
+  </section>
+
+  <!-- TRIP -->
+  <section class="view" id="v-trip" aria-label="Trip guide" hidden>
+    <div class="hud rise">
+      <svg class="ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="27" class="ring-bg"/><circle cx="32" cy="32" r="27" class="ring-fg" id="hRing"/></svg>
+      <div><span class="kick" id="hLvlName">Level 1</span><b id="hXP">0 XP</b><div class="lvlbar"><i id="hBar"></i></div><span class="small muted" id="hToNext"></span></div>
+    </div>
+    <div class="daypick" id="dayChips" role="group" aria-label="Pick a day"></div>
+    <div id="today" style="display:flex;flex-direction:column;gap:10px"></div>
+    <button class="askcta rise" type="button" data-askopen><span style="font-size:28px" aria-hidden="true">💬</span><span style="flex:1"><b>Stuck? Ask the team</b><span class="small muted">Answer in seconds</span></span><span style="font:700 26px var(--display)" aria-hidden="true">›</span></button>
+    <div class="card rise" id="coCard"><h3>🏢 Companies to visit</h3><p class="small muted" style="margin-top:4px">Tap one. Meet them, tap "Met ✓", get +20 XP. The 2026 fair list isn't public yet, so confirm each booth in the CMEF app.</p><div id="coList" style="display:flex;flex-direction:column;gap:8px;margin-top:10px"></div></div>
+    <div class="card rise"><h3>Badges</h3><div class="badges" id="badges" style="margin-top:10px"></div></div>
+    <div class="card rise" id="playbook">
+      <h3>📘 Family playbook</h3>
+      <p class="small muted" style="margin-top:4px" id="pbSub">What we learn about buying and doing business in China. Sent to Harris's HQ every night.</p>
+      <div class="topics" id="pbTopics" style="margin-top:10px"></div>
+      <div class="pb-list" id="pbList" style="margin-top:10px"></div>
+      <div class="pb-add" style="margin-top:10px"><input class="big-in" id="pbIn" placeholder="Learned something? Type it" aria-label="New lesson"><button class="btn" type="button" id="pbAdd">Add</button></div>
+    </div>
+    <div class="btnrow off-only"><button class="btn" type="button" id="upOpen" style="flex:1">📨 Send my update to Harris</button></div>
+    <div class="btnrow on-only"><button class="btn ghost" type="button" id="impOpen" style="flex:1">📥 Paste Farrukh's WeChat update</button></div>
+    <p class="sync" id="sync">Progress saves on this phone.</p>
+  </section>
+
+  <!-- MACHINES -->
+  <section class="view" id="v-machines" aria-label="Machines" hidden>
+    <div class="kick">Room by room</div>
+    <h2>Every machine, US vs China</h2>
+    <p class="lede">Tap a machine for the details. Neko Health builds its own machines and doesn't sell them, so each card shows the closest thing you can buy.</p>
+    <div class="chips" id="vfilter" role="group" aria-label="Filter by verdict"></div>
+    <div id="mlist" style="display:flex;flex-direction:column;gap:12px"></div>
+  </section>
+
+  <!-- SHENYANG -->
+  <section class="view" id="v-shenyang" aria-label="Shenyang" hidden>
+    <div class="kick">For Farrukh · 在沈阳</div>
+    <h2>Places to see in Shenyang</h2>
+    <p class="lede">Real places, with Chinese names to show a driver. Tap Copy and paste into Amap (高德) or Didi. Check hours on Dianping (大众点评) before going.</p>
+    <div id="plist" style="display:flex;flex-direction:column;gap:10px"></div>
+    <div class="card">
+      <h3>Not found in Shenyang</h3>
+      <p class="small muted" style="margin-top:6px">No dedicated medical-equipment market, no beauty-equipment wholesale market (Guangzhou is the hub for that), and no verified branches of the big health-check chains. Most body-scan, red-light and sauna makers are in South China, Jiangsu and Shandong, so the trade fairs are the faster way to meet them.</p>
+    </div>
+  </section>
+
+  <!-- SPA EXTRAS -->
+  <section class="view" id="v-spa" aria-label="Spa from China" hidden>
+    <div class="kick">Where China saves money</div>
+    <h2>Spa and wellness equipment</h2>
+    <p class="lede">None of this is a medical device, so FDA rules don't apply. Two rules do: every electrical item needs a real UL, ETL or CSA mark (a CE mark doesn't count in the US), and it must run on US power (120V/60Hz). The pools also need NJ health department plan approval.</p>
+    <div class="card">
+      <h3>Price check: where the gap is biggest</h3>
+      <p class="note" style="margin:4px 0 12px">Top of each range, before tariff and shipping. US red-light bed is a review-site estimate; China bed is a confirmed eBay listing.</p>
+      <div class="money" id="gap"></div>
+    </div>
+    <div id="slist" style="display:flex;flex-direction:column;gap:12px"></div>
+  </section>
+
+  <!-- ASK -->
+  <section class="view" id="v-ask" aria-label="Supplier checklist" hidden>
+    <div class="kick">Show this to every supplier</div>
+    <h2>Questions to ask, in Chinese</h2>
+    <p class="lede">Get every answer in writing. Then check the numbers yourself before paying any deposit.</p>
+    <button class="askcta rise" type="button" data-askopen><span style="flex:1"><span class="kick">Any question, any time</span><b>Ask the team</b><span class="small muted">Customs, China law, FDA, electrical code, money and your local guide answer together.</span></span><span style="font:700 26px var(--display)">›</span></button>
+    <div class="ask" id="qlist"></div>
+    <div class="card">
+      <h3>Check it yourself</h3>
+      <ol class="steps" style="margin-top:10px">
+        <li><span><b>Company license:</b> search the name or credit code on gsxt.gov.cn. It should say 在营 (active) and list this product.</span></li>
+        <li><span><b>FDA number:</b> look it up on the FDA 510(k) database. Many pages say "FDA" with no real clearance.</span></li>
+        <li><span><b>UL / ETL number:</b> look it up in the UL Product iQ or Intertek directory.</span></li>
+        <li><span><b>Inspection before shipping:</b> hire QIMA or SGS to check the goods at the factory.</span></li>
+        <li><span><b>Shipping:</b> a freight forwarder in China, a licensed customs broker in New Jersey. Dalian to New York is about 30–40 days by sea.</span></li>
+        <li><span><b>Tariff:</b> have the broker confirm the duty for each product before ordering. Most Chinese goods pay 37.5% extra (25% from 2018 plus 12.5% since July 24, 2026). A separate medical-device tariff review is still open.</span></li>
+      </ol>
+    </div>
+    <details class="card src-list">
+      <summary style="cursor:pointer;font-weight:600">Sources</summary>
+      <div id="srcs" style="margin-top:8px"></div>
+    </details>
+    <p class="note">Research as of Oct 14, 2026. Prices and certifications change; confirm each before buying. Not legal or customs advice.</p>
+  </section>
+</div>
+
+<button class="fab" id="fab" type="button" data-askopen aria-label="Ask the team a question"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M9 11h.01M12 11h.01M15 11h.01"/></svg>Ask the team</button>
+<dialog class="sheet flow" id="mDlg" aria-label="Mission">
+  <div class="sh-top"><button class="x" type="button" id="fBack" aria-label="Back">‹</button><div class="f-prog" id="fProg"></div><button class="x" type="button" id="fClose" aria-label="Close">✕</button></div>
+  <div class="f-body" id="fBody" aria-live="polite"></div>
+  <div class="f-foot"><button class="btn ghost" type="button" id="fAlt" hidden></button><button class="btn" type="button" id="fNext">Next</button></div>
+</dialog>
+<dialog class="sheet" id="upDlg" aria-labelledby="upTitle">
+  <div class="sh-top"><h3 id="upTitle">Update</h3><button class="x" type="button" id="upClose" aria-label="Close">✕</button></div>
+  <div class="sh-body">
+    <p class="small muted" id="upHelp"></p>
+    <label class="fld"><span id="upLab">Your update</span><textarea id="upTxt" style="min-height:220px;font:13px var(--mono)"></textarea></label>
+    <div class="btnrow"><button class="btn" type="button" id="upGo" style="flex:1"></button></div>
+    <span class="saved" id="upState"></span>
+  </div>
+</dialog>
+<dialog class="sheet" id="askDlg" aria-labelledby="askTitle">
+  <div class="sh-top"><h3 id="askTitle">Ask the team</h3><button class="x" type="button" id="askClose" aria-label="Close">✕</button></div>
+  <div class="sh-body">
+    <div class="team ai-only" id="team" aria-label="Your team"></div>
+    <label class="fld">Your question (English or Urdu)<textarea id="askQ" placeholder="e.g. A supplier wants a 30% deposit by WeChat Pay. Is that OK?"></textarea></label>
+    <div class="qchips" id="askChips"></div>
+    <div class="btnrow"><button class="btn ai-only" type="button" id="askGo">Ask the team</button><button class="btn ghost" type="button" id="askStop" hidden>Stop</button><button class="btn ghost" type="button" id="askHarris">Send to Harris</button><span class="saved" id="askState"></span></div>
+    <div class="ans" id="askOut" hidden aria-live="polite"></div>
+    <p class="disc ai-only">Your team is AI. Answers follow US and Chinese rules as best they know them, but rules change. Before money moves or anything ships, Harris confirms with a licensed customs broker or attorney.</p>
+    <div class="hist" id="askHist"></div>
+  </div>
+</dialog>
+<nav class="tabs" aria-label="Sections"><div class="tabs-in">
+  <button class="tab" data-v="home" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Overview</button>
+  <button class="tab" data-v="trip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5l6-2 4 2 6-2v16l-6 2-4-2-6 2z"/><path d="M10 3v16M14 5v16"/></svg>Trip</button>
+  <button class="tab" data-v="machines"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>Machines</button>
+  <button class="tab" data-v="shenyang"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Shenyang</button>
+  <button class="tab" data-v="spa"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17c2 0 2-1.5 4.5-1.5S10 17 12 17s2-1.5 4.5-1.5S19 17 21 17M3 21c2 0 2-1.5 4.5-1.5S10 21 12 21s2-1.5 4.5-1.5S19 21 21 21M8 12c0-2 2-2 2-4s-2-2-2-4M14 12c0-2 2-2 2-4s-2-2-2-4"/></svg>Spa</button>
+  <button class="tab" data-v="ask"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg>Ask</button>
+</div></nav>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+const V={
+  us:["us","Buy in the US"],
+  cnus:["cnus","Chinese brand, US dealer"],
+  cn:["cn","China saves money"],
+  care:["care","China, with checks"],
+  either:["either","Either: compare quotes"],
+  no:["no","Don't buy from China"]
+};
+const M=[
+ {room:"Scan Studio",name:"Heart and artery check",what:"ECG, blood pressure on all four limbs, and how stiff the arteries are (CAVI / ABI). The core of the scan.",neko:"Neko Spectrum and Echo",
+  us:["Fukuda Denshi VaSera","Quote needed","u","Fukuda Denshi USA, Redmond WA"],
+  cn:["Nanjing Kejin KAS6800 · 南京科进","Quote only","u","Nanjing. Also Donghuayuan 东华原 (Beijing); Omron BP-203RPE is sold in China"],
+  fda:"US: only the older VS-1500 is confirmed cleared (K112521); get the newer model's number in writing. China: no FDA clearance found.",
+  v:"us",why:"A health-measuring machine without its own FDA clearance can be held at US customs, and using it on patients is a malpractice risk."},
+ {room:"Scan Studio",name:"Body composition",what:"Muscle, fat and water, body part by body part.",neko:"Part of the Neko scan",
+  us:["InBody 770","$23,705","c","InBody USA, shop.inbodyusa.com"],
+  cn:["InBody 770C (sold in China)","≈265,000 CNY (~$37K)","c","2024 Chinese hospital tender"],
+  fda:"InBody models hold FDA clearances; ask for the 770's number.",
+  v:"us",why:"The same machine costs more inside China. Buy it in the US."},
+ {room:"Scan Studio",name:"Face skin analyzer",what:"Photographs the face under different lights to show spots, pores, wrinkles and redness.",neko:"Neko Derma covers the whole body; this is the face only",
+  us:["Canfield VISIA","$7,000–20,000","e","Canfield Scientific, Parsippany NJ"],
+  cn:["Meicet MC88 / MC10 · 美斯","~$2,000 FOB","e","Shanghai May Skin (Shanghai, factory in Suzhou). Get a real quote; the listing is unreliable"],
+  fda:"MC10 is listed in the US device database as exempt from premarket review. Imaging only, no diagnosis.",
+  v:"cn",why:"The biggest saving on the scan side, and it's a picture tool, not a diagnostic device."},
+ {room:"Scan Studio",name:"Whole-body mole mapping",what:"3D photos of every mole, tracked year to year.",neko:"Neko Derma",
+  us:["Canfield Vectra WB360","Quote needed","u","Canfield Scientific, Parsippany NJ"],
+  cn:["No Chinese equivalent found","—","u","The leaders are Canfield (US) and FotoFinder (Germany)"],
+  fda:"Buy in the US or Europe.",
+  v:"us",why:"Phase 2, through the dermatology relationship. Nothing comparable is made in China."},
+ {room:"Scan Studio",name:"3D body scanner",what:"A rotating scan of body shape and measurements. Shows progress in the Pulse app.",neko:"Not part of Neko",
+  us:["Fit3D ProScanner","$10,000 + ~$100/mo","c","Fit3D"],
+  cn:["Visbody R / R60 · 维塑","~$13,000","e","Visbody (Xi'an and Shanghai); US company Vimbod Inc."],
+  fda:"Wellness device, no clearance needed. Visbody R60 runs on US power (100–240V, 50/60Hz).",
+  v:"either",why:"Similar price. Ask Visbody for a quote and compare."},
+ {room:"Debrief",name:"Handheld heart ultrasound",what:"A quick look at the heart, for members whose scan flags something.",neko:"Neko Echo-style check",
+  us:["GE Vscan Air SL","$4,999","c","GE HealthCare US shop"],
+  cn:["Edan Nano C5 · 理邦","$4,432","c","Edan (Shenzhen), sold by US dealers. Also Mindray TE Air · 迈瑞"],
+  fda:"Edan Nano: FDA-cleared K251268 (Dec 2025). Mindray TE Air: K231685 and K240906.",
+  v:"cnus",why:"A Chinese brand that's FDA-cleared. Buy it from a US dealer, not straight from China."},
+ {room:"IV Lounge",name:"IV recliners (4)",what:"Reclining chairs for 30–240 minute drips.",neko:"—",
+  us:["Champion 85 / Winco CareCliner","$2,558–6,381 each","c","CME Corp, Tiger Medical"],
+  cn:["Zhangjiagang infusion-chair makers","Quote needed","u","Zhangjiagang, Jiangsu (Medi, Bestran, Yanhang and others)"],
+  fda:"Probably exempt from clearance, but the maker must be FDA-registered. Electric chairs need UL/ETL.",
+  v:"care",why:"Furniture-class item. A good place to save if the maker is registered."},
+ {room:"IV Lounge",name:"Infusion pumps",what:"Controls how fast the drip runs.",neko:"—",
+  us:["Baxter Sigma Spectrum, refurbished","~$395 each","c","Relink Medical"],
+  cn:["Mindray BeneFusion · 迈瑞","—","u","No longer listed by Mindray"],
+  fda:"US clearance unknown for the Chinese model. FDA watches pumps closely.",
+  v:"us",why:"Already cheap in the US, and the risk isn't worth it."},
+ {room:"IV Lounge",name:"Medical fridge with alarm",what:"Keeps IV vitamins, NAD+ and Botox at the right temperature.",neko:"—",
+  us:["Accucold 6 cu ft","$1,371","c","KaTom"],
+  cn:["Haier Biomedical HYC · 海尔生物","$1,380+","c","Qingdao; US version (115V) sold by US dealers"],
+  fda:"Not a medical device. Buy the US-voltage model.",
+  v:"either",why:"Same price either way. Buy the US version from a US dealer."},
+ {room:"Aesthetics",name:"Hydrafacial machine",what:"Cleansing and serum facial, run by an esthetician.",neko:"—",
+  us:["HydraFacial Syndeo","~$28,000 used","e","Used listing (Sept 2026); new about $35–42K"],
+  cn:["\"Hydra 8-in-1\" clones","Cheap","u","eBay / Alibaba"],
+  fda:"No FDA clearance on the clones.",
+  v:"no",why:"HydraFacial has won US patent cases against copies. Importing one risks seizure and a lawsuit."},
+ {room:"Phase 2",name:"Same-visit blood analyzer",what:"Results in minutes during the visit. Set aside on 9/10; outside labs instead.",neko:"Neko runs blood tests",
+  us:["Abbott Afinion 2 / CardioChek","Quote needed","u","US dealers"],
+  cn:["Getein 基蛋 · Wondfo 万孚","—","u","Nanjing, Guangzhou"],
+  fda:"No FDA clearance found for either Chinese analyzer. CardioChek is US-cleared (its owner, Sinocare, is Chinese).",
+  v:"us",why:"If added later, buy a US-cleared model."}
+];
+const S=[
+ {name:"Saunas",what:"Traditional and infrared rooms for the basement thermal floor.",cn:"Rongjie Health; Sunrans · 浪鲸 (Guangzhou)",price:"Quote needed (private label often 5–20 sets minimum)",us:"Northern Saunas (already in contact, 1-844-240-9233)",check:"ETL is claimed for some infrared rooms; get the file number.",v:"care"},
+ {name:"Hydro pools and spas",what:"The two 7'×10' hydro pools and the circular spa.",cn:"Sunrans · 浪鲸, Swankia (Foshan), Virlux (Heyuan)",price:"$2,799–24,699 (listings)",tag:"c",us:"US spa dealers: quote needed",check:"UL is claimed on some models. Also needs NJ health department plan approval.",v:"care"},
+ {name:"Cold plunge chillers",what:"Chillers and tubs for the four cold plunges.",cn:"Chinese factories that make for US brands",price:"Quote needed",us:"US cold-plunge brands: quote needed",check:"Ask for the ETL/UL certificate and file number.",v:"care"},
+ {name:"Red light bed",what:"Full-body LED bed for recovery and skin. Phase 2.",cn:"Merican (Guangzhou), M4 bed",price:"$14,880",tag:"c",us:"TheraLight 360: $95,000–135,000 (estimate)",check:"Merican claims FDA clearance but no number was found. Other Chinese makers do hold real ones (e.g. K242638). Buy only with a number you can look up.",v:"care"},
+ {name:"Compression boots",what:"Leg recovery for the IV lounge and recovery room.",cn:"Shenzhen Welltek, Xiamen Sun Lion, Contec",price:"$29–680",tag:"c",us:"Normatec 3: $899",check:"Ask for the FDA registration number and a US plug. Wellness claims only.",v:"cn"},
+ {name:"Treatment and blood-draw chairs",what:"Aesthetics chair and phlebotomy chair.",cn:"Jiangsu Saikang and others",price:"Quote needed",us:"US medical suppliers: ~$7,500 aesthetic chair (estimate)",check:"Electric chairs need UL/ETL.",v:"care"},
+ {name:"Lockers, towel warmers, lighting, decor",what:"Everything that sets the look Carissa designs.",cn:"Many factories; see them at the Guangzhou spa expo",price:"Quote needed",us:"US suppliers",check:"Electrical items need UL/ETL. Carissa approves finishes first.",v:"cn"}
+];
+const P=[
+ {g:"Trade fairs (best use of time)",zh:"第94届中国国际医疗器械（秋季）博览会",en:"CMEF Autumn 2026 · Beijing",addr:"中国国际展览中心（新馆），北京顺义",addrEn:"China International Exhibition Center (Capital), Shunyi, Beijing",why:"Oct 21–24, 2026. China's biggest medical fair: ultrasound, rehab, IV chairs, body scanners, red light. Bring the Ask tab.",src:"https://www.german-pavilion.com/en/cmef-autumn-2026"},
+ {g:"Trade fairs (best use of time)",zh:"中国国际医疗器械（春季）博览会",en:"CMEF Spring 2027 · Shanghai",addr:"国家会展中心（上海），青浦",addrEn:"National Exhibition and Convention Center, Qingpu, Shanghai",why:"Apr 9–12, 2027 (confirm on cmef.com.cn). The larger spring edition.",src:"https://en.jufair.com/exhibition/cmef-shanghai/periodical"},
+ {g:"Trade fairs (best use of time)",zh:"亚洲泳池SPA博览会",en:"Asia Pool & Spa Expo · Guangzhou",addr:"中国进出口商品交易会展馆，广州海珠",addrEn:"Canton Fair Complex, Haizhu, Guangzhou",why:"May 15–17, 2027 (confirm with organizer). Saunas, spas, pools and chillers all in one hall.",src:"https://www.expobeds.com/event/asia-pool-spa-expo/2027"},
+ {g:"Scan rooms to study",zh:"沈阳东软医学影像诊断中心",en:"Shenyang Neusoft Medical Imaging Diagnosis Center",addr:"和平区三好街36号（盛京医院南湖院区对面）",addrEn:"Across from Shengjing Hospital Nanhu campus, 36 Sanhao St, Heping District",why:"About 2,000 m² with CT, 1.5T and 3.0T MRI, X-ray and ultrasound. The best real scan-room layout to see.",src:"https://cs.com.cn/ssgs/gsxw/202105/t20210528_6171472.html"},
+ {g:"Scan rooms to study",zh:"东软医疗系统股份有限公司（总部）",en:"Neusoft Medical Systems HQ",addr:"浑南区创新路177-1号",addrEn:"177-1 Chuangxin Rd, Hunnan District",why:"China's big scanner maker; many of its CT and MRI models are FDA-cleared. No public showroom found, so call ahead as a business visitor. We partner for MRI rather than buy, so this is for learning.",src:"https://basic.10jqka.com.cn/A04133/company.html"},
+ {g:"Scan rooms to study",zh:"东软熙康健康管理中心",en:"Neusoft Xikang health management centers",addr:"沈阳（地址请在大众点评查询）",addrEn:"Shenyang (find addresses on Dianping)",why:"Neusoft's health-check centers. Closest local example of a membership health program. Addresses not verified.",src:"https://www1.hkexnews.hk/listedco/listconews/sehk/2024/0429/2024042901510.pdf"},
+ {g:"Scan rooms to study",zh:"中国医科大学附属第一医院",en:"First Hospital of China Medical University",addr:"和平区南京北街155号",addrEn:"155 Nanjing North St, Heping District",why:"One of the top hospitals in the region. Ask whether the health-check department takes visitors.",src:"https://chinaservicesinfo.com/s/202002/13/WS5e450568498ea01b9aea0eab/designated-hospitals-and-fever-clinics-in-shenyang-city-liaoning.html"},
+ {g:"Bathhouses for spa ideas (东北洗浴)",zh:"沈阳大江户温泉",en:"Shenyang Ōedo Onsen",addr:"浑南区浑南西路彩霞街10甲6号",addrEn:"6 Lane 10甲, Caixia St, Hunnan West Rd, Hunnan District",why:"15,000 m² on 4 floors: carbonated baths, hot springs, 汗蒸 sweat rooms. Japanese style, like our onsen direction.",src:"https://m.sohu.com/a/1026382703_122605721/"},
+ {g:"Bathhouses for spa ideas (东北洗浴)",zh:"天泊圣汇",en:"Tianbo Shenghui",addr:"浑南区三义街6号天水e城（奥体中心附近）",addrEn:"6 Sanyi St, Tianshui e-City, near the Olympic Sports Center, Hunnan",why:"About 20,000 m² with saunas at several heat levels. See how they run many sauna rooms at once.",src:"https://m.ctrip.com/html5/hotel/hoteldetail/940161.html"},
+ {g:"Bathhouses for spa ideas (东北洗浴)",zh:"新北汤温泉",en:"Xinbei Tang Hot Spring",addr:"沈北新区杭州路193号",addrEn:"193 Hangzhou Rd, Shenbei New District",why:"汗蒸 rooms, a snow room and private soaking rooms. Good ideas for the cold side.",src:"https://www.dahepiao.com/lvyounews1/20240325453651.html"},
+ {g:"Bathhouses for spa ideas (东北洗浴)",zh:"沐里沐外（大东店）",en:"Muli Muwai, Dadong",addr:"大东区滂江街与津桥路交汇处",addrEn:"Pangjiang St at Jinqiao Rd, Dadong District",why:"Open 24 hours, over 1,000 guests. See how a high-volume bathhouse moves people.",src:"https://news.ifeng.com/c/8gaMrPKlSmJ"},
+ {g:"Sauna builders",zh:"沈阳利雅桑拿泳池设备有限公司",en:"Shenyang Liya Sauna & Pool Equipment",addr:"沈阳（地址待核实）",addrEn:"Shenyang (address not verified)",why:"Local sauna and pool design-build firm. Ask to see a finished 汗蒸 or sauna project. Check its license on gsxt.gov.cn first.",src:"https://m.tech.china.com/redian/2026/0625/062026_1901257.html"},
+ {g:"Sauna builders",zh:"欧姆龙（大连）有限公司",en:"Omron Dalian",addr:"大连金普新区",addrEn:"Jinpu New Area, Dalian (about 2 hours by train)",why:"Makes blood-pressure monitors and therapy devices. Not a showroom; useful only if Omron's arterial check (VP-1000 Plus in the US) is chosen.",src:"https://govt.chinadaily.com.cn/s/202308/09/WS650a4d7c498ed2d7b7e9bd71/omrons-new-plant-in-dalian-launches-into-operation.html"}
+];
+const Q=[
+ ["请提供这台设备的美国FDA 510(k)编号。","Please give me this machine's US FDA 510(k) number."],
+ ["有UL或ETL认证吗？请提供证书编号。","Does it have UL or ETL certification? Please give the certificate number."],
+ ["可以做美国电压110伏、60赫兹吗？","Can it be made for US power, 110V and 60Hz?"],
+ ["请提供营业执照和统一社会信用代码。","Please send your business license and credit code."],
+ ["大连港离岸价（FOB）是多少？交货期多久？","What is the FOB price at Dalian port, and how long is delivery?"],
+ ["可以接受第三方验货（SGS或QIMA）吗？","Do you accept third-party inspection (SGS or QIMA)?"],
+ ["付款方式可以30%定金，70%发货前付清吗？","Can we pay 30% deposit and 70% before shipping?"],
+ ["保修多久？美国有维修服务吗？","How long is the warranty? Is there repair service in the US?"]
+];
+const SRC=["https://shop.inbodyusa.com/collections/all","https://www.masxmzx.com/jyxx/002002/002002003/20240129/490e36ff-6af5-44c4-b515-edf70a66e793.html","https://fda.innolitics.com/device/K112521","https://www.bio-equip.com/show1equip5027659.html","https://accessgudid.nlm.nih.gov/devices/06975980570017","https://www.perfectcorp.com/business/blog/ai-skincare/four-popular-skin-scanner-features-prices-size","https://service.fit3d.com/knowledge/how-much-does-fit3d-cost","https://visbody.com/visbody-r60/","https://www.pocketnurse.com/default/02-40-0743-edan-nano-c5-exp-portable-diagnostic-ultrasound-system","https://510kdatabase.net/edan-instruments-inc","https://www.accessdata.fda.gov/cdrh_docs/pdf24/K240906.pdf","https://www.cmecorp.com/champion-85-series-power-medical-recliner-swing-away-arms.html","https://relinkonline.com/products/sigma-spectrum-v8","https://geneseesci.com/shop-online/product-details/79-413G/haier-biomedical-hyc-290-pharmacy-refrigerator--2-to--8c-290l-10cf-glass-door-115v-60hz-1-refigerator-unit","https://www.usitc.gov/press_room/news_release/2024/er0905_65863.htm","https://ebay.com/itm/186465402006","https://redlighttherapy.expert/theralight-review/","https://www.made-in-china.com/factory/compression-boots.html","https://www.made-in-china.com/factory/hydro-pool.html","https://www.fda.gov/medical-devices/importing-and-exporting-devices/importing-us","https://www.honigman.com/alert-3462","https://www.brlogistics.net/us/?p=5499"];
+
+const $=s=>document.querySelector(s);
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const pill=k=>`<span class="v ${V[k][0]}"><i></i>${V[k][1]}</span>`;
+const tagOf=t=>t==="c"?'<span class="tag c">Confirmed</span>':t==="e"?'<span class="tag e">Estimate</span>':'<span class="tag u">Quote</span>';
+
+$("#legend").innerHTML=Object.keys(V).map(pill).join("");
+const okKeys=["cn","care","either","cnus"];
+const all=M.length+S.length, ok=M.filter(m=>okKeys.includes(m.v)).length+S.filter(s=>okKeys.includes(s.v)).length;
+$("#cntOk").textContent=ok+" of "+all; $("#cntLbl").textContent="items can be bought from China or a Chinese brand. The other "+(all-ok)+" must be bought in the US.";
+
+let vf="all";
+const FIL=[["all","All"],["us","Buy in the US"],["cnus","Chinese brand, US dealer"],["cn","China saves"],["care","With checks"],["either","Either"],["no","Don't"]];
+function chips(){$("#vfilter").innerHTML=FIL.filter(f=>f[0]==="all"||M.some(m=>m.v===f[0])).map(f=>`<button class="chip" data-f="${f[0]}" aria-pressed="${f[0]===vf}">${f[1]}</button>`).join("");}
+function machines(){
+  const L=M.filter(m=>vf==="all"||m.v===vf);
+  $("#mlist").innerHTML=L.map((m,i)=>`<article class="m rise" style="animation-delay:${i*45}ms">
+    <button class="m-head" aria-expanded="false" aria-controls="mb${i}">
+      <span class="room">${esc(m.room)}</span>
+      <h3>${esc(m.name)}</h3>
+      <span class="vwrap">${pill(m.v)}</span>
+      <span class="what">${esc(m.what)}</span>
+    </button>
+    <div class="vs">
+      <div class="side usx"><span class="flag">US option</span><span class="pick">${esc(m.us[0])}</span><span class="price">${esc(m.us[1])} ${tagOf(m.us[2])}</span><span class="src">${esc(m.us[3])}</span></div>
+      <div class="side cnx"><span class="flag">China option</span><span class="pick">${esc(m.cn[0])}</span><span class="price">${esc(m.cn[1])} ${tagOf(m.cn[2])}</span><span class="src">${esc(m.cn[3])}</span></div>
+    </div>
+    <div class="m-body" id="mb${i}" hidden>
+      <div class="why"><b>Why:</b> ${esc(m.why)}</div>
+      <dl><dt>Neko uses</dt><dd>${esc(m.neko)}</dd><dt>FDA</dt><dd>${esc(m.fda)}</dd></dl>
+    </div>
+  </article>`).join("")||'<p class="muted">Nothing in this group.</p>';
+}
+$("#vfilter").addEventListener("click",e=>{const b=e.target.closest("[data-f]");if(!b)return;vf=b.dataset.f;chips();machines();});
+$("#mlist").addEventListener("click",e=>{const h=e.target.closest(".m-head");if(!h)return;const art=h.closest(".m"),body=art.querySelector(".m-body"),open=body.hidden;body.hidden=!open;art.classList.toggle("open",open);h.setAttribute("aria-expanded",String(open));});
+chips();machines();
+
+$("#slist").innerHTML=S.map((s,i)=>`<article class="m rise" style="animation-delay:${i*45}ms">
+  <div class="m-head" style="cursor:default"><span class="room">Spa side</span><h3>${esc(s.name)}</h3><span class="vwrap">${pill(s.v)}</span><span class="what">${esc(s.what)}</span></div>
+  <div class="vs">
+    <div class="side usx"><span class="flag">US option</span><span class="pick">${esc(s.us)}</span></div>
+    <div class="side cnx"><span class="flag">China option</span><span class="pick">${esc(s.cn)}</span><span class="price">${esc(s.price)} ${s.tag?tagOf(s.tag):""}</span></div>
+  </div>
+  <div class="m-body"><div class="why"><b>Check:</b> ${esc(s.check)}</div></div>
+</article>`).join("");
+
+const G=[["Red light bed",135000,14880],["Skin analyzer",20000,2000],["Compression",899,680]];
+$("#gap").innerHTML=G.map(g=>{const max=g[1];return `<div><div class="small" style="font-weight:600;margin-bottom:4px">${g[0]}</div>
+  <div class="bar"><span class="muted">US</span><div class="track"><div class="fill" style="--w:100%"></div></div><span class="mono">$${g[1].toLocaleString("en-US")}</span></div>
+  <div class="bar"><span class="muted">China</span><div class="track"><div class="fill cn" style="--w:${Math.max(3,g[2]/max*100).toFixed(1)}%"></div></div><span class="mono">$${g[2].toLocaleString("en-US")}</span></div></div>`;}).join("");
+
+let lastG="";
+$("#plist").innerHTML=P.map((p,i)=>{const head=p.g!==lastG?`<div class="grp">${esc(p.g)}</div>`:"";lastG=p.g;
+  return head+`<div class="place rise" style="animation-delay:${i*35}ms"><span class="zh" lang="zh">${esc(p.zh)}</span><span class="en">${esc(p.en)}</span>
+  <div class="addr"><span lang="zh">${esc(p.addr)}</span><button class="copy" data-copy="${esc(p.zh+" "+p.addr)}">Copy</button></div>
+  <span class="small muted">${esc(p.addrEn)}</span><span class="why">${esc(p.why)}</span><a href="${esc(p.src)}" target="_blank" rel="noopener">Source</a></div>`;}).join("");
+
+$("#qlist").innerHTML=Q.map(q=>`<div class="q"><div class="row"><span class="zh" lang="zh">${esc(q[0])}</span><button class="copy" data-copy="${esc(q[0])}">Copy</button></div><span class="en">${esc(q[1])}</span></div>`).join("");
+$("#srcs").innerHTML=SRC.map(u=>`<a href="${esc(u)}" target="_blank" rel="noopener">${esc(u.replace(/^https?:\/\/(www\.)?/,""))}</a>`).join("");
+
+let tt;function toast(t){const el=$("#toast");el.textContent=t;el.hidden=false;clearTimeout(tt);tt=setTimeout(()=>el.hidden=true,1600);}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-copy]");if(!b)return;const txt=b.dataset.copy;
+  Promise.resolve().then(()=>navigator.clipboard.writeText(txt)).then(()=>toast("Copied"),()=>{const r=document.createRange();r.selectNodeContents(b.parentElement.querySelector("[lang]")||b.parentElement);const s=getSelection();s.removeAllRanges();s.addRange(r);toast("Selected. Copy it from the menu");});});
+
+const tabs=[...document.querySelectorAll(".tab")];
+function go(v,push){
+  tabs.forEach(t=>{if(t.dataset.v===v)t.setAttribute("aria-current","page");else t.removeAttribute("aria-current");});
+  document.querySelectorAll(".view").forEach(s=>s.hidden=s.id!=="v-"+v);
+  document.querySelectorAll("#v-"+v+" .rise").forEach(el=>{el.style.animation="none";void el.offsetWidth;el.style.animation="";});
+  window.scrollTo(0,0);try{localStorage.setItem("pulse-src-tab",v);}catch(e){}
+  if(push){try{history.replaceState(null,"","#"+v);}catch(e){}}}
+tabs.forEach(t=>t.addEventListener("click",()=>go(t.dataset.v,true)));
+let start=(location.hash||"").slice(1);if(!["home","trip","machines","shenyang","spa","ask"].includes(start)){try{start=localStorage.getItem("pulse-src-tab")||"home";}catch(e){start="home";}}
+go(start,false);
+
+/* ---------- ASK THE TEAM ---------- */
+const TEAM=[
+ ["TC","US Customs & Trade","US import rules: CBP entry, HTS codes, Section 301 tariffs, customs broker, shipping and insurance (Incoterms)."],
+ ["CN","China Business & Export Law","Chinese contract and company law, checking a supplier's business license on gsxt.gov.cn, export rules, payments and CNY controls, deposits, disputes (CIETAC), visas and what a foreign visitor may legally do."],
+ ["FDA","FDA & Medical Rules","FDA device classes, 510(k) clearance, establishment registration and listing, what can be imported for patient use, NJ rules on who can use which device."],
+ ["EL","Electrical & Building Code","UL/ETL listing, US power 110V/60Hz, the NEC, NJ construction code and the NJ bathing code for saunas, pools and plunges."],
+ ["CFO","CFO & Tax","Which company buys (Pulse Medical PC for clinical, Pulse Wellness for spa), personal payments recorded as loans, FX, US sales/use tax, depreciation, keeping receipts."],
+ ["G","Local Guide","Shenyang and Beijing: getting around, apps (Amap, Dianping, DiDi, Alipay), etiquette, negotiating, safety, short Chinese phrases."]
+];
+const ASK_CHIPS=["They want a 30% deposit. OK?","Sample in my luggage?","Is a CE mark enough?","What is FOB Dalian?","Pay with my own card?","How to bargain politely?"];
+const ASK_CTX=`You are Farrukh Babar's advisory team, answering inside his phone app while he is in China (Shenyang, then CMEF Autumn in Beijing Oct 21-24, 2026). Today is ${new Date().toDateString()}.
+Project: a longevity clinic, thermal spa and cafe at 510 Summit Ave, Jersey City, NJ (a historic building). Entities: 510 Summit Ave LLC (landlord), Pulse Wellness LLC (spa), Pulse Cafe LLC, Pulse Medical PC (physician-owned clinic), Pulse Management LLC (fixed management fee; no percentage of medical revenue, which is illegal fee-splitting in NJ). Harris (his brother, CFO/COO) runs it from New Jersey.
+Trip rules already set: quotes only, no deposits until the zoning letter, healthcare attorney and medical director are settled; get FDA 510(k) number, UL/ETL number, 110V/60Hz and an FOB Dalian price with delivery time in writing; buy in the right company's name; a personal payment gets recorded as a loan to that company.
+Known facts: most Chinese goods carry an extra 37.5% Section 301 tariff on top of normal duty (25% plus 12.5% added 7/24/2026); diagnostic devices need FDA clearance to be imported and used; a CE mark is not FDA clearance and not a UL/ETL listing; NJ requires showers before spa use.
+THE TEAM (only members whose field the question touches speak; usually 2-4):
+${TEAM.map(t=>`- [${t[0]}] ${t[1]}: ${t[2]}`).join("\n")}
+FORMAT. Farrukh reads on a phone and has a short attention span, so be very short:
+Line 1: "Short answer:" then max 20 words with a clear yes / no / wait.
+Then for each member who speaks (2-3 usually): a line "## [CODE] Member name", then max 3 lines starting "- ", each under 15 words. Start each line with "Confirmed:" (settled, well-known rule) or "Check:" (depends, may have changed, or needs a broker/attorney). Say "US:" or "China:" when the rule is country-specific.
+Last line: "Before you act:" one action under 15 words. Add a short Chinese phrase with pinyin only if it helps.
+Be honest: if you don't know, say so. Never invent FDA or K-numbers, HTS codes, tariff rates or addresses. Never suggest getting around a law, customs declaration or FDA rule. Answer in the language the question is written in (English or Urdu). Keep the whole answer under 130 words.`;
+let askSample=null,askCtl=null,askDb=null,askHist=[];
+function mdLite(t){const lines=esc(t).split("\n");let h="",ul=false;const close=()=>{if(ul){h+="</ul>";ul=false;}};
+ const fl=x=>x.replace(/\*\*(.+?)\*\*/g,"<b>$1</b>").replace(/^(Confirmed:)/,'<span class="fl-ok">$1</span>').replace(/^(Check:)/,'<span class="fl-chk">$1</span>');
+ lines.forEach(l=>{const L=l.trim();if(!L){close();return;}
+  let m=L.match(/^#{1,4}\s*\[([A-Z]{1,4})\]\s*(.*)$/);if(m){close();h+=`<h4><span class="av">${m[1]}</span>${fl(m[2])}</h4>`;return;}
+  m=L.match(/^#{1,4}\s*(.*)$/);if(m){close();h+=`<h4>${fl(m[1])}</h4>`;return;}
+  m=L.match(/^[-•*]\s+(.*)$/);if(m){if(!ul){h+="<ul>";ul=true;}h+=`<li>${fl(m[1])}</li>`;return;}
+  close();h+=`<p${/^Short answer|^Before you act/i.test(L)?' class="lead"':""}>${fl(L)}</p>`;});
+ close();return h;}
+function teamRender(active){$("#team").innerHTML=TEAM.map(t=>`<div class="mem${active&&active.includes(t[0])?" on":""}"><span class="av">${t[0]}</span>${esc(t[1])}</div>`).join("");}
+function histRender(){const el=$("#askHist");if(!askHist.length){el.innerHTML="";return;}
+ el.innerHTML=`<div class="kick">Earlier questions</div>`+askHist.slice(0,8).map(h=>`<details><summary>${h.forHarris&&!h.a?"📨 ":""}${esc(h.q)}</summary><div class="ans">${h.a?mdLite(h.a):"Sent to Harris. Waiting for his answer."}</div></details>`).join("");}
+const ERRS={not_granted:"Allow Claude for this page to ask the team (tap Ask again and choose Allow).",rate_limited:"Too many questions at once. Wait a minute and ask again.",session_expired:"Your sign-in expired. Reload the page.",sampling_disabled:"Asking is turned off for this account.",capability_disabled:"Asking is turned off for this account.",refused:"The team couldn't answer that one. Try asking it a different way.",prompt_too_large:"That question is too long. Shorten it.",empty_completion:"No answer came back. Try again."};
+function flagL(x){return x.replace(/\*\*(.+?)\*\*/g,"<b>$1</b>").replace(/^(Confirmed:)/,'<span class="fl-ok">✓ $1</span>').replace(/^(Check:)/,'<span class="fl-chk">⚠ $1</span>');}
+function parseAns(t){const r={short:"",mem:[],act:"",extra:[]};let cur=null;
+ t.split("\n").forEach(l=>{const L=l.trim();if(!L)return;let m;
+  if((m=L.match(/^\**short answer:?\**\s*(.*)$/i))){r.short=m[1];cur=null;return;}
+  if((m=L.match(/^#{1,4}\s*\[([A-Z]{1,4})\]\s*(.*)$/))){cur={code:m[1],name:m[2],lines:[]};r.mem.push(cur);return;}
+  if((m=L.match(/^\**before you act:?\**\s*(.*)$/i))){r.act=m[1];cur=null;return;}
+  if(r.act&&!cur){r.act+=" "+L;return;}
+  if(cur)cur.lines.push(L.replace(/^[-•*]\s+/,""));else r.extra.push(L);});return r;}
+let lastAns=null;
+function showAns(text,q){const r=parseAns(text);const out=$("#askOut");
+ if(!r.short&&!r.mem.length){out.innerHTML=mdLite(text);return;}
+ lastAns={q,short:r.short||r.extra.join(" ")};
+ out.innerHTML=`<span class="f-lab">Short answer</span><div class="ans-short">${flagL(esc(lastAns.short))}</div>`+
+ (r.mem.length?`<span class="small muted">Tap a face to hear them</span><div class="faces" role="group" aria-label="Team members who answered">${r.mem.map((m,i)=>`<button type="button" data-face="${i}" aria-pressed="${i===0}"><span class="av">${esc(m.code)}</span>${esc(m.name.replace(/\s*&.*$/,""))}</button>`).join("")}</div><div class="mpanel" id="mPanel"></div>`:"")+
+ (r.act?`<div class="act">👉 ${flagL(esc(r.act))}</div>`:"")+
+ `<div class="btnrow"><button class="btn ghost" type="button" id="ansSave">📘 Save to playbook</button></div>`;
+ const showM=i=>{const m=r.mem[i];$("#mPanel").innerHTML=`<ul>${m.lines.map(l=>`<li>${flagL(esc(l))}</li>`).join("")}</ul>`;out.querySelectorAll("[data-face]").forEach(b=>b.setAttribute("aria-pressed",String(+b.dataset.face===i)));};
+ if(r.mem.length)showM(0);
+ out.onclick=e=>{const f=e.target.closest("[data-face]");if(f){showM(+f.dataset.face);return;}
+  if(e.target.id==="ansSave"&&lastAns){addLesson("team",lastAns.q+" → "+lastAns.short,"");e.target.textContent="✓ Saved";e.target.disabled=true;}};}
+async function askHarris(){const q=$("#askQ").value.trim();if(!q){$("#askQ").focus();return;}
+ if(window.PULSE_OFFLINE){const t="Question for Harris: "+q;try{await navigator.clipboard.writeText(t);$("#askState").textContent="Copied. Paste it in WeChat to Harris.";}catch(e){$("#askState").textContent="Copy this and send it on WeChat: "+t;}return;}
+ if(!askDb){$("#askState").textContent="Couldn't send from here. Copy the question and send it to Harris on WeChat.";return;}
+ try{let by="";try{const u=await claude.use("user");if(u)by=await u.id();}catch(e){}
+  await askDb.collection("asks").add({q,a:"",forHarris:true,at:new Date().toISOString(),by});
+  $("#askState").textContent="Sent. Harris gets it in tonight's update.";$("#askQ").value="";}
+ catch(e){$("#askState").textContent="Couldn't send ("+(e&&e.code||"error")+"). Message Harris on WeChat.";}}
+async function askRun(){const q=$("#askQ").value.trim();if(!q){$("#askQ").focus();return;}
+ if(!askSample){$("#askState").textContent="Asking isn't available here. Copy your question and send it to Harris.";return;}
+ askCtl=new AbortController();$("#askGo").disabled=true;$("#askStop").hidden=false;$("#askState").textContent="The team is thinking…";
+ $("#team").classList.add("thinking");teamRender([]);const out=$("#askOut");out.hidden=false;out.innerHTML="";out.scrollIntoView({block:"start",behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+ const onT=({text})=>{out.innerHTML=mdLite(text);const codes=[...text.matchAll(/\[([A-Z]{1,4})\]/g)].map(m=>m[1]);teamRender(codes);if(codes.length)$("#team").classList.remove("thinking");$("#askState").textContent="Answering…";};
+ try{const r=await askSample([{role:"user",content:ASK_CTX+"\n\nFARRUKH'S QUESTION:\n"+q}],{onText:onT,signal:askCtl.signal,cache:false,modelTier:"default"});
+  showAns(r.text,q);$("#askState").textContent=r.truncated?"Answer was cut short.":"";
+  const rec={q,a:r.text,at:new Date().toISOString()};askHist.unshift(rec);histRender();
+  if(askDb){try{const u=await claude.use("user");const by=u?await u.id():"";await askDb.collection("asks").add({...rec,by});}catch(e){}}
+ }catch(e){const code=e&&e.code;if(code==="cancelled"){$("#askState").textContent="Stopped";if(e.text)out.innerHTML=mdLite(e.text);}else{$("#askState").textContent=ERRS[code]||"Something went wrong. Try again in a moment.";if(e&&e.text)out.innerHTML=mdLite(e.text);}}
+ finally{$("#team").classList.remove("thinking");$("#askGo").disabled=false;$("#askStop").hidden=true;askCtl=null;}}
+const dlg=$("#askDlg");
+document.addEventListener("click",e=>{if(e.target.closest("[data-askopen]")){teamRender([]);histRender();if(dlg.showModal)dlg.showModal();else dlg.setAttribute("open","");setTimeout(()=>$("#askQ").focus(),50);}});
+$("#askClose").addEventListener("click",()=>dlg.close());
+dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close();});
+$("#askChips").innerHTML=ASK_CHIPS.map(c=>`<button class="chip" type="button" data-q="${esc(c)}">${esc(c)}</button>`).join("");
+$("#askChips").addEventListener("click",e=>{const b=e.target.closest("[data-q]");if(!b)return;$("#askQ").value=b.dataset.q;$("#askQ").focus();});
+$("#askGo").addEventListener("click",askRun);
+$("#askHarris").addEventListener("click",askHarris);
+$("#askStop").addEventListener("click",()=>{if(askCtl)askCtl.abort();});
+$("#askQ").addEventListener("keydown",e=>{if(e.key==="Enter"&&(e.metaKey||e.ctrlKey))askRun();});
+teamRender([]);
+(async()=>{try{if(!window.claude||!claude.use)return;
+ askSample=await claude.use("sample");
+ if(!askSample){$("#askState").textContent="Asking needs the app opened on claude.ai while signed in.";}
+ const db=await claude.use("db");if(!db)return;askDb=db;
+ db.collection("asks").orderBy("at","desc").limit(20).onSnapshot(snap=>{askHist=snap.docs.filter(d=>d.exists).map(d=>d.data());histRender();},()=>{});
+}catch(e){}})();
+
+/* ---------- TRIP GUIDE ---------- */
+const DAYS=[
+ [1,"2026-10-15","Thu","Shenyang","Warm up"],
+ [2,"2026-10-16","Fri","Shenyang","Scanner maker + big onsen"],
+ [3,"2026-10-17","Sat","Shenyang","Sauna floors"],
+ [4,"2026-10-18","Sun","Shenyang","Cold rooms"],
+ [5,"2026-10-19","Mon","Shenyang","Sauna builder"],
+ [6,"2026-10-20","Tue","To Beijing","Train day"],
+ [7,"2026-10-21","Wed","CMEF Beijing","Scan machines"],
+ [8,"2026-10-22","Thu","CMEF Beijing","IV + recovery"],
+ [9,"2026-10-23","Fri","CMEF Beijing","Final quotes"],
+ [10,"2026-10-24","Sat","Beijing","Send it home"]
+];
+const TM=[
+ {id:"why",d:1,t:"prep",xp:20,ic:"⚡",min:"1 min",title:"Why you're here",say:["Every machine for 510 Summit gets priced on this trip.","The spa side is where China can save us the most.","Each stop: do it, log one thing you learned, tap done. Harris sees it live."]},
+ {id:"rules",d:1,t:"prep",xp:30,ic:"🛡️",min:"1 min",title:"Rules check",why:"4 quick true-or-false questions. They keep our money safe.",quiz:[
+   {q:"Paying a small deposit to lock a good price is OK.",a:false,w:"No deposits on this trip. We buy after the board clears it."},
+   {q:"A CE mark means it's fine for US patients.",a:false,w:"CE is Europe. The US needs FDA clearance, and the electrical side needs UL or ETL."},
+   {q:"If you pay with your own card, it's booked as a loan to the company.",a:true,w:"Right. That keeps the books clean and the write-off in the right company."},
+   {q:"Ask every supplier for a price FOB Dalian.",a:true,w:"Right. Then every quote can be compared the same way."}]},
+ {id:"apps",d:1,t:"prep",xp:20,ic:"📱",min:"10 min",title:"Phone setup",why:"Google Maps and Uber don't work well in China.",todo:["Install Amap (高德地图) for directions","Install Dianping (大众点评) for hours and prices","Install DiDi (滴滴) for rides","Set up Alipay or WeChat Pay"]},
+ {id:"neuimg",d:1,t:"biz",xp:50,ic:"🩻",min:"45 min",title:"Real scan center",zh:"沈阳东软医学影像诊断中心",addr:"和平区三好街36号（盛京医院南湖院区对面）",addrEn:"36 Sanhao St, Heping, across from Shengjing Hospital (Nanhu)",why:"Our scan room must move a member in and out in an hour. See how they do it.",todo:["Watch the path: check-in → change → scan → results","Count changing rooms per scanner","How do they show results? Screen, paper or app?","Photos of the waiting area, if allowed"],tip:"Say you're opening a health center in America. Ask for the manager: 经理 (jīnglǐ)."},
+ {id:"mukden",d:1,t:"see",xp:30,ic:"🏯",min:"2 hr",title:"Mukden Palace",zh:"沈阳故宫",addr:"沈河区沈阳路171号",addrEn:"171 Shenyang Rd, Shenhe. Check hours on Dianping",why:"The Qing emperors' first palace. Zhongjie street (中街) is next door for dinner.",todo:["Bring your passport for the ticket","Walk Zhongjie after"]},
+ {id:"neuhq",d:2,t:"biz",xp:50,ic:"📞",min:"15 min",quote:true,title:"Call Neusoft Medical",zh:"东软医疗系统股份有限公司",addr:"浑南区创新路177-1号",addrEn:"177-1 Chuangxin Rd, Hunnan",why:"China's big scanner maker. Which of its ultrasound models are FDA-cleared?",todo:["Call first; no public showroom","Which ultrasound and X-ray models have FDA 510(k)?","Who is the US distributor?","Ask for a brochure with US prices"]},
+ {id:"oedo",d:2,t:"biz",xp:60,ic:"♨️",min:"3 hr",title:"Ōedo Onsen like an owner",zh:"沈阳大江户温泉",addr:"浑南区浑南西路彩霞街10甲6号",addrEn:"Caixia St off Hunnan West Rd, Hunnan",why:"We're losing our locker rooms. See how they move thousands through showers and lockers.",todo:["Count showers, lockers, saunas, pools","Follow the path: front desk → first bath","Photo of the price board","What else do they sell? Food, massage, rest rooms"],tip:"Go as a guest. Enjoy it. Notes after."},
+ {id:"zhang",d:2,t:"see",xp:30,ic:"🏛️",min:"1.5 hr",title:"Zhang's Mansion",zh:"张氏帅府",addr:"沈河区朝阳街少帅府巷46号",addrEn:"46 Shaoshuaifu Lane, Shenhe. Check hours on Dianping",why:"The warlord Zhang Zuolin's home. Chinese and European buildings side by side."},
+ {id:"tianbo",d:3,t:"biz",xp:60,ic:"🔥",min:"2 hr",title:"Tianbo sauna floors",zh:"天泊圣汇",addr:"浑南区三义街6号天水e城",addrEn:"6 Sanyi St, near the Olympic Sports Center, Hunnan",why:"Saunas at different heats, side by side. We want more than one heat room.",todo:["How many heat rooms? How hot is each?","What are walls and floors made of?","Photo of the membership prices","How do staff clean between guests?"]},
+ {id:"beiling",d:3,t:"see",xp:30,ic:"🌳",min:"2 hr",title:"Beiling Park",zh:"北陵公园",addr:"皇姑区泰山路12号",addrEn:"12 Taishan Rd, Huanggu. Check hours on Dianping",why:"Huge park around Emperor Huang Taiji's tomb. Best in autumn."},
+ {id:"xinbei",d:4,t:"biz",xp:60,ic:"❄️",min:"2 hr",title:"Snow room + private baths",zh:"新北汤温泉",addr:"沈北新区杭州路193号",addrEn:"193 Hangzhou Rd, Shenbei New District",why:"We plan a cold side and private suites. See it done well.",todo:["Snow room: size, temperature, how long people stay","Private rooms: price per hour, what's inside","Photos of finishes and lighting"]},
+ {id:"lnmuseum",d:4,t:"see",xp:30,ic:"🖼️",min:"2 hr",title:"Liaoning Museum",zh:"辽宁省博物馆",addr:"浑南区智慧三街157号",addrEn:"157 Zhihui 3rd St, Hunnan. Book on Dianping; usually closed Mondays",why:"One of China's best for painting and calligraphy. Usually free with a passport."},
+ {id:"liya",d:5,t:"biz",xp:70,ic:"🛠️",min:"2 hr",quote:true,title:"Sauna builder quote",zh:"沈阳利雅桑拿泳池设备有限公司",addr:"沈阳（地址待核实）",addrEn:"Address not verified. Call first",why:"Saunas are where China saves most. But heaters need UL or ETL to pass in New Jersey.",todo:["Check their license on gsxt.gov.cn","See a finished sauna or sweat room","Do heaters and controls have UL or ETL?","Price one 6-person sauna, FOB Dalian"],tip:"No UL or ETL = our inspector can't sign it off. Then it's ideas only."},
+ {id:"cmefprep",d:5,t:"prep",xp:30,ic:"🎫",min:"20 min",title:"Fair prep",why:"Pre-registering skips the line. Bilingual cards get you taken seriously.",todo:["Pre-register on cmef.com.cn (passport)","Sign up for WeMatch meetings and the International WeTour","Print bilingual business cards","Book a hotel near Shunyi"]},
+ {id:"train",d:6,t:"prep",xp:30,ic:"🚄",min:"~3 hr",title:"Train to Beijing",zh:"沈阳北站",addr:"沈阳北站",addrEn:"Shenyang North Station (some trains use Shenyang Station)",why:"About 3 hours. Arrive the night before so day 1 starts early.",todo:["Book on Trip.com or 12306 with your passport","Check which Beijing station you arrive at"]},
+ {id:"us1",d:7,t:"biz",xp:80,ic:"🔊",min:"1 hr",quote:true,title:"Ultrasound: Mindray, Edan, SonoScape",zh:"迈瑞 Mindray · 理邦 Edan · 开立 SonoScape",why:"Chinese brands with FDA-cleared ultrasound, sold by US dealers. Mindray's US HQ is 40 min from 510.",todo:["FDA 510(k) number of the exact model","Name of the US dealer near New Jersey","China price and US list price, in writing"]},
+ {id:"body1",d:7,t:"biz",xp:70,ic:"🧍",min:"45 min",quote:true,title:"3D body scanner",zh:"3D体态扫描仪",why:"A monthly re-scan keeps members coming back to the app.",todo:["US power version? (110V/60Hz)","UL or ETL listing number?","App in English? Where is data stored?","Price FOB Dalian"]},
+ {id:"skin1",d:7,t:"biz",xp:70,ic:"✨",min:"45 min",quote:true,title:"Skin analyzer",zh:"美斯 Meicet",why:"About $2,000 here vs $7,000–20,000 for the US brand.",todo:["Ask for the US FDA listing","English software?","Real price FOB Dalian + delivery time"]},
+ {id:"iv1",d:8,t:"biz",xp:60,ic:"💺",min:"45 min",quote:true,title:"IV chairs",zh:"输液椅",why:"Four chairs for the recovery lounge. Only if FDA-registered.",todo:["FDA establishment registration?","Fire-safe fabric certificate?","Price for 4, FOB Dalian"]},
+ {id:"rl1",d:8,t:"biz",xp:60,ic:"🔴",min:"45 min",quote:true,title:"Red-light beds",zh:"红光床",why:"$135K in the US vs ~$15K here, but only with a real FDA number.",todo:["K-number in writing","UL or ETL listing?","Price FOB Dalian"],tip:"No K-number? Take a brochure and walk on."},
+ {id:"rec1",d:8,t:"biz",xp:50,ic:"🦵",min:"30 min",quote:true,title:"Compression boots",zh:"空气波压力治疗仪",why:"Cheap, popular, keeps the recovery room busy.",todo:["FDA registration?","Price for 4 sets, FOB Dalian"]},
+ {id:"art1",d:9,t:"biz",xp:40,ic:"👀",min:"20 min",title:"Look only: artery machines",zh:"动脉硬化检测仪",why:"No Chinese one has FDA clearance that we found. We buy this in the US.",todo:["Ask if any model has FDA clearance","Take a brochure. Don't order."]},
+ {id:"top3",d:9,t:"biz",xp:80,ic:"🏆",min:"2 hr",quote:true,title:"Final quotes: your top 3",why:"Second visits get better prices.",todo:["Final price in writing, FOB Dalian","FDA and UL/ETL numbers on the quote","Delivery time and warranty","Photo of every quote"],tip:"No deposit, even for a fair discount."},
+ {id:"bj",d:9,t:"see",xp:40,ic:"🐉",min:"half day",title:"Forbidden City or Great Wall",zh:"慕田峪长城",addr:"北京市怀柔区慕田峪",addrEn:"Mutianyu Great Wall, ~45 min from Shunyi. Or the Forbidden City (book online with passport)",why:"Mutianyu is close to the fair and calmer than Badaling."},
+ {id:"send",d:10,t:"biz",xp:100,ic:"📤",min:"20 min",title:"Send Harris everything",why:"Quotes only help once they're in the plan.",todo:["Send every quote photo and brochure to Harris","Mark your top pick for each item","One thing that surprised you"]},
+ {id:"free",d:10,t:"see",xp:30,ic:"🦆",min:"free",title:"Free time in Beijing",why:"Hutongs at Nanluoguxiang, Wangfujing, or Peking duck."}
+];
+const LV=[[0,"Tourist"],[150,"Scout"],[400,"Buyer"],[700,"Deal Maker"],[1000,"Sourcing Pro"]];
+const TOPICS=[["price","💲","Price"],["pay","🤝","Payment"],["cert","📜","Certificates"],["ship","🚢","Shipping"],["supplier","🏭","Supplier check"],["design","🎨","Design idea"],["nego","🗣️","Negotiating"],["flag","🚩","Red flag"],["culture","🌏","Culture"],["team","💬","Team answer"],["note","📝","Note"]];
+const TOP=Object.fromEntries(TOPICS.map(t=>[t[0],t]));
+let TS={},LS=[];let TOT=0;let tdb=null,curDay=1,pbF="all";
+try{TS=JSON.parse(localStorage.getItem("pulse-trip")||"{}")||{};}catch(e){TS={};}
+try{LS=JSON.parse(localStorage.getItem("pulse-lessons")||"[]")||[];}catch(e){LS=[];}
+const BG=[
+ {ic:"🩻",n:"Scan room spy",ids:["neuimg"]},
+ {ic:"♨️",n:"Bathhouse scholar",ids:["oedo","tianbo","xinbei"]},
+ {ic:"$",n:"First quote",fn:()=>TM.some(m=>m.quote&&TS[m.id]&&TS[m.id].done&&(TS[m.id].price||TS[m.id].supplier))},
+ {ic:"🛡️",n:"Rule keeper",fn:()=>TS.rules&&TS.rules.done&&TS.rules.score===4},
+ {ic:"🏆",n:"Fair finisher",ids:TM.filter(m=>m.d>=7&&m.d<=9&&m.t==="biz").map(m=>m.id)},
+ {ic:"📘",n:"Playbook builder",fn:()=>LS.length>=5},
+ {ic:"🤝",n:"Networker",fn:()=>typeof CO!=="undefined"&&CO.filter(c=>isDone(c.id)).length>=5},
+ {ic:"★",n:"Explorer",ids:TM.filter(m=>m.t==="see").map(m=>m.id)}
+];
+const isDone=id=>!!(TS[id]&&TS[id].done);
+function saveLocal(){try{localStorage.setItem("pulse-trip",JSON.stringify(TS));localStorage.setItem("pulse-lessons",JSON.stringify(LS.filter(l=>l.local)));}catch(e){}}
+function xpNow(){return TM.reduce((a,m)=>a+(isDone(m.id)?m.xp:0),0)+(typeof CO!=="undefined"?CO.filter(c=>isDone(c.id)).length*20:0);}
+function lvl(x){let i=0;LV.forEach((l,j)=>{if(x>=l[0])i=j;});return i;}
+function badgeOn(b){return b.fn?!!b.fn():b.ids.every(isDone);}
+function chinaDay(){let t;try{t=new Date().toLocaleString("en-CA",{timeZone:"Asia/Shanghai"}).slice(0,10);}catch(e){t=new Date().toISOString().slice(0,10);}
+ const k=DAYS.findIndex(d=>d[1]===t);if(k>=0)return k+1;return t<DAYS[0][1]?1:10;}
+function fmtD(iso){const d=new Date(iso+"T12:00:00");return d.toLocaleDateString("en-US",{month:"short",day:"numeric"});}
+async function persist(id){const s=TS[id];saveLocal();if(!tdb)return true;
+ try{await tdb.collection("trip").doc(id).set({done:!!s.done,note:s.note||"",supplier:s.supplier||"",price:s.price||"",score:s.score??null,at:new Date().toISOString()});return true;}
+ catch(e){$("#sync").textContent="Couldn't save to the shared app ("+(e&&e.code||"error")+"). Saved on this phone.";return false;}}
+async function addLesson(topic,text,mission){text=(text||"").trim();if(!text)return;
+ const rec={topic,text,mission:mission||"",at:new Date().toISOString()};
+ if(tdb){try{let by="";try{const u=await claude.use("user");if(u)by=await u.id();}catch(e){}await tdb.collection("lessons").add({...rec,by});return;}catch(e){}}
+ rec.local=true;LS.unshift(rec);saveLocal();renderPB();hud();}
+
+function renderTrip(){
+ $("#dayChips").innerHTML=DAYS.map(d=>{const ms=TM.filter(m=>m.d===d[0]);const k=ms.filter(m=>isDone(m.id)).length;
+  return `<button class="dp" type="button" data-day="${d[0]}" aria-pressed="${d[0]===curDay}" aria-label="Day ${d[0]}, ${k} of ${ms.length} done"><small>${d[2].toUpperCase()}</small>${d[0]}<span class="f"><i style="width:${(k/ms.length*100).toFixed(0)}%"></i></span></button>`;}).join("");
+ const D=DAYS[curDay-1];const ms=TM.filter(m=>m.d===curDay);const k=ms.filter(m=>isDone(m.id)).length;const nx=ms.find(m=>!isDone(m.id));
+ $("#today").innerHTML=`<div class="today-h"><div><span class="kick">${esc(D[2])} ${fmtD(D[1])} · ${esc(D[3])}</span><h3>Day ${curDay}: ${esc(D[4])}</h3></div><span class="pc">${k}/${ms.length} ✓</span></div>
+ <div class="tiles">${ms.map(m=>{const dn=isDone(m.id);const cls=dn?" done":m===nx?" next":"";
+  return `<button class="mt${cls}" type="button" data-m="${m.id}"><span class="ic" aria-hidden="true">${dn?"✓":m.ic}</span><span><b>${esc(m.title)}</b><span class="meta">${m.t==="biz"?"Business":m.t==="see"?"Free time":"Prep"} · ${esc(m.min)}${m.quote?" · quote":""}</span></span><span class="go">${dn?"Done":m===nx?"Start ▸":"+"+m.xp}</span></button>`;}).join("")}</div>
+ ${k===ms.length&&curDay<10?`<button class="btn" type="button" data-day="${curDay+1}">Day ${curDay} done! See day ${curDay+1} ▸</button>`:""}`;
+ hud();renderPB();if(typeof CO!=="undefined")renderCO();}
+function hud(){const x=xpNow(),i=lvl(x),p=x/TOT;const nx=LV[i+1];const fr=nx?(x-LV[i][0])/(nx[0]-LV[i][0]):1;
+ $("#tRing").style.strokeDashoffset=$("#hRing").style.strokeDashoffset=(170*(1-p)).toFixed(1);
+ $("#tLevel").textContent=LV[i][1]+" · "+x+" XP";
+ const nm=TM.find(m=>m.d>=chinaDay()&&!isDone(m.id))||TM.find(m=>!isDone(m.id));
+ $("#tNext").textContent=nm?"Next: "+nm.ic+" "+nm.title:"Trip complete!";
+ $("#hLvlName").textContent="Level "+(i+1)+" · "+LV[i][1];
+ $("#hXP").textContent=x+" XP";
+ $("#hToNext").textContent=nx?(nx[0]-x)+" XP to "+nx[1]:"Top level!";
+ $("#hBar").style.width=(fr*100).toFixed(1)+"%";
+ $("#badges").innerHTML=BG.map(b=>{const on=badgeOn(b);return `<div class="badge${on?" on":""}"><span class="b-ic" aria-hidden="true">${b.ic}</span>${esc(b.n)}<span class="sr">${on?" earned":" not yet"}</span></div>`;}).join("");}
+function renderPB(){const cnt={};LS.forEach(l=>cnt[l.topic]=(cnt[l.topic]||0)+1);
+ $("#pbTopics").innerHTML=`<button type="button" data-pbf="all" aria-pressed="${pbF==="all"}">All · ${LS.length}</button>`+TOPICS.filter(t=>cnt[t[0]]).map(t=>`<button type="button" data-pbf="${t[0]}" aria-pressed="${pbF===t[0]}">${t[1]} ${t[2]} · ${cnt[t[0]]}</button>`).join("");
+ const L=LS.filter(l=>pbF==="all"||l.topic===pbF).slice(0,12);
+ $("#pbList").innerHTML=L.length?L.map(l=>{const t=TOP[l.topic]||TOP.team;const m=TM.find(x=>x.id===l.mission);
+  return `<div class="lesson"><span class="em" aria-hidden="true">${t[1]}</span><span>${esc(l.text)}<small>${esc(t[2])}${m?" · "+esc(m.title):""} · ${new Date(l.at).toLocaleDateString("en-US",{month:"short",day:"numeric"})}</small></span></div>`;}).join(""):`<p class="small muted">Nothing yet. Every mission ends with one thing you learned. It lands here.</p>`;}
+
+/* mission flow: one thing per screen */
+let FM=null,FS=[],FI=0,FQ={};
+function steps(m){const s=[];
+ if(m.say)m.say.forEach(t=>s.push({k:"say",t}));else s.push({k:"say",t:m.why,lab:"Why it matters"});
+ if(m.zh)s.push({k:"where"});
+ (m.quiz||[]).forEach((q,i)=>s.push({k:"quiz",i,...q}));
+ (m.todo||[]).forEach((t,i)=>s.push({k:"do",t,i}));
+ if(m.tip)s.push({k:"tip",t:m.tip});
+ if(m.quote)s.push({k:"quote"});
+ if(m.t!=="prep")s.push({k:"learn"});
+ s.push({k:"win"});return s;}
+const mDlg=$("#mDlg");
+function openM(id){FM=TM.find(m=>m.id===id);if(!FM)return;FS=steps(FM);FI=0;FQ={};if(mDlg.showModal)mDlg.showModal();else mDlg.setAttribute("open","");fRender();}
+function fRender(){const st=FS[FI],m=FM,S=TS[m.id]||{};
+ $("#fProg").innerHTML=FS.map((x,i)=>`<i class="${i<=FI?"on":""}"></i>`).join("");
+ $("#fBack").style.visibility=FI>0&&st.k!=="win"?"visible":"hidden";
+ let h="",next="Next ▸",alt=null;
+ if(st.k==="say"){h=`<div class="f-emoji" aria-hidden="true">${FI===0?m.ic:"👉"}</div>${st.lab?`<span class="f-lab">${st.lab}</span>`:""}<div class="f-big">${esc(st.t)}</div>`;next=FI===0?"Let's go ▸":"Got it ▸";}
+ else if(st.k==="where"){h=`<span class="f-lab">Where</span><div class="f-place"><span class="zh" lang="zh">${esc(m.zh)}</span>${m.addr?`<span class="ad" lang="zh">${esc(m.addr)}</span>`:""}<span class="small muted">${esc(m.addrEn||"")}</span><div class="row"><button class="copy" data-copy="${esc(m.zh+(m.addr?" "+m.addr:""))}">Copy for driver</button><a href="https://uri.amap.com/search?keyword=${encodeURIComponent(m.zh)}" target="_blank" rel="noopener">Open in Amap</a></div></div><p class="small muted">Show the Chinese to a taxi driver or paste it in DiDi.</p>`;next="I'm here ▸";alt="Later";}
+ else if(st.k==="quiz"){const r=FQ[st.i];h=`<span class="f-lab">True or false? ${st.i+1}/${m.quiz.length}</span><div class="f-big">${esc(st.q)}</div><div class="tf"><button type="button" data-tf="1" class="${r!=null?(st.a?"right":r===true?"wrong":""):""}">True</button><button type="button" data-tf="0" class="${r!=null?(!st.a?"right":r===false?"wrong":""):""}">False</button></div>${r!=null?`<div class="fb">${r===st.a?"✅ Yes! ":"❌ Not quite. "}${esc(st.w)}</div>`:""}`;next=r!=null?"Next ▸":null;}
+ else if(st.k==="do"){h=`<span class="f-lab">Step ${st.i+1} of ${m.todo.length}</span><div class="f-emoji" aria-hidden="true">☐</div><div class="f-big">${esc(st.t)}</div>`;next="Done ✓";alt="Skip";}
+ else if(st.k==="tip"){h=`<div class="f-emoji" aria-hidden="true">💡</div><span class="f-lab">Pro tip</span><div class="f-mid">${esc(st.t)}</div>`;next="Got it ▸";}
+ else if(st.k==="quote"){h=`<div class="f-emoji" aria-hidden="true">💰</div><span class="f-lab">The quote</span><div class="f-big">What did they offer?</div><input class="big-in" id="qSup" placeholder="Company / booth" value="${esc(S.supplier||"")}" aria-label="Supplier"><input class="big-in" id="qPri" placeholder="Price, e.g. $2,100 FOB Dalian" value="${esc(S.price||"")}" aria-label="Price">`;next="Save ▸";alt="No quote";}
+ else if(st.k==="learn"){h=`<div class="f-emoji" aria-hidden="true">🧠</div><span class="f-lab">For the family playbook</span><div class="f-big">One thing you learned?</div><div class="topics" id="lTop">${TOPICS.filter(t=>t[0]!=="team"&&t[0]!=="note").map(t=>`<button type="button" data-lt="${t[0]}" aria-pressed="${FQ.lt===t[0]}">${t[1]} ${t[2]}</button>`).join("")}</div><input class="big-in" id="lTxt" placeholder="e.g. They all ask 30% deposit; say no" value="${esc(FQ.ltxt||"")}" aria-label="What you learned">`;next="Save ▸";alt="Skip";}
+ else if(st.k==="win"){const was=isDone(m.id);if(!was)finish();const x=xpNow(),i=lvl(x);
+  const nextM=TM.find(t=>t.d===m.d&&!isDone(t.id))||TM.find(t=>t.d>m.d&&!isDone(t.id));FQ.nextM=nextM&&nextM.id;
+  h=`<div class="win"><div class="f-emoji" aria-hidden="true">${was?"✅":"🎉"}</div><div class="pts">+${m.xp} XP</div><div class="f-mid">${esc(LV[i][1])} · ${x} XP total</div>${nextM?`<p class="small muted">Up next: ${nextM.ic} ${esc(nextM.title)}</p>`:`<p class="small muted">Every mission done!</p>`}<button class="btn ghost" type="button" id="undoM" style="font-size:13px;padding:8px 12px">Mark not done</button></div>`;
+  next=nextM?"Next mission ▸":"Close";alt="Close";if(!nextM)alt=null;}
+ const b=$("#fBody");b.classList.remove("anim");void b.offsetWidth;b.classList.add("anim");b.innerHTML=h;
+ $("#fNext").hidden=!next;$("#fNext").textContent=next||"";$("#fAlt").hidden=!alt;$("#fAlt").textContent=alt||"";
+ $("#fNext").focus({preventScroll:true});}
+function finish(){const m=FM;const s=TS[m.id]=TS[m.id]||{};const before=lvl(xpNow());const nb=BG.filter(badgeOn).length;
+ s.done=true;s.at=new Date().toISOString();if(m.quiz)s.score=m.quiz.filter((q,i)=>FQ[i]===q.a).length;
+ const after=lvl(xpNow());const nb2=BG.filter(badgeOn).length;persist(m.id);renderTrip();confetti();
+ if(after>before)setTimeout(()=>burst("Level up: "+LV[after][1]+"!"),400);else if(nb2>nb)setTimeout(()=>burst("New badge!"),400);}
+function confetti(){if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;const w=document.createElement("div");w.className="conf";const cs=["var(--accent)","var(--cn)","var(--care)","var(--us)"];
+ for(let i=0;i<40;i++){const c=document.createElement("i");c.style.left=Math.random()*100+"%";c.style.background=cs[i%4];c.style.animationDelay=(Math.random()*.4)+"s";w.appendChild(c);}document.body.appendChild(w);setTimeout(()=>w.remove(),2200);}
+function burst(t){const w=document.createElement("div");w.className="burst";w.innerHTML=`<span>${esc(t)}</span>`;document.body.appendChild(w);setTimeout(()=>w.remove(),1200);}
+async function fAdvance(primary){const st=FS[FI],m=FM;
+ if(st.k==="quote"&&primary){const s=TS[m.id]=TS[m.id]||{};s.supplier=$("#qSup").value.trim();s.price=$("#qPri").value.trim();saveLocal();}
+ if(st.k==="learn"){FQ.ltxt=$("#lTxt").value;if(primary&&FQ.ltxt.trim()){addLesson(FQ.lt||"note",FQ.ltxt,m.id);}else if(primary){$("#lTxt").focus();$("#lTxt").placeholder="Type one line first, or Skip";return;}}
+ if(st.k==="win"){if(primary&&FQ.nextM){openM(FQ.nextM);}else mDlg.close();return;}
+ FI=Math.min(FI+1,FS.length-1);fRender();}
+$("#fNext").addEventListener("click",()=>fAdvance(true));
+$("#fAlt").addEventListener("click",()=>{if(FS[FI].k==="win")mDlg.close();else fAdvance(false);});
+$("#fBack").addEventListener("click",()=>{if(FI>0){FI--;fRender();}});
+$("#fClose").addEventListener("click",()=>mDlg.close());
+$("#fBody").addEventListener("click",e=>{const tf=e.target.closest("[data-tf]");if(tf){const st=FS[FI];if(FQ[st.i]==null){FQ[st.i]=tf.dataset.tf==="1";fRender();}return;}
+ const lt=e.target.closest("[data-lt]");if(lt){FQ.ltxt=$("#lTxt").value;FQ.lt=FQ.lt===lt.dataset.lt?null:lt.dataset.lt;fRender();setTimeout(()=>$("#lTxt").focus(),0);return;}
+ if(e.target.id==="undoM"){const s=TS[FM.id];if(s){s.done=false;persist(FM.id);renderTrip();}mDlg.close();}});
+$("#mDlg").addEventListener("close",()=>{renderTrip();});
+$("#teaser").addEventListener("click",()=>go("trip",true));
+document.getElementById("v-trip").addEventListener("click",e=>{
+ const d=e.target.closest("[data-day]");if(d){curDay=+d.dataset.day;renderTrip();const t=$("#today");if(t.getBoundingClientRect().top<60)t.scrollIntoView({block:"start"});return;}
+ const m=e.target.closest("[data-m]");if(m){openM(m.dataset.m);return;}
+ const f=e.target.closest("[data-pbf]");if(f){pbF=f.dataset.pbf;renderPB();return;}});
+$("#pbAdd").addEventListener("click",()=>{const v=$("#pbIn").value;if(!v.trim()){$("#pbIn").focus();return;}addLesson(pbF!=="all"?pbF:"note",v,"");$("#pbIn").value="";toast("Added to the playbook");});
+
+const CO=[
+ {id:"co-wematch",en:"CMEF WeMatch Hub",zh:"CMEF 国际买家配对",city:"CMEF Beijing",st:"",what:"Free one-on-one meetings the fair sets up between overseas buyers and makers. Best way to find red-light beds, compression boots and IV chairs.",ask:"Sign up when you pre-register. Ask for meetings on: red-light beds, compression, IV chairs, body scanners."},
+ {id:"co-wetour",en:"CMEF International WeTour",zh:"CMEF 国际买家导览",city:"CMEF Beijing",st:"",what:"Guided booth tours with English help for international buyers.",ask:"Join one on day 1 to find the right halls fast."},
+ {id:"co-mindray",en:"Mindray",zh:"迈瑞医疗",city:"CMEF · HQ Shenzhen",st:"ok",what:"China's biggest device maker. FDA-cleared ultrasound (e.g. TE Air, K231685). Its US headquarters is in Mahwah, NJ, about 40 minutes from 510, so service is close.",ask:"Which model fits a small wellness scan room? Can Mahwah sell and service it?"},
+ {id:"co-edan",en:"Edan",zh:"理邦仪器",city:"CMEF · HQ Shenzhen",st:"ok",what:"Ultrasound and ECG. Edan Nano is FDA-cleared (K251268), sold through Edan USA.",ask:"US dealer near New Jersey? Price for ultrasound + ECG together?"},
+ {id:"co-sonoscape",en:"SonoScape",zh:"开立医疗",city:"CMEF · HQ Shenzhen",st:"ok",what:"Ultrasound with recent FDA clearances (newest K254027, Aug 2026).",ask:"Which cleared model fits a small room? Who sells it in the US?"},
+ {id:"co-chison",en:"CHISON",zh:"祥生医疗",city:"CMEF · HQ Wuxi",st:"chk",what:"Ultrasound. Has FDA clearances, but the newest we found is from 2017.",ask:"Is the model you're showing FDA-cleared? Show me the K-number."},
+ {id:"co-neusoft",en:"Neusoft Medical",zh:"东软医疗",city:"Shenyang · Hunnan",st:"chk",what:"China's big CT and MRI maker, based in Shenyang.",ask:"Which ultrasound or X-ray models are FDA-cleared? Who is the US distributor?"},
+ {id:"co-meicet",en:"Meicet",zh:"美斯（上海美肤）",city:"CMEF if there · HQ Shanghai",st:"chk",what:"Skin analyzers, about $2,000 vs $7,000–20,000 for the US brand. The MC10 is listed in the US device database as exempt.",ask:"US listing for this exact model? English software? Price FOB Dalian?"},
+ {id:"co-visbody",en:"Visbody",zh:"维塑科技",city:"CMEF if there · HQ Shenzhen",st:"chk",what:"3D body scanners for the monthly re-scan. We found no FDA clearance.",ask:"US power (110V/60Hz)? UL or ETL? English app? Where is member data stored?"},
+ {id:"co-liya",en:"Liya Sauna & Pool",zh:"沈阳利雅桑拿泳池设备有限公司",city:"Shenyang",st:"chk",what:"Local sauna and pool builder. Address not verified; check the license on gsxt.gov.cn.",ask:"UL or ETL on heaters? Price for a 6-person sauna, FOB Dalian?"}
+];
+let coOpen=null;
+function renderCO(){$("#coList").innerHTML=CO.map(c=>{const met=isDone(c.id);const op=coOpen===c.id;
+ return `<div class="co${met?" met":""}"><button class="co-h" type="button" data-co="${c.id}" aria-expanded="${op}"><span><b>${esc(c.en)}</b><span class="zh" lang="zh">${esc(c.zh)} · ${esc(c.city)}</span></span>${c.st?`<span class="chip-s ${c.st}">${c.st==="ok"?"FDA ✓":"Check"}</span>`:`<span class="chip-s">Free</span>`}</button>
+ <div class="co-b"${op?"":" hidden"}><span>${esc(c.what)}</span><span><b>Ask:</b> ${esc(c.ask)}</span><div class="btnrow"><span lang="zh" hidden>${esc(c.zh)}</span><button class="copy" data-copy="${esc(c.zh)}">Copy Chinese name</button><button class="btn${met?" ghost":""}" type="button" data-met="${c.id}">${met?"Undo":"Met ✓ +20 XP"}</button></div></div></div>`;}).join("");}
+$("#coList").addEventListener("click",e=>{const h=e.target.closest("[data-co]");if(h){coOpen=coOpen===h.dataset.co?null:h.dataset.co;renderCO();return;}
+ const m=e.target.closest("[data-met]");if(m){const id=m.dataset.met;const s=TS[id]=TS[id]||{};const nb=BG.filter(badgeOn).length;s.done=!s.done;s.at=new Date().toISOString();persist(id);renderTrip();
+  if(s.done){burst(BG.filter(badgeOn).length>nb?"+20 XP · new badge!":"+20 XP");}}});
+TOT=TM.reduce((a,m)=>a+m.xp,0)+CO.length*20;
+curDay=chinaDay();renderTrip();
+(async()=>{try{if(!window.claude||!claude.use)return;const db=await claude.use("db");if(!db)return;tdb=db;
+ $("#sync").textContent="Shared: Harris sees your progress and lessons.";
+ let first=true;
+ db.collection("trip").onSnapshot(snap=>{const remote={};snap.docs.forEach(d=>{if(d.exists)remote[d.id]=d.data();});
+  if(first){first=false;Object.keys(TS).forEach(id=>{if(!remote[id]&&TS[id]&&TS[id].done)persist(id);});}
+  Object.keys(remote).forEach(id=>{TS[id]=Object.assign({},remote[id]);});saveLocal();if(!mDlg.open)renderTrip();else hud();},
+  err=>{$("#sync").textContent="Shared sync paused ("+(err&&err.code||"error")+"). Saving on this phone.";});
+ const pend=LS.filter(l=>l.local);
+ db.collection("lessons").orderBy("at","desc").limit(100).onSnapshot(snap=>{const remote=snap.docs.filter(d=>d.exists).map(d=>d.data());
+  LS=remote.concat(LS.filter(l=>l.local));renderPB();hud();},()=>{});
+ for(const l of pend){try{await db.collection("lessons").add({topic:l.topic,text:l.text,mission:l.mission,at:l.at});l.local=false;}catch(e){}}
+ saveLocal();
+}catch(e){}})();
+
+
+/* ---------- OFFLINE (WeChat) MODE + UPDATE HAND-OFF ---------- */
+const OFFLINE=!!window.PULSE_OFFLINE;
+const b64e=t=>btoa(unescape(encodeURIComponent(t))),b64d=t=>decodeURIComponent(escape(atob(t)));
+function buildUpdate(){const x=xpNow();const done=TM.filter(m=>isDone(m.id));const now=new Date();
+ const L=["Pulse trip update from Farrukh · "+now.toLocaleString("en-US",{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"}),
+  done.length+"/"+TM.length+" stops done · "+x+" XP"];
+ const qs=TM.filter(m=>m.quote&&TS[m.id]&&(TS[m.id].price||TS[m.id].supplier));
+ if(qs.length){L.push("","QUOTES:");qs.forEach(m=>L.push("- "+m.title+": "+(TS[m.id].supplier||"?")+" · "+(TS[m.id].price||"no price")));}
+ const met=CO.filter(c=>isDone(c.id));if(met.length){L.push("","MET: "+met.map(c=>c.en).join(", "));}
+ if(LS.length){L.push("","LEARNED:");LS.slice(0,15).forEach(l=>L.push("- "+((TOP[l.topic]||TOP.note)[2])+": "+l.text));}
+ const data={v:1,ts:{},ls:LS.map(l=>({topic:l.topic,text:l.text,mission:l.mission||"",at:l.at}))};
+ Object.keys(TS).forEach(k=>{const t=TS[k];data.ts[k]={done:!!t.done,supplier:t.supplier||"",price:t.price||"",note:t.note||"",score:t.score??null,at:t.at||""};});
+ L.push("","(Harris: paste this whole message into the app)","PULSE-UPDATE:"+b64e(JSON.stringify(data)));return L.join("\n");}
+async function importUpdate(txt){const m=txt.match(/PULSE-UPDATE:([A-Za-z0-9+/=]+)/);if(!m)throw new Error("No update code found. Paste the whole message.");
+ const d=JSON.parse(b64d(m[1]));let nT=0,nL=0;
+ for(const [id,t] of Object.entries(d.ts||{})){if(!TM.find(x=>x.id===id)&&!CO.find(x=>x.id===id))continue;const cur=TS[id]||{};
+  if((t.at||"")>(cur.at||"")||(t.done&&!cur.done)){TS[id]={...cur,...t};if(await persist(id))nT++;}}
+ for(const l of d.ls||[]){if(LS.some(x=>x.at===l.at&&x.text===l.text))continue;await addLesson(l.topic,l.text,l.mission);nL++;}
+ renderTrip();return nT+" stops and "+nL+" lessons added";}
+const upDlg=$("#upDlg");let upMode="";
+function openUp(mode){upMode=mode;const t=$("#upTxt");$("#upState").textContent="";
+ if(mode==="send"){$("#upTitle").textContent="Send to Harris";$("#upHelp").textContent="Tap Copy, then paste it into your WeChat chat with Harris. Send one every evening.";$("#upLab").textContent="Your update";t.value=buildUpdate();t.readOnly=true;$("#upGo").textContent="Copy";}
+ else{$("#upTitle").textContent="Paste Farrukh's update";$("#upHelp").textContent="Copy Farrukh's whole WeChat message and paste it here. His stops, quotes and lessons get added to the app, and tonight's sync sends them to HQ and the board.";$("#upLab").textContent="His message";t.value="";t.readOnly=false;$("#upGo").textContent="Add to the app";}
+ if(upDlg.showModal)upDlg.showModal();else upDlg.setAttribute("open","");}
+$("#upOpen").addEventListener("click",()=>openUp("send"));
+$("#impOpen").addEventListener("click",()=>openUp("import"));
+$("#upClose").addEventListener("click",()=>upDlg.close());
+$("#upGo").addEventListener("click",async()=>{const t=$("#upTxt");
+ if(upMode==="send"){t.focus();t.select();try{await navigator.clipboard.writeText(t.value);$("#upState").textContent="Copied. Now paste it in WeChat.";}catch(e){try{document.execCommand("copy");$("#upState").textContent="Copied. Now paste it in WeChat.";}catch(e2){$("#upState").textContent="Text is selected. Long-press it and tap Copy.";}}}
+ else{if(!tdb){$("#upState").textContent="Open this on claude.ai to save it to the shared app.";return;}
+  try{$("#upState").textContent=await importUpdate(t.value)+". Done.";}catch(e){$("#upState").textContent=e.message||"Couldn't read that.";}}});
+if(OFFLINE){document.body.classList.add("off");
+ $("#fab").lastChild.textContent="Ask Harris";$("#fab").setAttribute("aria-label","Ask Harris a question");
+ $("#askTitle").textContent="Ask Harris";$("#askQ").placeholder="Type your question. It gets copied for WeChat.";
+ $("#askHarris").textContent="Copy for WeChat";$("#askHarris").className="btn";
+ document.querySelectorAll(".askcta b").forEach(b=>b.textContent="Ask Harris");
+ document.querySelectorAll(".askcta .small").forEach(x=>x.textContent="Copy your question, paste it in WeChat");
+ $("#sync").textContent="Saved on this phone. Works with no internet.";
+ $("#pbSub").textContent="What we learn about buying and doing business in China. Tap \"Send my update\" each evening and paste it to Harris on WeChat.";}
+</script>
+
+<script>
+if("serviceWorker" in navigator&&location.protocol==="https:"){addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));}
+</script>
+</body></html>
