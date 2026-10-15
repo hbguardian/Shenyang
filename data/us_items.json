@@ -1,0 +1,147 @@
+[
+ {
+  "id": "us-heart",
+  "ic": "🫀",
+  "name": "Heart and artery check",
+  "what": "Blood pressure on all four limbs, ankle-arm index (ABI) and artery stiffness. The core of a Neko-style scan.",
+  "why": "No Chinese machine has US FDA clearance for this.",
+  "buy": [
+   [
+    "Fukuda Denshi VaSera",
+    "Fukuda Denshi USA, Redmond, WA. Get the newer model's FDA number in writing (only the older VS-1500 is confirmed, K112521)",
+    "Quote"
+   ],
+   [
+    "Mesi ABPI MD (ankle-arm only)",
+    "FDA K172655. Through a US medical dealer",
+    "Quote"
+   ],
+   [
+    "Huntleigh Dopplex Ability (ankle-arm only)",
+    "FDA K121108. Through a US medical dealer",
+    "Quote"
+   ]
+  ],
+  "neko": "4 of 5. Neko does arm and ankle pressure, ABI and artery stiffness"
+ },
+ {
+  "id": "us-body",
+  "ic": "⚖️",
+  "name": "Body composition (InBody 770)",
+  "what": "Muscle, fat and water, body part by body part.",
+  "why": "The same machine costs more inside China (about $37K vs $23.7K).",
+  "buy": [
+   [
+    "InBody 770",
+    "InBody USA, shop.inbodyusa.com",
+    "$23,705"
+   ]
+  ],
+  "neko": "3 of 5. Neko measures body fat and visceral fat with its own imaging"
+ },
+ {
+  "id": "us-mole",
+  "ic": "🔬",
+  "name": "Whole-body mole mapping",
+  "what": "3D photos of every mole, tracked year to year. Phase 2, with the dermatologist.",
+  "why": "Nothing like it is made in China.",
+  "buy": [
+   [
+    "Canfield Vectra WB360",
+    "Canfield Scientific, Parsippany, NJ (about 30 min from 510)",
+    "Quote"
+   ]
+  ],
+  "neko": "4 of 5. The closest thing to Neko's skin scan"
+ },
+ {
+  "id": "us-eye",
+  "ic": "👁️",
+  "name": "Eye pressure test (tonometer)",
+  "what": "Puff-of-air glaucoma check. Neko does it at every scan.",
+  "why": "No Chinese tonometer has US FDA clearance.",
+  "buy": [
+   [
+    "Keeler TonoCare",
+    "FDA K181143. Through a US eye-equipment dealer",
+    "Quote"
+   ],
+   [
+    "Nidek NT-4000",
+    "FDA K031733 (Japan). US eye-equipment dealer",
+    "Quote"
+   ],
+   [
+    "Tomey FT-1000",
+    "FDA K073087. US eye-equipment dealer",
+    "Quote"
+   ]
+  ],
+  "neko": "5 of 5. Same test Neko does"
+ },
+ {
+  "id": "us-blood",
+  "ic": "🩸",
+  "name": "Same-visit blood analyzer",
+  "what": "Cholesterol, HbA1c and more in minutes, like Neko's 30-minute blood results. Set aside 9/10 (outside labs instead).",
+  "why": "No Chinese analyzer has US FDA clearance.",
+  "buy": [
+   [
+    "Abbott Afinion 2",
+    "US medical dealers",
+    "Quote"
+   ],
+   [
+    "CardioChek",
+    "US medical dealers (owned by Sinocare, but US-cleared)",
+    "Quote"
+   ]
+  ],
+  "neko": "3 of 5. Neko's on-site blood test covers more markers"
+ },
+ {
+  "id": "us-pump",
+  "ic": "💧",
+  "name": "Infusion pumps",
+  "what": "Control how fast the IV drip runs.",
+  "why": "Already cheap in the US; the FDA watches pumps closely.",
+  "buy": [
+   [
+    "Baxter Sigma Spectrum, refurbished",
+    "Relink Medical",
+    "~$395 each"
+   ]
+  ],
+  "neko": "None. Neko has no IV"
+ },
+ {
+  "id": "us-hydra",
+  "ic": "💦",
+  "name": "Hydrafacial",
+  "what": "Cleansing and serum facial.",
+  "why": "Chinese copies have lost US patent cases. Importing one risks seizure and a lawsuit.",
+  "buy": [
+   [
+    "HydraFacial Syndeo",
+    "HydraFacial (BeautyHealth). Used about $28K; new about $35–42K",
+    "$28,000+"
+   ]
+  ],
+  "neko": "None"
+ },
+ {
+  "id": "us-heater",
+  "ic": "🔥",
+  "name": "Sauna heaters and controls",
+  "what": "The electrical heart of each sauna. The room itself can come from China.",
+  "why": "Must be UL or ETL listed or the NJ inspector won't sign off. No Chinese heater listing was found.",
+  "buy": [
+   [
+    "Northern Saunas (already in contact)",
+    "1-844-240-9233. Ask for UL-listed heaters and controls",
+    "Quote"
+   ]
+  ],
+  "neko": "None. Neko has no spa"
+ }
+]
