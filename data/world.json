@@ -1,1 +1,572 @@
-[]
+[
+ {
+  "ic": "🔬",
+  "part": "Whole-body skin and mole mapping",
+  "neko": "2,000+ photos of the whole body, plus heat and depth sensors",
+  "china": {
+   "ok": false,
+   "text": "no Chinese company makes one"
+  },
+  "picks": [
+   {
+    "flag": "🇺🇸",
+    "name": "Canfield Vectra WB360",
+    "maker": "Canfield Scientific, Parsippany NJ",
+    "what": "One 3D image of the whole body from 46 camera pods; software tracks every mole",
+    "fda": "FDA status: ask Canfield in writing",
+    "us": "Direct from Canfield (30 min from 510). The cheaper WB180 also exists",
+    "price": "~$400,000 (one hospital's cost)",
+    "score": 4.5
+   },
+   {
+    "flag": "🇩🇪",
+    "name": "FotoFinder ATBM master",
+    "maker": "FotoFinder Systems, Germany",
+    "what": "Whole-body mapping plus close-up mole photos (dermoscopy)",
+    "fda": "EU-certified; US FDA status: ask",
+    "us": "FotoFinder / DermLite US (same group)",
+    "price": "Quote",
+    "score": 4.5
+   },
+   {
+    "flag": "🇺🇸",
+    "name": "SkinBit",
+    "maker": "SkinBit, US",
+    "what": "20-minute full-body skin imaging on a bed",
+    "fda": "Not FDA-cleared; says it doesn't diagnose",
+    "us": "Not sold as a machine. Runs its own locations (partner option)",
+    "price": "",
+    "score": 3
+   }
+  ],
+  "note": "None adds heat or depth sensing like Neko."
+ },
+ {
+  "ic": "🫀",
+  "part": "Artery stiffness",
+  "neko": "Aortic pulse-wave speed, measured with a laser",
+  "china": {
+   "ok": false,
+   "text": "no FDA-cleared Chinese machine"
+  },
+  "picks": [
+   {
+    "flag": "🇦🇺",
+    "name": "SphygmoCor XCEL",
+    "maker": "AtCor / CardieX, Australia",
+    "what": "Neck-to-groin pulse-wave speed (the gold-standard method) plus central blood pressure",
+    "fda": "FDA ✓ K122129",
+    "us": "CardieX / AtCor US",
+    "price": "Quote",
+    "score": 5
+   },
+   {
+    "flag": "🇯🇵",
+    "name": "Fukuda Denshi VaSera VS-1500",
+    "maker": "Fukuda Denshi, Japan",
+    "what": "Blood pressure on all 4 limbs, ankle-arm index, artery stiffness, heart sounds. One machine does several Neko parts",
+    "fda": "FDA ✓ K112521",
+    "us": "Fukuda Denshi USA, Redmond WA",
+    "price": "Quote",
+    "score": 4.5
+   },
+   {
+    "flag": "🇯🇵",
+    "name": "Omron VP-1000 Plus",
+    "maker": "Omron, Japan",
+    "what": "Ankle-arm index plus arm-ankle pulse-wave speed",
+    "fda": "Older model cleared (K013434); Plus model: ask",
+    "us": "US medical dealers",
+    "price": "Quote",
+    "score": 4
+   }
+  ]
+ },
+ {
+  "ic": "🦶",
+  "part": "Ankle-arm index (ABI)",
+  "neko": "Blood pressure at both ankles and arms",
+  "china": {
+   "ok": false,
+   "text": "no FDA-cleared Chinese machine"
+  },
+  "picks": [
+   {
+    "flag": "🇸🇮",
+    "name": "MESI mTABLET ABI",
+    "maker": "MESI, Slovenia",
+    "what": "Automatic ankle-arm index in about 1 minute; toe module available",
+    "fda": "FDA ✓ K201046 (toe: K213730)",
+    "us": "Nikomed USA via McKesson (#1265434)",
+    "price": "Quote",
+    "score": 5
+   }
+  ],
+  "note": "The VaSera above also does this."
+ },
+ {
+  "ic": "📈",
+  "part": "ECG (heart tracing)",
+  "neko": "ECG at every scan",
+  "china": {
+   "ok": true,
+   "text": "Edan SE-1200 (FDA ✓ K102830, K171942), sold by US dealers"
+  },
+  "picks": [
+   {
+    "flag": "🇺🇸",
+    "name": "GE MAC 5",
+    "maker": "GE HealthCare, US",
+    "what": "12-lead ECG with GE's well-known automatic reading (12SL)",
+    "fda": "Older MAC 5500 cleared (K110266); MAC 5: ask",
+    "us": "GE HealthCare US",
+    "price": "Quote",
+    "score": 5
+   },
+   {
+    "flag": "🇨🇳",
+    "name": "Edan SE-1200 Express",
+    "maker": "Edan, Shenzhen",
+    "what": "12-lead ECG",
+    "fda": "FDA ✓ K102830, K171942",
+    "us": "Edan USA or CME Corp",
+    "price": "from $3,085",
+    "score": 5
+   }
+  ]
+ },
+ {
+  "ic": "🩺",
+  "part": "Arm blood pressure and oxygen",
+  "neko": "Blood pressure on both arms, blood oxygen",
+  "china": {
+   "ok": true,
+   "text": "Edan iM3 (FDA ✓ K180380), sold by Edan USA"
+  },
+  "picks": [
+   {
+    "flag": "🇨🇳",
+    "name": "Edan iM3",
+    "maker": "Edan, Shenzhen",
+    "what": "Blood pressure, oxygen and temperature",
+    "fda": "FDA ✓ K180380",
+    "us": "Edan USA",
+    "price": "Quote",
+    "score": 4
+   }
+  ]
+ },
+ {
+  "ic": "🔊",
+  "part": "Heart ultrasound",
+  "neko": "Full heart ultrasound by trained echo specialists",
+  "china": {
+   "ok": true,
+   "text": "Mindray TE Air (FDA ✓ K231685), Edan Nano C5 (FDA ✓ K251268), via US dealers"
+  },
+  "picks": [
+   {
+    "flag": "🇺🇸",
+    "name": "GE Vscan Air SL + Caption AI",
+    "maker": "GE HealthCare, US",
+    "what": "Handheld, with AI that guides staff to a good image and measures heart pumping (EF)",
+    "fda": "US launch 2024; K-number: ask",
+    "us": "GE HealthCare US",
+    "price": "Quote",
+    "score": 3
+   },
+   {
+    "flag": "🇺🇸",
+    "name": "Butterfly iQ3",
+    "maker": "Butterfly Network, US",
+    "what": "Whole-body handheld ultrasound on a phone",
+    "fda": "FDA-cleared 2024; heart use: ask",
+    "us": "Butterfly US",
+    "price": "$3,899",
+    "score": 2
+   },
+   {
+    "flag": "🇨🇳",
+    "name": "Mindray TE Air",
+    "maker": "Mindray, Shenzhen",
+    "what": "Handheld ultrasound",
+    "fda": "FDA ✓ K231685",
+    "us": "Mindray North America, Mahwah NJ",
+    "price": "Quote",
+    "score": 2
+   }
+  ],
+  "note": "A full-size echo machine run by a sonographer would be 5 of 5. Handhelds give a quick look."
+ },
+ {
+  "ic": "🎧",
+  "part": "Heart sounds",
+  "neko": "Records heart murmur sounds (listed in 2023)",
+  "china": {
+   "ok": true,
+   "text": "STEMO stethoscope (FDA ✓ K220470, K261494)"
+  },
+  "picks": [
+   {
+    "flag": "🇺🇸",
+    "name": "Eko CORE 500",
+    "maker": "Eko Health, US",
+    "what": "Digital stethoscope with a 3-lead ECG and AI that flags murmurs and AFib",
+    "fda": "FDA ✓ K230111, K233609",
+    "us": "Eko direct or US dealers",
+    "price": "$449 + $119.99/yr AI",
+    "score": 5
+   },
+   {
+    "flag": "🇨🇳",
+    "name": "STEMO",
+    "maker": "Shanghai Hulu Devices",
+    "what": "Records and amplifies heart sounds; no AI murmur check found",
+    "fda": "FDA ✓ K220470, K261494",
+    "us": "Ask for their US importer",
+    "price": "Quote",
+    "score": 3
+   }
+  ]
+ },
+ {
+  "ic": "✊",
+  "part": "Grip strength",
+  "neko": "Grip test at every scan",
+  "china": {
+   "ok": true,
+   "text": "Camry EH101, ~$40, close to Jamar in studies"
+  },
+  "picks": [
+   {
+    "flag": "🇺🇸",
+    "name": "Jamar Plus+ digital",
+    "maker": "Performance Health, US",
+    "what": "The clinic-standard grip meter",
+    "fda": "FDA Class I, exempt",
+    "us": "McKesson and medical suppliers",
+    "price": "$495–948",
+    "score": 5
+   },
+   {
+    "flag": "🇨🇳",
+    "name": "Camry EH101",
+    "maker": "Camry, Zhongshan",
+    "what": "Digital grip meter used in research",
+    "fda": "FDA registration: ask",
+    "us": "IntegratedMedSys or Amazon US",
+    "price": "~$40",
+    "score": 5
+   }
+  ]
+ },
+ {
+  "ic": "👁️",
+  "part": "Eye pressure",
+  "neko": "Glaucoma screening at every scan",
+  "china": {
+   "ok": false,
+   "text": "no FDA-cleared Chinese tonometer"
+  },
+  "picks": [
+   {
+    "flag": "🇫🇮",
+    "name": "iCare IC200",
+    "maker": "iCare, Finland",
+    "what": "Quick bounce test, no eye drops, any head angle",
+    "fda": "FDA ✓ K190316, K220852 (confirm current model)",
+    "us": "iCare USA / eye-equipment dealers",
+    "price": "Quote",
+    "score": 5
+   }
+  ]
+ },
+ {
+  "ic": "🩸",
+  "part": "Blood test in 30 minutes",
+  "neko": "Haemoglobin, hs-CRP, cholesterol, LDL, HbA1c",
+  "china": {
+   "ok": false,
+   "text": "no FDA-cleared Chinese analyzer"
+  },
+  "picks": [
+   {
+    "flag": "🇺🇸",
+    "name": "Abbott Piccolo Xpress",
+    "maker": "Abbott (was Abaxis), US",
+    "what": "Lipids, full chemistry and liver panels from a drop of blood",
+    "fda": "FDA-cleared; most panels CLIA-waived",
+    "us": "Abbott / US lab dealers",
+    "price": "Quote",
+    "score": 5
+   },
+   {
+    "flag": "🇯🇵",
+    "name": "Sysmex XW-100",
+    "maker": "Sysmex, Japan",
+    "what": "Blood count incl. haemoglobin in 3 minutes",
+    "fda": "FDA-cleared; first CLIA-waived blood count",
+    "us": "Sysmex America",
+    "price": "Quote",
+    "score": 5
+   },
+   {
+    "flag": "🇺🇸",
+    "name": "Abbott Afinion 2",
+    "maker": "Abbott, US",
+    "what": "HbA1c in about 3 minutes",
+    "fda": "HbA1c CLIA-waived",
+    "us": "McKesson, Fisher",
+    "price": "Quote",
+    "score": 4
+   }
+  ],
+  "note": "Together these cover more than Neko, except hs-CRP: send that to Quest or Labcorp."
+ },
+ {
+  "ic": "⚖️",
+  "part": "Body fat and visceral fat",
+  "neko": "Measured with its own imaging (added June 2026)",
+  "china": {
+   "ok": false,
+   "text": "only rough versions (body scanner 2/5, smart scale 1/5)"
+  },
+  "picks": [
+   {
+    "flag": "🇺🇸",
+    "name": "Hologic Horizon DXA (DEXA)",
+    "maker": "Hologic, US",
+    "what": "Bone density plus visceral fat: the gold standard",
+    "fda": "FDA ✓ visceral fat software K113356",
+    "us": "Hologic US",
+    "price": "Quote",
+    "score": 6
+   },
+   {
+    "flag": "🇺🇸",
+    "name": "GE Lunar iDXA + CoreScan",
+    "maker": "GE HealthCare, US",
+    "what": "Bone density plus visceral fat",
+    "fda": "FDA ✓ K052581, CoreScan K103730",
+    "us": "GE HealthCare US",
+    "price": "Quote",
+    "score": 6
+   },
+   {
+    "flag": "🇩🇪",
+    "name": "seca mBCA 555",
+    "maker": "seca, Germany",
+    "what": "Medical-grade body composition, segment by segment",
+    "fda": "Older model cleared (K122388); 555: ask",
+    "us": "seca US",
+    "price": "Quote",
+    "score": 4
+   },
+   {
+    "flag": "🇰🇷",
+    "name": "InBody 770",
+    "maker": "InBody, Korea",
+    "what": "Muscle, fat, water by body part",
+    "fda": "Earlier models cleared; ask for 770",
+    "us": "InBody USA",
+    "price": "$23,705",
+    "score": 3
+   }
+  ],
+  "note": "DEXA goes beyond Neko: it adds bone density. It uses a tiny X-ray dose, so check NJ licensing."
+ },
+ {
+  "ic": "🌡️",
+  "part": "Heat (thermal) skin imaging",
+  "neko": "Part of its skin scan",
+  "china": {
+   "ok": false,
+   "text": "Chinese thermal cameras (HIKMICRO, InfiRay) are industrial, not medical"
+  },
+  "picks": [
+   {
+    "flag": "🇺🇸",
+    "name": "Med-Hot",
+    "maker": "Med-Hot, US",
+    "what": "Medical thermal imaging",
+    "fda": "FDA ✓ K171928",
+    "us": "Med-Hot",
+    "price": "Quote",
+    "score": 2
+   },
+   {
+    "flag": "🇺🇸",
+    "name": "USA Therm",
+    "maker": "USA Therm, US",
+    "what": "Medical thermal imaging",
+    "fda": "FDA ✓ K232462",
+    "us": "USA Therm",
+    "price": "Quote",
+    "score": 2
+   }
+  ]
+ },
+ {
+  "head": "🚀 Beyond Neko: tests Neko doesn't do",
+  "ic": "🫁",
+  "part": "Fitness and metabolism (VO2)",
+  "beyond": true,
+  "china": null,
+  "picks": [
+   {
+    "flag": "🇮🇹",
+    "name": "COSMED Q-NRG+",
+    "maker": "COSMED, Italy",
+    "what": "Resting metabolism (calories burned at rest)",
+    "fda": "FDA-cleared 2020",
+    "us": "COSMED USA",
+    "price": "Quote",
+    "score": null
+   },
+   {
+    "flag": "🇬🇷",
+    "name": "PNOE",
+    "maker": "PNOE, Greece / US",
+    "what": "VO2max fitness test, the strongest predictor of lifespan",
+    "fda": "Wellness device, not FDA-cleared (validated r=0.98 vs COSMED)",
+    "us": "PNOE direct",
+    "price": "Quote",
+    "score": null
+   }
+  ]
+ },
+ {
+  "ic": "👀",
+  "part": "Retina photos with AI",
+  "beyond": true,
+  "china": null,
+  "picks": [
+   {
+    "flag": "🇺🇸",
+    "name": "LumineticsCore + Topcon NW400",
+    "maker": "Digital Diagnostics, Iowa",
+    "what": "AI that reads retina photos for diabetic eye disease without a doctor",
+    "fda": "FDA De Novo 2018",
+    "us": "Digital Diagnostics",
+    "price": "Quote",
+    "score": null
+   },
+   {
+    "flag": "🇯🇵",
+    "name": "Topcon Maestro2",
+    "maker": "Topcon, Japan",
+    "what": "Retina scan (OCT) showing eye and blood-vessel health",
+    "fda": "FDA-cleared (OCTA 2024)",
+    "us": "Topcon Healthcare US",
+    "price": "Quote",
+    "score": null
+   }
+  ]
+ },
+ {
+  "ic": "💨",
+  "part": "Lung test (spirometry)",
+  "beyond": true,
+  "china": null,
+  "picks": [
+   {
+    "flag": "🇨🇭",
+    "name": "ndd EasyOne Air",
+    "maker": "ndd, Switzerland",
+    "what": "Breathing test for lung health",
+    "fda": "FDA ✓ K161536",
+    "us": "ndd US",
+    "price": "Quote",
+    "score": null
+   }
+  ]
+ },
+ {
+  "ic": "📟",
+  "part": "Glucose sensor for members",
+  "beyond": true,
+  "china": null,
+  "picks": [
+   {
+    "flag": "🇺🇸",
+    "name": "Dexcom Stelo",
+    "maker": "Dexcom, US",
+    "what": "2-week glucose sensor, no prescription",
+    "fda": "FDA-cleared OTC 2024",
+    "us": "Over the counter",
+    "price": "$99 for 2 sensors",
+    "score": null
+   },
+   {
+    "flag": "🇺🇸",
+    "name": "Abbott Lingo",
+    "maker": "Abbott, US",
+    "what": "2-week glucose sensor, no prescription",
+    "fda": "FDA-cleared OTC 2024",
+    "us": "Over the counter",
+    "price": "$49 per sensor",
+    "score": null
+   }
+  ]
+ },
+ {
+  "ic": "🏠",
+  "part": "Home tracking between scans",
+  "beyond": true,
+  "china": null,
+  "picks": [
+   {
+    "flag": "🇫🇷",
+    "name": "Withings Body Scan",
+    "maker": "Withings, France",
+    "what": "Smart scale with a 6-lead ECG for AFib. Benchmark for our own Pulse scale",
+    "fda": "FDA ✓ ECG (2023)",
+    "us": "Withings US",
+    "price": "$399.95",
+    "score": null
+   },
+   {
+    "flag": "🇫🇷",
+    "name": "Withings BPM Vision",
+    "maker": "Withings, France",
+    "what": "Home blood pressure cuff",
+    "fda": "Withings says FDA-cleared",
+    "us": "Withings US",
+    "price": "$150",
+    "score": null
+   }
+  ]
+ },
+ {
+  "head": "🧩 A complete Neko-style booth?",
+  "ic": "🏥",
+  "part": "All-in-one scan booth",
+  "china": {
+   "ok": false,
+   "text": "Chinese health kiosks (健康一体机, “all-in-one health kiosk”) have no FDA clearance"
+  },
+  "picks": [
+   {
+    "flag": "🇺🇸",
+    "name": "Pursuant Health Kiosk",
+    "maker": "Pursuant Health, US",
+    "what": "Blood pressure, pulse, weight and retina photos",
+    "fda": "FDA ✓ K230996",
+    "us": "Pursuant Health",
+    "price": "Quote",
+    "score": 1
+   },
+   {
+    "flag": "🇺🇸",
+    "name": "higi Station",
+    "maker": "higi, US",
+    "what": "Blood pressure, pulse, weight, body fat",
+    "fda": "FDA ✓ K172739",
+    "us": "higi",
+    "price": "Quote",
+    "score": 1
+   }
+  ],
+  "note": "No company sells a complete Neko-style booth. Build it from the best parts above."
+ }
+]
