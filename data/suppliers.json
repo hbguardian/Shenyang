@@ -1184,5 +1184,43 @@
    "FDA registration number?",
    "Calibration certificate?"
   ]
+ },
+ {
+  "id": "sp-stemo",
+  "items": [
+   "steth"
+  ],
+  "en": "STEMO (Shanghai Hulu Devices)",
+  "zh": "",
+  "city": "Shanghai",
+  "meet": "Check the CMEF app. If not there, contact them before you leave Beijing.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "海外销售经理",
+   "hǎiwài xiāoshòu jīnglǐ",
+   "Overseas sales manager"
+  ],
+  "how": "Shanghai is about 2h15m by air from Shenyang (estimate). No visit needed.",
+  "cert": "FDA ✓ K220470 · K261494 (July 2026)",
+  "certOk": true,
+  "risk": "No AI murmur detection found. Confirm the exact model is on the clearance.",
+  "web": "",
+  "about": "Shanghai maker of smart wireless stethoscopes, with two US FDA clearances.",
+  "clients": [
+   [
+    "US FDA clearances K220470 (2022) and K261494 (2026)",
+    "v"
+   ]
+  ],
+  "connect": [
+   "CMEF booth if listed",
+   "Ask for their US importer or distributor"
+  ],
+  "fit": [
+   "Which models are on your US clearance?",
+   "Who imports and services it in the US?",
+   "Does the app keep recordings off Chinese servers?"
+  ]
  }
 ]

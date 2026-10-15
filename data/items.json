@@ -327,6 +327,36 @@
   }
  },
  {
+  "id": "steth",
+  "ic": "🎧",
+  "name": "Digital stethoscope (heart sounds)",
+  "zh": "电子听诊器",
+  "what": "Records and amplifies heart sounds so the doctor can hear murmurs and save the recording.",
+  "us": "Eko CORE 500 (AI murmur check, $119.99/yr)",
+  "cn": "STEMO via US dealer: quote",
+  "need": 2,
+  "checks": [
+   "fda510k",
+   "usdealer",
+   "lic"
+  ],
+  "faq": [
+   [
+    "STEMO or Eko?",
+    "Eko has AI that flags murmurs (with a $119.99/yr plan). STEMO records and amplifies but we found no AI murmur claim. Want AI: Eko. Just recording: STEMO."
+   ],
+   [
+    "Is STEMO legal in the US?",
+    "Yes, for the cleared models: K220470 and K261494 (STEMO310/710/720/730). Check the exact model and its US importer."
+   ]
+  ],
+  "neko": {
+   "match": "Heart sounds",
+   "score": 3,
+   "note": "Neko listed heart-murmur sounds in its 2023 scan. STEMO records them; Eko's AI murmur check (US) is closer, about 4 of 5."
+  }
+ },
+ {
   "id": "iv",
   "ic": "💺",
   "name": "IV recliners (4)",

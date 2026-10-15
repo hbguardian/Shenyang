@@ -43,16 +43,56 @@
   "id": "us-mole",
   "ic": "🔬",
   "name": "Whole-body mole mapping",
-  "what": "3D photos of every mole, tracked year to year. Phase 2, with the dermatologist.",
-  "why": "Nothing like it is made in China.",
+  "what": "3D photos of the whole body that track every mole, year to year. The closest thing to Neko's skin scan.",
+  "why": "No Chinese company makes a whole-body mole-mapping system.",
   "buy": [
    [
     "Canfield Vectra WB360",
-    "Canfield Scientific, Parsippany, NJ (about 30 min from 510)",
+    "Canfield Scientific, Parsippany, NJ (about 30 min from 510). Ask for its FDA listing in writing",
+    "~$400,000 (one hospital's cost)"
+   ],
+   [
+    "FotoFinder ATBM (Germany)",
+    "Possibly through DermLite in California (same group since 2024). Ask for US price",
     "Quote"
    ]
   ],
-  "neko": "4 of 5. The closest thing to Neko's skin scan"
+  "neko": "4 of 5. One US hospital charges $595 per scan, which shows how a scan like this is priced"
+ },
+ {
+  "id": "us-derm",
+  "ic": "🔎",
+  "name": "Handheld mole scope (dermatoscope)",
+  "what": "A lighted magnifier the doctor uses to look closely at one mole. Pairs with the whole-body scan.",
+  "why": "Chinese ones (e.g. IBOOLO) show no US FDA listing.",
+  "buy": [
+   [
+    "DermLite DL5",
+    "DermLite, California",
+    "~$1,795"
+   ]
+  ],
+  "neko": "Supports the skin check"
+ },
+ {
+  "id": "us-thermal",
+  "ic": "🌡️",
+  "name": "Medical thermal imaging (optional)",
+  "what": "Heat picture of the skin. Neko adds this to its skin scan.",
+  "why": "No mainland Chinese thermal camera is cleared as medical. HIKMICRO or InfiRay cameras are industrial, not medical.",
+  "buy": [
+   [
+    "Med-Hot",
+    "FDA K171928",
+    "Quote"
+   ],
+   [
+    "USA Therm",
+    "FDA K232462",
+    "Quote"
+   ]
+  ],
+  "neko": "2 of 5 on its own. Neko combines heat with photos and depth"
  },
  {
   "id": "us-eye",
