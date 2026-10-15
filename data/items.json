@@ -51,7 +51,12 @@
     "How many do we have to buy?",
     "Usually 500+ units with our logo (J-Style says 500 for rings). Ask each one."
    ]
-  ]
+  ],
+  "neko": {
+   "match": "Wearable data",
+   "score": 1,
+   "note": "Neko doesn't make a band. It only imports sleep, steps and HRV from Apple Health. Our own band would go further than Neko here."
+  }
  },
  {
   "id": "scale",
@@ -80,7 +85,12 @@
     "Is it a medical device?",
     "Not if it's sold for wellness (weight, body fat, muscle). No disease claims."
    ]
-  ]
+  ],
+  "neko": {
+   "match": "Body composition",
+   "score": 1,
+   "note": "Neko measures body fat and visceral fat with its own imaging device (added June 2026). A smart scale's estimate is much rougher. Good for daily tracking at home, not as a scan replacement."
+  }
  },
  {
   "id": "skin",
@@ -112,7 +122,12 @@
     "Any hidden costs?",
     "Ask if the software needs a yearly license or a Chinese server, and what a replacement camera costs."
    ]
-  ]
+  ],
+  "neko": {
+   "match": "Skin scan",
+   "score": 1,
+   "note": "Neko photographs the whole body (2,000+ images, plus heat and depth sensors) to track every mole. This analyzer does the face only. The close match is the Canfield Vectra whole-body system (4/5), which we buy in the US."
+  }
  },
  {
   "id": "body",
@@ -145,7 +160,12 @@
     "How much room does it need?",
     "Ask for the floor space, ceiling height and weight limit of the turntable."
    ]
-  ]
+  ],
+  "neko": {
+   "match": "Body composition",
+   "score": 2,
+   "note": "Shows body shape, measurements and an estimated body fat. Neko measures visceral fat with its own imaging, so this is a partial match."
+  }
  },
  {
   "id": "ultra",
@@ -174,7 +194,12 @@
     "Who is allowed to scan?",
     "Whoever the medical director approves. Check before buying."
    ]
-  ]
+  ],
+  "neko": {
+   "match": "Heart ultrasound (echo)",
+   "score": 2,
+   "note": "Neko appears to run full heart ultrasound with trained echo specialists (from its job ads). A handheld probe gives a quick look, not the same detail."
+  }
  },
  {
   "id": "iv",
@@ -207,7 +232,12 @@
     "What else to ask?",
     "Weight limit, lie-flat position (if someone faints), and locking wheels."
    ]
-  ]
+  ],
+  "neko": {
+   "match": "",
+   "score": 0,
+   "note": "Neko is a scan-only clinic: no IV, spa or recovery. This is where Pulse is different from Neko, not a copy of it."
+  }
  },
  {
   "id": "fridge",
@@ -232,7 +262,12 @@
     "What makes it 'medical'?",
     "A digital temperature log and an alarm. Ask for a model that meets CDC vaccine-storage guidance."
    ]
-  ]
+  ],
+  "neko": {
+   "match": "",
+   "score": 0,
+   "note": "Neko is a scan-only clinic: no IV, spa or recovery. This is where Pulse is different from Neko, not a copy of it."
+  }
  },
  {
   "id": "sauna",
@@ -264,7 +299,12 @@
     "How long until it arrives?",
     "Usually 30–60 days to build plus 30–40 days by sea. Confirm in writing."
    ]
-  ]
+  ],
+  "neko": {
+   "match": "",
+   "score": 0,
+   "note": "Neko is a scan-only clinic: no IV, spa or recovery. This is where Pulse is different from Neko, not a copy of it."
+  }
  },
  {
   "id": "pool",
@@ -296,7 +336,12 @@
     "What else to ask?",
     "The heater and pump wattage, and whether every electrical part is UL or ETL listed."
    ]
-  ]
+  ],
+  "neko": {
+   "match": "",
+   "score": 0,
+   "note": "Neko is a scan-only clinic: no IV, spa or recovery. This is where Pulse is different from Neko, not a copy of it."
+  }
  },
  {
   "id": "plunge",
@@ -328,7 +373,12 @@
     "What's the running cost?",
     "Ask the power draw in watts and the noise level."
    ]
-  ]
+  ],
+  "neko": {
+   "match": "",
+   "score": 0,
+   "note": "Neko is a scan-only clinic: no IV, spa or recovery. This is where Pulse is different from Neko, not a copy of it."
+  }
  },
  {
   "id": "red",
@@ -360,7 +410,12 @@
     "How long do the lights last?",
     "Ask the LED lifetime in hours and the price of a replacement panel."
    ]
-  ]
+  ],
+  "neko": {
+   "match": "",
+   "score": 0,
+   "note": "Neko is a scan-only clinic: no IV, spa or recovery. This is where Pulse is different from Neko, not a copy of it."
+  }
  },
  {
   "id": "boots",
@@ -387,7 +442,12 @@
     "What wears out?",
     "The leg sleeves. Ask the price of spare sleeves and how they're cleaned."
    ]
-  ]
+  ],
+  "neko": {
+   "match": "",
+   "score": 0,
+   "note": "Neko is a scan-only clinic: no IV, spa or recovery. This is where Pulse is different from Neko, not a copy of it."
+  }
  },
  {
   "id": "chairs",
@@ -414,7 +474,12 @@
     "What makes a good blood-draw chair?",
     "Arms that lock, can tip back if someone faints, wipeable vinyl."
    ]
-  ]
+  ],
+  "neko": {
+   "match": "",
+   "score": 0,
+   "note": "Not a measurement, but Neko also takes a blood sample at every scan (results in about 30 minutes). The blood-draw chair supports that part."
+  }
  },
  {
   "id": "decor",
@@ -441,6 +506,11 @@
     "What needs certificates?",
     "Anything that plugs in (UL or ETL), and fire ratings for lockers and fabrics."
    ]
-  ]
+  ],
+  "neko": {
+   "match": "",
+   "score": 0,
+   "note": "Neko is a scan-only clinic: no IV, spa or recovery. This is where Pulse is different from Neko, not a copy of it."
+  }
  }
 ]
