@@ -46,7 +46,9 @@
  {
   "id": "co-edan",
   "items": [
-   "ultra"
+   "ultra",
+   "ecg",
+   "vitals"
   ],
   "en": "Edan",
   "zh": "深圳市理邦精密仪器股份有限公司",
@@ -60,7 +62,7 @@
    "North America regional manager"
   ],
   "how": "Fly Shenyang → Shenzhen, about 4h (estimate). Better: deal with Edan USA from New Jersey.",
-  "cert": "FDA ✓ Nano C5: K251268",
+  "cert": "FDA ✓ Nano C5 K251268 · ECG K102830, K171942 · iM3 K180380",
   "certOk": true,
   "risk": "Get US service and warranty terms in writing.",
   "web": "",
@@ -919,7 +921,8 @@
  {
   "id": "sp-viatom",
   "items": [
-   "band"
+   "band",
+   "vitals"
   ],
   "en": "Viatom (Lepu Medical group)",
   "zh": "",
@@ -1100,6 +1103,86 @@
    "Can you make a body-composition scale like the one you make for a US brand, with our logo?",
    "Bluetooth: FCC ID? SDK for our app?",
    "Minimum order and price?"
+  ]
+ },
+ {
+  "id": "sp-contec",
+  "items": [
+   "ecg",
+   "vitals"
+  ],
+  "en": "Contec Medical Systems",
+  "zh": "",
+  "city": "Qinhuangdao, Hebei",
+  "meet": "Check the CMEF app.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "海外销售经理",
+   "hǎiwài xiāoshòu jīnglǐ",
+   "Overseas sales manager"
+  ],
+  "how": "Qinhuangdao is about 2.5h from Beijing by fast train (estimate).",
+  "cert": "FDA ✓ ECG1200G K131900 · CMS50D oximeter K082641",
+  "certOk": true,
+  "risk": "No authorized US dealer found. Buy only a US-labeled unit with US service.",
+  "web": "",
+  "about": "Chinese maker of ECG machines, oximeters and monitors.",
+  "clients": [
+   [
+    "Sold on US marketplaces by China sellers",
+    "c"
+   ]
+  ],
+  "connect": [
+   "CMEF booth if listed",
+   "Ask for their US agent and US distributor"
+  ],
+  "fit": [
+   "Who is your US distributor and service?",
+   "Is this exact unit US-labeled with the K-number?",
+   "Warranty in the US?"
+  ]
+ },
+ {
+  "id": "sp-camry",
+  "items": [
+   "grip"
+  ],
+  "en": "Camry (Zhongshan Camry Electronic)",
+  "zh": "",
+  "city": "Zhongshan, Guangdong",
+  "meet": "Easiest: buy in the US (IntegratedMedSys or Amazon). At CMEF, only if they're there.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "海外销售经理",
+   "hǎiwài xiāoshòu jīnglǐ",
+   "Overseas sales manager"
+  ],
+  "how": "No trip needed. Buy in the US.",
+  "cert": "Tested against the Jamar in published studies; FDA registration not confirmed",
+  "certOk": false,
+  "risk": "One study names a different maker (Sensun) for the same model. Buy from a US seller.",
+  "web": "",
+  "about": "Scale and dynamometer maker. The EH101 grip meter (up to 90 kg) is used in published research.",
+  "clients": [
+   [
+    "Used in peer-reviewed studies compared with the Jamar",
+    "v"
+   ],
+   [
+    "Sold in the US by IntegratedMedSys",
+    "v"
+   ]
+  ],
+  "connect": [
+   "integratedmedsys.com/eh101",
+   "Amazon US"
+  ],
+  "fit": [
+   "FDA registration number?",
+   "Calibration certificate?"
   ]
  }
 ]

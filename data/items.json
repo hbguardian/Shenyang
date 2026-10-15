@@ -202,6 +202,103 @@
   }
  },
  {
+  "id": "ecg",
+  "ic": "📈",
+  "name": "12-lead ECG (heart tracing)",
+  "zh": "十二导联心电图机",
+  "what": "The standard heart tracing, done at every scan. Chinese brands with US clearance, sold by US dealers.",
+  "us": "from $3,085 (Edan SE-1200 via CME Corp)",
+  "cn": "Same machine via US dealer",
+  "need": 1,
+  "checks": [
+   "fda510k",
+   "usdealer",
+   "lic"
+  ],
+  "faq": [
+   [
+    "Why not buy it straight from China?",
+    "Only US-labeled units with US service are safe to use on patients. FDA can hold imports without the right paperwork."
+   ],
+   [
+    "Edan or Contec?",
+    "Edan: FDA-cleared (K102830, K171942) and has a US office. Contec: cleared too (K131900) and cheaper, but no US dealer found."
+   ],
+   [
+    "Does Neko do this?",
+    "Yes, Neko does an ECG at every scan."
+   ]
+  ],
+  "neko": {
+   "match": "ECG",
+   "score": 5,
+   "note": "Neko records an ECG at every scan. A 12-lead ECG is the clinical standard, so this matches or beats it."
+  }
+ },
+ {
+  "id": "vitals",
+  "ic": "🩺",
+  "name": "Vital-signs monitor",
+  "zh": "生命体征监护仪",
+  "what": "Blood pressure, blood oxygen and temperature in one quick check.",
+  "us": "Edan iM3 via Edan USA",
+  "cn": "Same machine via US dealer",
+  "need": 2,
+  "checks": [
+   "fda510k",
+   "usdealer",
+   "lic"
+  ],
+  "faq": [
+   [
+    "Which one?",
+    "Edan iM3 (FDA K180380) from Edan USA. Note: some newer iM3s units had a recall in 2026. Ask if the unit is fixed."
+   ],
+   [
+    "A cheap backup?",
+    "Contec CMS50D fingertip oxygen meter (FDA K082641), or Viatom (Wellue) devices sold in the US."
+   ],
+   [
+    "Does it do ankle pressure like Neko?",
+    "No. The ankle-arm test needs a separate machine, and no Chinese one has FDA clearance. Buy Mesi or Huntleigh in the US."
+   ]
+  ],
+  "neko": {
+   "match": "Arm blood pressure and oxygen",
+   "score": 4,
+   "note": "Neko takes blood pressure on both arms and both ankles. This covers the arms and oxygen; the ankle part needs a separate US-bought machine."
+  }
+ },
+ {
+  "id": "grip",
+  "ic": "✊",
+  "name": "Grip strength meter",
+  "zh": "电子握力计",
+  "what": "Squeeze test for muscle strength, a strong sign of healthy aging. Neko does it at every scan.",
+  "us": "Jamar Plus+: $495–948",
+  "cn": "Camry EH101: ~$40",
+  "need": 2,
+  "checks": [
+   "fdareg",
+   "usdealer"
+  ],
+  "faq": [
+   [
+    "Is a $40 one good enough?",
+    "Studies compared the Camry EH101 with the Jamar (the clinic standard): readings were very close (about 2 kg lower on average)."
+   ],
+   [
+    "Where to buy?",
+    "In the US (IntegratedMedSys or Amazon). Easy and low risk. Keep one Jamar if you want to compare with research."
+   ]
+  ],
+  "neko": {
+   "match": "Grip strength",
+   "score": 5,
+   "note": "Same measurement Neko takes. A clinical grip meter measures exactly the same thing."
+  }
+ },
+ {
   "id": "iv",
   "ic": "💺",
   "name": "IV recliners (4)",
