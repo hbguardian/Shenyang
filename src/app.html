@@ -397,6 +397,8 @@ details.more summary::after{content:" ▾"}details.more[open] summary::after{con
 .sh{font:800 18px var(--display);margin:6px 0 0}
 .needs{display:flex;flex-wrap:wrap;gap:6px}.nd-r{font:600 13.5px var(--body);border-radius:999px;padding:6px 11px;background:var(--sunk)}.nd-r.must{background:var(--good-soft);color:var(--good)}
 .sync-row{display:flex}.sync-row .btn{flex:1}
+.dots{display:inline-flex;gap:3px;vertical-align:middle;margin-left:4px}.dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}.dots i.on{background:var(--us)}
+.nk{font:600 13.5px var(--body)}.nkbox{background:var(--us-soft);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:6px}.nk-h{display:flex;flex-wrap:wrap;align-items:center;gap:6px}.nk-h b{font:800 16px var(--display)}.nk-l{font:700 12px var(--mono);color:var(--us);text-transform:uppercase;letter-spacing:.05em}.nkbox p{font-size:14.5px}
 .co{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .co-h{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;padding:12px 14px}
 .co-h b{font:800 16px/1.2 var(--display);display:block}
@@ -1097,6 +1099,9 @@ curDay=chinaDay();renderTrip();
 
 let bF="all";
 const needs=it=>it.checks.filter(k=>CK[k].critical);
+const NK=["Not part of Neko","A little like it","Partly like it","Close","Very close","Same thing"];
+const dots=n=>`<span class="dots" aria-label="${n} of 5">${[1,2,3,4,5].map(i=>`<i class="${i<=n?"on":""}"></i>`).join("")}</span>`;
+const nekoLine=it=>{const k=it.neko;if(!k)return "";return k.score?`<span class="lbl">Like Neko's</span><span class="nk">${esc(k.match)} ${dots(k.score)}</span>`:`<span class="lbl">Neko</span><span class="nk muted">Not part of Neko's scan</span>`;};
 function renderBuy(){const st=BUY.map(itemState);const ok=st.filter(x=>x.ok).length,q=st.filter(x=>x.quote).length;
  $("#bOk").textContent=ok+" of "+BUY.length+" machines OK for America";$("#bSub").textContent=q+" quoted · "+st.filter(x=>x.met).length+" with a maker met";
  $("#bBar").style.width=(ok/BUY.length*100).toFixed(1)+"%";$("#bRing").style.strokeDashoffset=(170*(1-ok/BUY.length)).toFixed(1);
@@ -1104,7 +1109,7 @@ function renderBuy(){const st=BUY.map(itemState);const ok=st.filter(x=>x.ok).len
  $("#bNext").hidden=true;if(nx){$("#bNext").dataset.item=nx.id;$("#bNextT").textContent=nx.ic+" "+nx.name;}
  $("#bChips").innerHTML=[["all","All "+BUY.length],["todo","Still to do"],["done","OK for America"]].map(f=>`<button class="chip" type="button" data-bf="${f[0]}" aria-pressed="${bF===f[0]}">${f[1]}</button>`).join("");
  const L=BUY.filter((it,i)=>bF==="all"||(bF==="done"?st[i].ok:!st[i].ok));
- $("#bList").innerHTML=L.map(it=>{const x=itemState(it),n=supsFor(it).length;return `<button class="mc${x.ok?" done":""}" type="button" data-item="${it.id}"><span class="pic">${IMG[it.id]||""}${x.ok?'<span class="okb">✓ OK for USA</span>':""}</span><span class="mc-b"><b>${esc(it.name)}</b><span class="lbl">Must have</span><span class="nd">${needs(it).map(k=>`<i>${esc(CK[k].short)}</i>`).join("")}</span><span class="lbl">Companies (${n})</span><span class="co-names">${supsFor(it).map(s=>esc(s.en.replace(/ \(.*\)$/,""))).join(" · ")||"Ask at CMEF"}</span>${pips(x)}</span></button>`;}).join("")||'<p class="muted">Nothing here yet.</p>';}
+ $("#bList").innerHTML=L.map(it=>{const x=itemState(it),n=supsFor(it).length;return `<button class="mc${x.ok?" done":""}" type="button" data-item="${it.id}"><span class="pic">${IMG[it.id]||""}${x.ok?'<span class="okb">✓ OK for USA</span>':""}</span><span class="mc-b"><b>${esc(it.name)}</b>${nekoLine(it)}<span class="lbl">Must have</span><span class="nd">${needs(it).map(k=>`<i>${esc(CK[k].short)}</i>`).join("")}</span><span class="lbl">Companies (${n})</span><span class="co-names">${supsFor(it).map(s=>esc(s.en.replace(/ \(.*\)$/,""))).join(" · ")||"Ask at CMEF"}</span>${pips(x)}</span></button>`;}).join("")||'<p class="muted">Nothing here yet.</p>';}
 /* item sheet */
 const bDlg=$("#buyDlg");let BC=null;
 function openItem(id){const it=BUY.find(b=>b.id===id);if(!it)return;BC={it,mode:"list"};if(bDlg.showModal&&!bDlg.open)bDlg.showModal();else bDlg.setAttribute("open","");bRender();$("#bBody").scrollTop=0;}
@@ -1129,6 +1134,7 @@ function bRender(){const it=BC.it;const B=$("#bBody");
  if(BC.mode==="list"){const ss=supsFor(it);$("#bTitle").textContent=it.ic+" "+it.name;
   const nice=it.checks.filter(k=>!CK[k].critical);
   B.innerHTML=`<div class="hero">${IMG[it.id]||""}</div><div class="b-top"><span class="zh" lang="zh">${esc(it.zh)}</span><p>${esc(it.what)}</p><p class="small muted">US ${esc(it.us)} · China ${esc(it.cn)}</p></div>
+  ${it.neko?`<h4 class="sh">🧬 Compared to Neko</h4><div class="nkbox">${it.neko.score?`<div class="nk-h"><b>${esc(it.neko.match)}</b>${dots(it.neko.score)}<span class="nk-l">${NK[it.neko.score]}</span></div>`:`<div class="nk-h"><b>Not part of Neko's scan</b></div>`}<p>${esc(it.neko.note)}</p></div>`:""}
   <h4 class="sh">✅ What it needs</h4><div class="needs">${needs(it).map(k=>`<span class="nd-r must">${esc(CK[k].short)}</span>`).join("")}${nice.map(k=>`<span class="nd-r">${esc(CK[k].short)}</span>`).join("")}</div><p class="small muted">Green = must have, or it can't be used in America.</p>
   <h4 class="sh">🏭 Companies to visit · ${ss.length}</h4>${ss.map(supCard).join("")||'<p class="muted">No maker found yet. Ask at CMEF.</p>'}
   ${(it.faq||[]).length?`<details class="more card"><summary>❓ Questions and answers</summary><div class="faq">${it.faq.map(f=>`<details><summary>${esc(f[0])}</summary><p>${esc(f[1])}</p></details>`).join("")}</div></details>`:""}`;return;}
