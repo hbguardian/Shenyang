@@ -127,7 +127,34 @@
    "match": "Skin scan",
    "score": 1,
    "note": "Neko photographs the whole body (2,000+ images, plus heat and depth sensors) to track every mole. This analyzer does the face only. The close match is the Canfield Vectra whole-body system (4/5), which we buy in the US."
-  }
+  },
+  "usPrices": [
+   [
+    "Zemits VeraFace",
+    "Zemits Official",
+    "$8,900"
+   ],
+   [
+    "M9 4D AI Skin Analyzer",
+    "Theia",
+    "$3,434"
+   ],
+   [
+    "Imagica AI Skin Analysis",
+    "Rejuva Fresh",
+    "$2,999"
+   ],
+   [
+    "Canfield VISIA",
+    "Canfield Scientific, NJ",
+    "$7,000–20,000"
+   ]
+  ],
+  "usNote": "Google Shopping listings, Oct 15, 2026. Some may be the same Chinese machine with a US brand on it.",
+  "nego": [
+   "美国卖家卖3000到8900美元。你们的出厂价是多少？",
+   "US sellers charge $3,000–8,900. What is your factory price?"
+  ]
  },
  {
   "id": "body",
