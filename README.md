@@ -20,3 +20,6 @@ Run from the repo root after `python3 tools/build.py` (needs Playwright with Chr
 - `node tests/china.mjs`: installs the offline copy, then opens the app with no internet and on a hanging connection, and checks the "new version" prompt.
 - `node tests/monkey.mjs`: taps every button on every screen at three phone widths and fails on any script error or sideways scrolling.
 - `node tests/handoff.mjs`: sends Farrukh's WeChat update into Harris's app and checks it arrives.
+
+### PDF guide
+`node tools/make_pdf.mjs` (after `python3 tools/build.py`) writes `docs/Pulse-China-Trip.pdf`: the same content as the app, laid out for a phone screen (A5). It works anywhere, including inside WeChat, with no internet.
