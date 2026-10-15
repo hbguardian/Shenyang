@@ -154,7 +154,8 @@
   "nego": [
    "美国卖家卖3000到8900美元。你们的出厂价是多少？",
    "US sellers charge $3,000–8,900. What is your factory price?"
-  ]
+  ],
+  "opt": "Optional. A sales tool for facials, not part of the health scan. The whole-body Vectra covers the health side."
  },
  {
   "id": "body",
