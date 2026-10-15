@@ -37,8 +37,13 @@ HEAD = """<meta name="theme-color" content="#2F7D6B">
 <script>window.PULSE_OFFLINE=true;</script>
 """
 
-TAIL = """<script>
-if("serviceWorker" in navigator&&location.protocol==="https:"){addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));}
+TAIL = """<div id="upd" hidden style="position:fixed;left:16px;right:16px;top:calc(10px + env(safe-area-inset-top,0px));z-index:40;display:flex;justify-content:center"><button type="button" class="btn" style="box-shadow:0 8px 24px rgba(0,0,0,.25)" onclick="location.reload()">✨ New version ready · Tap to update</button></div>
+<script>
+if("serviceWorker" in navigator&&(location.protocol==="https:"||location.hostname==="localhost")){
+ const had=!!navigator.serviceWorker.controller;
+ navigator.serviceWorker.addEventListener("controllerchange",()=>{if(had)document.getElementById("upd").hidden=false;});
+ addEventListener("load",()=>navigator.serviceWorker.register("sw.js").then(r=>{document.addEventListener("visibilitychange",()=>{if(!document.hidden)r.update().catch(()=>{});});}).catch(()=>{}));
+}
 </script>
 """
 
@@ -124,12 +129,16 @@ def main():
     ver = hashlib.sha256(html.encode()).hexdigest()[:10]
     (OUT / "sw.js").write_text(f"""const CACHE="pulse-{ver}";
 const FILES=["./","index.html","manifest.webmanifest","icon-180.png","icon-192.png","icon-512.png"];
-self.addEventListener("install",e=>{{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting()));}});
+// cache:"reload" skips the browser's HTTP cache so a new version really is new.
+self.addEventListener("install",e=>{{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES.map(u=>new Request(u,{{cache:"reload"}})))).then(()=>self.skipWaiting()));}});
 self.addEventListener("activate",e=>{{e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()));}});
-// Network first so updates arrive when there's signal; cache when there isn't.
+// Cache first: in China the connection to github.io often hangs instead of
+// failing, so never make the page wait on it. New versions arrive when the
+// browser re-checks sw.js in the background; the page then offers a reload.
 self.addEventListener("fetch",e=>{{
-  if(e.request.method!=="GET"||new URL(e.request.url).origin!==location.origin)return;
-  e.respondWith(fetch(e.request).then(r=>{{const c=r.clone();caches.open(CACHE).then(x=>x.put(e.request,c));return r;}}).catch(()=>caches.match(e.request,{{ignoreSearch:true}}).then(r=>r||caches.match("index.html"))));
+  const req=e.request;
+  if(req.method!=="GET"||new URL(req.url).origin!==location.origin)return;
+  e.respondWith(caches.match(req,{{ignoreSearch:true}}).then(hit=>hit||(req.mode==="navigate"?caches.match("index.html"):null)).then(hit=>hit||fetch(req).then(r=>{{if(r.ok){{const c=r.clone();caches.open(CACHE).then(x=>x.put(req,c));}}return r;}})));
 }});
 """, encoding="utf-8")
     (OUT / ".nojekyll").write_text("")

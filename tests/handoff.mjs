@@ -1,0 +1,10 @@
+import { chromium } from 'playwright';
+const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium-1194/chrome-linux/chrome'});
+const f=await b.newPage();await f.goto('file:///home/user/Shenyang/docs/index.html');
+await f.evaluate(()=>{TS["co-mindray"]={done:true,price:"$4,200 · 李经理 (Mr. Li)",ok:true,chk:{fda510k:"y"},at:new Date().toISOString()};TS["fun-majia"]={done:true,at:new Date().toISOString()};TS["why"]={done:true,at:new Date().toISOString()};LS.unshift({topic:"pay",text:"They all ask 30% — we said no",mission:"",at:new Date().toISOString(),local:true});});
+const msg=await f.evaluate(()=>buildUpdate());
+const h=await b.newPage();await h.goto('file:///home/user/Shenyang/src/app.html');
+const r=await h.evaluate(async m=>{const saved={};tdb={collection:c=>({doc:id=>({set:async d=>{saved[c+"/"+id]=d;}}),add:async d=>{saved[c+"/+"]=d;}})};
+ const out=await importUpdate(m);return {out,saved,xp:document.getElementById("tLevel").textContent};},msg);
+console.log(r.out);console.log(Object.keys(r.saved).join(", "));console.log("Mindray on Harris side:",JSON.stringify(r.saved["trip/co-mindray"]));console.log("Harris XP:",r.xp);
+await b.close();
