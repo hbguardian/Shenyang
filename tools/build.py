@@ -15,6 +15,8 @@ import hashlib
 import json
 import pathlib
 import re
+import shutil
+import subprocess
 
 from PIL import Image, ImageDraw, ImageFont
 
@@ -57,6 +59,20 @@ def icon(size):
     return img
 
 
+def check_scripts(html):
+    """Refuse to build if any inline script has a syntax error: one bad quote
+    kills every button in the app."""
+    node = shutil.which("node")
+    if not node:
+        print("warning: node not found, skipped the script syntax check")
+        return
+    js = ("const h=require('fs').readFileSync(0,'utf8');const re=/<script>([\\s\\S]*?)<\\/script>/g;"
+          "let m;while((m=re.exec(h)))new Function(m[1]);")
+    r = subprocess.run([node, "-e", js], input=html, text=True, capture_output=True)
+    if r.returncode:
+        raise SystemExit("script syntax error, not building:\n" + r.stderr.strip().splitlines()[-1])
+
+
 def main():
     html = SRC.read_text(encoding="utf-8")
     html, n = re.subn(r'<link rel="(?:preconnect|stylesheet)" href="https://fonts\.g[^"]*"[^>]*>\n?', "", html)
@@ -65,6 +81,7 @@ def main():
     html = html.replace("<title>Pulse Equipment Sourcing</title>",
                         "<title>Pulse Equipment Sourcing</title>\n" + HEAD, 1)
     html = html.replace("</body>", TAIL + "</body>", 1)
+    check_scripts(html)
     OUT.mkdir(exist_ok=True)
     (OUT / "index.html").write_text(html, encoding="utf-8")
 
