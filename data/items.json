@@ -1,14 +1,384 @@
 [
-  {"id": "skin", "ic": "✨", "name": "Face skin analyzer", "zh": "皮肤检测仪", "what": "Photographs the face to show spots, pores and wrinkles.", "us": "$7,000–20,000 (Canfield VISIA)", "cn": "~$2,000", "need": 1, "checks": ["fdalist", "english", "power", "lic", "fob"]},
-  {"id": "body", "ic": "🧍", "name": "3D body scanner", "zh": "3D体态扫描仪", "what": "Rotating scan of body shape for the monthly re-scan.", "us": "$10,000 + ~$100/mo (Fit3D)", "cn": "~$13,000", "need": 1, "checks": ["ul", "power", "data", "english", "lic", "fob"]},
-  {"id": "ultra", "ic": "🔊", "name": "Handheld heart ultrasound", "zh": "掌上超声", "what": "Quick heart look when a scan flags something. Chinese brand, buy from its US dealer.", "us": "$4,999 (GE Vscan Air)", "cn": "$4,432 via US dealer", "need": 1, "checks": ["fda510k", "usdealer", "lic"]},
-  {"id": "iv", "ic": "💺", "name": "IV recliners (4)", "zh": "输液椅", "what": "Reclining chairs for the IV lounge.", "us": "$2,558–6,381 each", "cn": "Quote needed", "need": 4, "checks": ["fdareg", "ul", "fire", "lic", "inspect", "fob"]},
-  {"id": "fridge", "ic": "🧊", "name": "Medical fridge with alarm", "zh": "医用冷藏箱", "what": "Keeps IV vitamins and Botox cold. Buy the US 115V model from a US dealer.", "us": "$1,371", "cn": "$1,380+", "need": 1, "checks": ["power", "ul", "usdealer"]},
-  {"id": "sauna", "ic": "🔥", "name": "Saunas", "zh": "桑拿房", "what": "Traditional and infrared rooms for the thermal floor.", "us": "Northern Saunas quote", "cn": "Quote needed", "need": 2, "checks": ["ul", "power", "lic", "inspect", "fob"]},
-  {"id": "pool", "ic": "♨️", "name": "Hydro pools and spa", "zh": "按摩浴缸 / 水疗池", "what": "Two 7×10 ft hydro pools and the round spa. NJ health department must approve the plans.", "us": "US dealer quote", "cn": "$2,799–24,699", "need": 3, "checks": ["ul", "power", "lic", "inspect", "fob"]},
-  {"id": "plunge", "ic": "❄️", "name": "Cold plunge chillers", "zh": "冷水机 / 冰浴池", "what": "Chillers and tubs for the four cold plunges.", "us": "US brand quote", "cn": "Quote needed", "need": 4, "checks": ["ul", "power", "lic", "inspect", "fob"]},
-  {"id": "red", "ic": "🔴", "name": "Red light bed", "zh": "红光床", "what": "Full-body LED bed. Phase 2. Only with a real FDA number.", "us": "$95,000–135,000", "cn": "~$14,880", "need": 1, "checks": ["fda510k", "ul", "power", "lic", "fob"]},
-  {"id": "boots", "ic": "🦵", "name": "Compression boots", "zh": "空气波压力治疗仪", "what": "Leg recovery for the lounge and recovery room.", "us": "$899 (Normatec 3)", "cn": "$29–680", "need": 4, "checks": ["fdareg", "power", "lic", "fob"]},
-  {"id": "chairs", "ic": "🪑", "name": "Treatment and blood-draw chairs", "zh": "美容椅 / 采血椅", "what": "Aesthetics chair and phlebotomy chair.", "us": "~$7,500 (estimate)", "cn": "Quote needed", "need": 2, "checks": ["fdareg", "ul", "lic", "fob"]},
-  {"id": "decor", "ic": "🗄️", "name": "Lockers, towel warmers, lighting", "zh": "更衣柜 / 毛巾加热柜 / 灯具", "what": "The look Carissa designs. She approves finishes first.", "us": "US suppliers", "cn": "Quote needed", "need": 1, "checks": ["ul", "power", "lic", "fob"]}
+ {
+  "id": "band",
+  "ic": "⌚",
+  "name": "Pulse band (our own wearable)",
+  "zh": "智能手环（白标定制）",
+  "what": "A screenless band with the Pulse logo: heart rate, HRV, sleep and blood oxygen, linked to the Pulse app.",
+  "us": "WHOOP: ~$199–359 per member per year",
+  "cn": "Quote needed (private label)",
+  "need": 1,
+  "checks": [
+   "fcc",
+   "battery",
+   "sdk",
+   "data",
+   "claims",
+   "lic",
+   "ref",
+   "fob"
+  ],
+  "faq": []
+ },
+ {
+  "id": "skin",
+  "ic": "✨",
+  "name": "Face skin analyzer",
+  "zh": "皮肤检测仪",
+  "what": "Photographs the face to show spots, pores and wrinkles.",
+  "us": "$7,000–20,000 (Canfield VISIA)",
+  "cn": "~$2,000",
+  "need": 1,
+  "checks": [
+   "fdalist",
+   "english",
+   "power",
+   "lic",
+   "ref",
+   "fob"
+  ],
+  "faq": [
+   [
+    "Is a $2,000 Chinese one as good as the $7,000+ VISIA?",
+    "The photos can be close. VISIA's edge is its skin-comparison database and US service. Ask for a side-by-side demo on your own face, then compare the reports."
+   ],
+   [
+    "Can we use it on members?",
+    "Yes, as a photo and education tool. Never call the result a diagnosis."
+   ],
+   [
+    "Any hidden costs?",
+    "Ask if the software needs a yearly license or a Chinese server, and what a replacement camera costs."
+   ]
+  ]
+ },
+ {
+  "id": "body",
+  "ic": "🧍",
+  "name": "3D body scanner",
+  "zh": "3D体态扫描仪",
+  "what": "Rotating scan of body shape for the monthly re-scan.",
+  "us": "$10,000 + ~$100/mo (Fit3D)",
+  "cn": "~$13,000",
+  "need": 1,
+  "checks": [
+   "ul",
+   "power",
+   "data",
+   "english",
+   "lic",
+   "ref",
+   "fob"
+  ],
+  "faq": [
+   [
+    "Do members' scans leave the building?",
+    "Ask where scans are stored. Health data on a Chinese server is a problem for a US clinic. Best: data on our own computer or a US server."
+   ],
+   [
+    "Is there a monthly fee?",
+    "Fit3D charges about $100 a month. Ask if Visbody's software is a subscription."
+   ],
+   [
+    "How much room does it need?",
+    "Ask for the floor space, ceiling height and weight limit of the turntable."
+   ]
+  ]
+ },
+ {
+  "id": "ultra",
+  "ic": "🔊",
+  "name": "Handheld heart ultrasound",
+  "zh": "掌上超声",
+  "what": "Quick heart look when a scan flags something. Chinese brand, buy from its US dealer.",
+  "us": "$4,999 (GE Vscan Air)",
+  "cn": "$4,432 via US dealer",
+  "need": 1,
+  "checks": [
+   "fda510k",
+   "usdealer",
+   "lic"
+  ],
+  "faq": [
+   [
+    "Why not buy it straight from China?",
+    "Warranty, service and the FDA paperwork run through the US office. A direct import can be held at customs."
+   ],
+   [
+    "Which probe do we need for the heart?",
+    "A cardiac (phased-array) probe. In Chinese: 相控阵探头 (xiàngkòngzhèn tàntóu)."
+   ],
+   [
+    "Who is allowed to scan?",
+    "Whoever the medical director approves. Check before buying."
+   ]
+  ]
+ },
+ {
+  "id": "iv",
+  "ic": "💺",
+  "name": "IV recliners (4)",
+  "zh": "输液椅",
+  "what": "Reclining chairs for the IV lounge.",
+  "us": "$2,558–6,381 each",
+  "cn": "Quote needed",
+  "need": 4,
+  "checks": [
+   "fdareg",
+   "ul",
+   "fire",
+   "lic",
+   "inspect",
+   "ref",
+   "fob"
+  ],
+  "faq": [
+   [
+    "Electric or manual?",
+    "Electric needs a UL or ETL mark. Manual skips that and costs less."
+   ],
+   [
+    "What matters for cleaning?",
+    "Wipeable medical vinyl, few seams, removable arm pads."
+   ],
+   [
+    "What else to ask?",
+    "Weight limit, lie-flat position (if someone faints), and locking wheels."
+   ]
+  ]
+ },
+ {
+  "id": "fridge",
+  "ic": "🧊",
+  "name": "Medical fridge with alarm",
+  "zh": "医用冷藏箱",
+  "what": "Keeps IV vitamins and Botox cold. Buy the US 115V model from a US dealer.",
+  "us": "$1,371",
+  "cn": "$1,380+",
+  "need": 1,
+  "checks": [
+   "power",
+   "ul",
+   "usdealer"
+  ],
+  "faq": [
+   [
+    "Why not import one?",
+    "Same price as the US dealer, and the US model is already 115V and listed. No reason to import."
+   ],
+   [
+    "What makes it 'medical'?",
+    "A digital temperature log and an alarm. Ask for a model that meets CDC vaccine-storage guidance."
+   ]
+  ]
+ },
+ {
+  "id": "sauna",
+  "ic": "🔥",
+  "name": "Saunas",
+  "zh": "桑拿房",
+  "what": "Traditional and infrared rooms for the thermal floor.",
+  "us": "Northern Saunas quote",
+  "cn": "Quote needed",
+  "need": 2,
+  "checks": [
+   "ul",
+   "power",
+   "lic",
+   "inspect",
+   "ref",
+   "fob"
+  ],
+  "faq": [
+   [
+    "What's the biggest risk?",
+    "The heater and controls. Without a UL or ETL listing, the NJ inspector won't sign off."
+   ],
+   [
+    "Can we buy just the room from China?",
+    "Often the smart move: a Chinese wooden cabin with a US-listed heater and controls. Ask if they'll sell the cabin without the heater."
+   ],
+   [
+    "How long until it arrives?",
+    "Usually 30–60 days to build plus 30–40 days by sea. Confirm in writing."
+   ]
+  ]
+ },
+ {
+  "id": "pool",
+  "ic": "♨️",
+  "name": "Hydro pools and spa",
+  "zh": "按摩浴缸 / 水疗池",
+  "what": "Two 7×10 ft hydro pools and the round spa. NJ health department must approve the plans.",
+  "us": "US dealer quote",
+  "cn": "$2,799–24,699",
+  "need": 3,
+  "checks": [
+   "ul",
+   "power",
+   "lic",
+   "inspect",
+   "ref",
+   "fob"
+  ],
+  "faq": [
+   [
+    "What do the NJ rules need?",
+    "Health department plan approval for a spa used by the public, and pool pumps and filters usually need NSF/ANSI 50 for public pools."
+   ],
+   [
+    "Who installs and repairs it?",
+    "Ask if they have a US installer or service partner. If not, find one before ordering."
+   ],
+   [
+    "What else to ask?",
+    "The heater and pump wattage, and whether every electrical part is UL or ETL listed."
+   ]
+  ]
+ },
+ {
+  "id": "plunge",
+  "ic": "❄️",
+  "name": "Cold plunge chillers",
+  "zh": "冷水机 / 冰浴池",
+  "what": "Chillers and tubs for the four cold plunges.",
+  "us": "US brand quote",
+  "cn": "Quote needed",
+  "need": 4,
+  "checks": [
+   "ul",
+   "power",
+   "lic",
+   "inspect",
+   "ref",
+   "fob"
+  ],
+  "faq": [
+   [
+    "What has to be certified?",
+    "The chiller (it's electrical): UL or ETL. Ask how the water is kept clean (ozone, UV, filter)."
+   ],
+   [
+    "Do they make for US brands?",
+    "Ask which ones, then Harris checks it on ImportYeti (US customs records)."
+   ],
+   [
+    "What's the running cost?",
+    "Ask the power draw in watts and the noise level."
+   ]
+  ]
+ },
+ {
+  "id": "red",
+  "ic": "🔴",
+  "name": "Red light bed",
+  "zh": "红光床",
+  "what": "Full-body LED bed. Phase 2. Only with a real FDA number.",
+  "us": "$95,000–135,000",
+  "cn": "~$14,880",
+  "need": 1,
+  "checks": [
+   "fda510k",
+   "ul",
+   "power",
+   "lic",
+   "ref",
+   "fob"
+  ],
+  "faq": [
+   [
+    "Is it a medical device?",
+    "Light beds sold for wrinkles or pain need an FDA 510(k). Without a K-number, it's a no for 510 Summit."
+   ],
+   [
+    "What power does it need?",
+    "Big beds draw a lot. Ask the watts and whether it needs a 240V circuit."
+   ],
+   [
+    "How long do the lights last?",
+    "Ask the LED lifetime in hours and the price of a replacement panel."
+   ]
+  ]
+ },
+ {
+  "id": "boots",
+  "ic": "🦵",
+  "name": "Compression boots",
+  "zh": "空气波压力治疗仪",
+  "what": "Leg recovery for the lounge and recovery room.",
+  "us": "$899 (Normatec 3)",
+  "cn": "$29–680",
+  "need": 4,
+  "checks": [
+   "fdareg",
+   "power",
+   "lic",
+   "ref",
+   "fob"
+  ],
+  "faq": [
+   [
+    "Can we sell recovery with these?",
+    "Yes, for recovery and wellness. Medical claims (swelling, clots) need FDA clearance."
+   ],
+   [
+    "What wears out?",
+    "The leg sleeves. Ask the price of spare sleeves and how they're cleaned."
+   ]
+  ]
+ },
+ {
+  "id": "chairs",
+  "ic": "🪑",
+  "name": "Treatment and blood-draw chairs",
+  "zh": "美容椅 / 采血椅",
+  "what": "Aesthetics chair and phlebotomy chair.",
+  "us": "~$7,500 (estimate)",
+  "cn": "Quote needed",
+  "need": 2,
+  "checks": [
+   "fdareg",
+   "ul",
+   "lic",
+   "ref",
+   "fob"
+  ],
+  "faq": [
+   [
+    "Electric or manual?",
+    "Electric needs a UL or ETL mark. Manual skips that."
+   ],
+   [
+    "What makes a good blood-draw chair?",
+    "Arms that lock, can tip back if someone faints, wipeable vinyl."
+   ]
+  ]
+ },
+ {
+  "id": "decor",
+  "ic": "🗄️",
+  "name": "Lockers, towel warmers, lighting",
+  "zh": "更衣柜 / 毛巾加热柜 / 灯具",
+  "what": "The look Carissa designs. She approves finishes first.",
+  "us": "US suppliers",
+  "cn": "Quote needed",
+  "need": 1,
+  "checks": [
+   "ul",
+   "power",
+   "lic",
+   "ref",
+   "fob"
+  ],
+  "faq": [
+   [
+    "How do we avoid surprises?",
+    "Get samples of every finish first. Carissa approves before anything is ordered."
+   ],
+   [
+    "What needs certificates?",
+    "Anything that plugs in (UL or ETL), and fire ratings for lockers and fabrics."
+   ]
+  ]
+ }
 ]

@@ -19,7 +19,29 @@
   "cert": "FDA ✓ TE Air: K231685, K240906",
   "certOk": true,
   "risk": "Lowest risk. Ask them to pass you to Mindray North America for the US price.",
-  "web": ""
+  "web": "",
+  "about": "China's biggest medical device maker. Listed in Shenzhen (300760). 2025 revenue about ¥33bn, over half from outside China. Known for monitors, ultrasound and lab machines.",
+  "clients": [
+   [
+    "Has its own US company, Mindray North America, in Mahwah, NJ",
+    "v"
+   ],
+   [
+    "Exhibits at CMEF Beijing",
+    "v"
+   ]
+  ],
+  "connect": [
+   "US office: 201-995-8000 or 800-288-2121 (press 3 for orders), Mon–Fri 8:30–5:30 ET. Harris can call from NJ.",
+   "Sales: “Contact Sales” form on mindray.com/na",
+   "At CMEF: see the products at the booth, then ask to be passed to Mindray North America"
+  ],
+  "fit": [
+   "Can an engineer from the Mahwah office service us, and how fast?",
+   "Is this exact model FDA-cleared for the US, or a China-only version?",
+   "US price and service contract vs the booth price?"
+  ],
+  "flags": "Patent lawsuit filed Sept 2025 (Terason) trying to block US sales of some ultrasound models: ask if this model is affected. Old FDA warning letter (2012) to the US unit."
  },
  {
   "id": "co-edan",
@@ -41,7 +63,28 @@
   "cert": "FDA ✓ Nano C5: K251268",
   "certOk": true,
   "risk": "Get US service and warranty terms in writing.",
-  "web": ""
+  "web": "",
+  "about": "Listed in Shenzhen (300206). About ¥1.9bn revenue (2025). Makes monitors, ECG and ultrasound.",
+  "clients": [
+   [
+    "US company EDAN Diagnostics in San Diego",
+    "v"
+   ],
+   [
+    "Sold by US resellers incl. Relink Medical, MDMaxx, DuraPro Health",
+    "v"
+   ]
+  ],
+  "connect": [
+   "EDAN Diagnostics: +1-858-750-3066, edan-info@edandiagnostics.com",
+   "Ask for the nearest authorized service in New Jersey"
+  ],
+  "fit": [
+   "Who services it in New Jersey?",
+   "Is this handheld model FDA-cleared and in the US device database?",
+   "US warranty length?"
+  ],
+  "flags": "Recall (Oct 2025, ongoing) of some patient monitors for a cybersecurity issue. Not the handheld ultrasound, but ask."
  },
  {
   "id": "co-sonoscape",
@@ -63,7 +106,28 @@
   "cert": "FDA on some models (e.g. K252498). Handheld not confirmed",
   "certOk": false,
   "risk": "Ask which exact handheld model is FDA-cleared.",
-  "web": ""
+  "web": "",
+  "about": "Listed in Shenzhen (300633). Founded 2002, about 3,100 staff, ¥2.3bn revenue (2025). Ultrasound and endoscopes.",
+  "clients": [
+   [
+    "Vizient (big US hospital buying group) contract in 2022 covering handheld ultrasound",
+    "v"
+   ],
+   [
+    "MXR Imaging, US dealer since 2020",
+    "v"
+   ]
+  ],
+  "connect": [
+   "CMEF booth",
+   "SonoScape North America, Dallas TX (sonoscapenorthamerica.us)",
+   "China HQ: +86-755-26722890"
+  ],
+  "fit": [
+   "Which handheld models are FDA-cleared?",
+   "Who services it in New Jersey?",
+   "English software, and does it connect to our medical records?"
+  ]
  },
  {
   "id": "co-meicet",
@@ -85,7 +149,28 @@
   "cert": "In the US device list, but no FDA clearance found",
   "certOk": false,
   "risk": "Use it as a photo tool only. No medical claims in the US.",
-  "web": "https://www.meicet.com"
+  "web": "https://www.meicet.com",
+  "about": "Shanghai company making skin analyzers (MC88, MC10). Exhibits every year at IMCAS Asia (aesthetics fair).",
+  "clients": [
+   [
+    "TADLI resells the MC10 in Australia",
+    "v"
+   ],
+   [
+    "“In 80+ countries”",
+    "c"
+   ]
+  ],
+  "connect": [
+   "WhatsApp +86 182 2118 9532 or info@meicet.com",
+   "Ask for a video demo on a real face"
+  ],
+  "fit": [
+   "Who is the US importer or FDA US agent?",
+   "Are patient photos stored on servers in China?",
+   "US warranty? The spec sheet says 1 year."
+  ],
+  "flags": "No US customers or distributor found. B2B listing marks the seller “unverified”."
  },
  {
   "id": "co-visbody",
@@ -107,7 +192,24 @@
   "cert": "No UL/ETL or FDA found",
   "certOk": false,
   "risk": "Member data must not sit on a Chinese server.",
-  "web": "https://visbody.com"
+  "web": "https://visbody.com",
+  "about": "Xi'an company, founded 2014. 3D body scanners with body composition (S30, M30). Exhibits at FIBO and IHRSA (fitness fairs).",
+  "clients": [
+   [
+    "“18,000 locations in 69 countries”",
+    "c"
+   ]
+  ],
+  "connect": [
+   "visbody.com: distributor and virtual-demo request",
+   "Canton Fair, Guangzhou, Oct 31–Nov 4, booth 21.2B13-16"
+  ],
+  "fit": [
+   "Who supports it in the US? Spare parts in the US?",
+   "Show the FDA document behind the “FDA certified” claim",
+   "Where is scan data stored? Can we export it?"
+  ],
+  "flags": "Says “FDA certified” but no FDA record found. No named US gym or clinic found."
  },
  {
   "id": "sp-haier",
@@ -129,7 +231,23 @@
   "cert": "UL listed on some US models; check the exact one",
   "certOk": false,
   "risk": "Pick a model that meets the CDC vaccine-storage spec.",
-  "web": ""
+  "web": "",
+  "about": "Part of the Haier Group, founded 1998, listed (688139). Medical and vaccine fridges and freezers. UNICEF-approved.",
+  "clients": [
+   [
+    "Sold in the US via MilliporeSigma, Thomas Scientific and Genesee Scientific",
+    "v"
+   ]
+  ],
+  "connect": [
+   "Buy through a US seller for the warranty",
+   "haiermedical.com"
+  ],
+  "fit": [
+   "Meets CDC vaccine storage (NSF 456) with a data logger?",
+   "Who repairs the compressor in NJ?",
+   "UL listed at 115V?"
+  ]
  },
  {
   "id": "sp-saikang",
@@ -152,7 +270,28 @@
   "cert": "FDA registration not found",
   "certOk": false,
   "risk": "Established, listed company. Ask for the FDA registration number.",
-  "web": ""
+  "web": "",
+  "about": "Zhangjiagang hospital furniture maker: beds, operating tables, stretchers, chairs. Says founded 2002, 400+ staff.",
+  "clients": [
+   [
+    "Resold by medi-shop.gr in Greece; sold in Moldovan government tenders",
+    "v"
+   ],
+   [
+    "“Exports to 108 countries”",
+    "c"
+   ]
+  ],
+  "connect": [
+   "Made-in-China and MedicalExpo profiles",
+   "Factory visit: near Shanghai"
+  ],
+  "fit": [
+   "FDA registration number and US agent? (FDA registers, it doesn't “certify”)",
+   "Electric chairs: UL or IEC 60601 at 110V?",
+   "Minimum order, lead time, spare parts?"
+  ],
+  "flags": "Its “FDA” claim comes from resellers, not records."
  },
  {
   "id": "sp-medi",
@@ -174,7 +313,24 @@
   "cert": "CE only. No FDA found",
   "certOk": false,
   "risk": "Infusion chairs MK-F02, MK-F05. Needs US FDA registration.",
-  "web": "https://www.medik-medical.com"
+  "web": "https://www.medik-medical.com",
+  "about": "Zhangjiagang hospital furniture maker. Says founded 1995, one of China's largest. Offices in Hungary, Dubai, Thailand, NZ, Kenya, Colombia.",
+  "clients": [
+   [
+    "No US or European customers found",
+    "c"
+   ]
+  ],
+  "connect": [
+   "info@medik-medical.com",
+   "No. 3 Jinxiu Rd, Jinfeng Industrial Zone, Zhangjiagang"
+  ],
+  "fit": [
+   "FDA registration and US agent?",
+   "US voltage and safety certificate?",
+   "Any US customers or warehouse?"
+  ],
+  "flags": "No FDA record of any kind found."
  },
  {
   "id": "sp-sunrans",

@@ -1,4 +1,4 @@
-const CACHE="pulse-46392f8a37";
+const CACHE="pulse-e1010b872e";
 const FILES=["./","index.html","manifest.webmanifest","icon-180.png","icon-192.png","icon-512.png"];
 // cache:"reload" skips the browser's HTTP cache so a new version really is new.
 self.addEventListener("install",e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES.map(u=>new Request(u,{cache:"reload"})))).then(()=>self.skipWaiting()));});

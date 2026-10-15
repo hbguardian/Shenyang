@@ -1,14 +1,121 @@
 {
-  "fda510k": {"q": "Did they give you an FDA 510(k) number? It starts with K, like K231685.", "zh": "请提供这台设备的美国FDA 510(k)编号。", "en": "Please give me this machine's US FDA 510(k) number.", "verify": "Look it up: search “FDA 510k database” and type the K-number. The company and model must match.", "critical": true},
-  "fdalist": {"q": "Is this exact model in the US FDA device list? Ask for the listing or registration number.", "zh": "这个型号在美国FDA有注册或列名吗？请提供编号。", "en": "Is this model registered or listed with the US FDA? Please give the number.", "verify": "Harris can check it on the FDA registration and listing database.", "critical": true},
-  "fdareg": {"q": "Is the factory registered with the US FDA? Ask for the registration number.", "zh": "贵公司在美国FDA有工厂注册吗？请提供注册号。", "en": "Is your factory registered with the US FDA? Please give the registration number.", "verify": "Harris checks it on the FDA establishment registration database.", "critical": true},
-  "ul": {"q": "Does it have a UL, ETL or CSA mark? Ask for the certificate or file number. CE doesn't count.", "zh": "有UL或ETL认证吗？请提供证书编号。", "en": "Does it have UL or ETL certification? Please give the certificate number.", "verify": "Look it up in UL Product iQ or the Intertek (ETL) directory.", "critical": true},
-  "power": {"q": "Can they make it for US power, 110–120V and 60Hz, with a US plug?", "zh": "可以做美国电压110伏、60赫兹，配美标插头吗？", "en": "Can it be made for US power, 110V 60Hz, with a US plug?", "verify": "The voltage must be written on the quote and on the label.", "critical": true},
-  "lic": {"q": "Did they give you the business license and credit code? It should say 在营 (“active”).", "zh": "请提供营业执照和统一社会信用代码。", "en": "Please send your business license and credit code.", "verify": "Search the name on gsxt.gov.cn. It must say 在营 (“active”).", "critical": true},
-  "inspect": {"q": "Will they accept an inspection by SGS or QIMA before shipping?", "zh": "可以接受第三方验货（SGS或QIMA）吗？", "en": "Do you accept third-party inspection (SGS or QIMA)?", "verify": "A “no” here is a red flag.", "critical": false},
-  "fob": {"q": "Did you get a price FOB Dalian, with delivery time, in writing?", "zh": "大连港离岸价（FOB）是多少？交货期多久？", "en": "What is the FOB price at Dalian port, and how long is delivery?", "verify": "Take a photo of the written quote.", "critical": false},
-  "usdealer": {"q": "Is there a US dealer or US office that sells and services it?", "zh": "在美国有经销商或售后服务吗？", "en": "Is there a US dealer or US service for this?", "verify": "Buy through the US dealer so service and warranty work in New Jersey.", "critical": true},
-  "english": {"q": "Is the software and report in English?", "zh": "软件和报告有英文版吗？", "en": "Is the software and the report available in English?", "verify": "Ask them to switch the demo to English and take a photo.", "critical": false},
-  "data": {"q": "Is member data stored outside China, or can it stay on our own computer?", "zh": "用户数据存在哪里？可以存在美国或本地吗？", "en": "Where is user data stored? Can it stay in the US or on our own computer?", "verify": "Health data on a Chinese server is a problem for a US clinic.", "critical": true},
-  "fire": {"q": "Does the fabric have a fire-safety certificate (like CAL 117)?", "zh": "面料有防火认证吗？比如美国CAL 117。", "en": "Does the fabric have a fire-safety certificate, like US CAL 117?", "verify": "Ask for the test report.", "critical": false}
+ "fda510k": {
+  "q": "Did they give you an FDA 510(k) number? It starts with K, like K231685.",
+  "zh": "请提供这台设备的美国FDA 510(k)编号。",
+  "en": "Please give me this machine's US FDA 510(k) number.",
+  "verify": "Look it up: search “FDA 510k database” and type the K-number. The company and model must match.",
+  "critical": true
+ },
+ "fdalist": {
+  "q": "Is this exact model in the US FDA device list? Ask for the listing or registration number.",
+  "zh": "这个型号在美国FDA有注册或列名吗？请提供编号。",
+  "en": "Is this model registered or listed with the US FDA? Please give the number.",
+  "verify": "Harris can check it on the FDA registration and listing database.",
+  "critical": true
+ },
+ "fdareg": {
+  "q": "Is the factory registered with the US FDA? Ask for the registration number.",
+  "zh": "贵公司在美国FDA有工厂注册吗？请提供注册号。",
+  "en": "Is your factory registered with the US FDA? Please give the registration number.",
+  "verify": "Harris checks it on the FDA establishment registration database.",
+  "critical": true
+ },
+ "ul": {
+  "q": "Does it have a UL, ETL or CSA mark? Ask for the certificate or file number. CE doesn't count.",
+  "zh": "有UL或ETL认证吗？请提供证书编号。",
+  "en": "Does it have UL or ETL certification? Please give the certificate number.",
+  "verify": "Look it up in UL Product iQ or the Intertek (ETL) directory.",
+  "critical": true
+ },
+ "power": {
+  "q": "Can they make it for US power, 110–120V and 60Hz, with a US plug?",
+  "zh": "可以做美国电压110伏、60赫兹，配美标插头吗？",
+  "en": "Can it be made for US power, 110V 60Hz, with a US plug?",
+  "verify": "The voltage must be written on the quote and on the label.",
+  "critical": true
+ },
+ "lic": {
+  "q": "Did they give you the business license and credit code? It should say 在营 (“active”).",
+  "zh": "请提供营业执照和统一社会信用代码。",
+  "en": "Please send your business license and credit code.",
+  "verify": "Search the name on gsxt.gov.cn. It must say 在营 (“active”).",
+  "critical": true
+ },
+ "inspect": {
+  "q": "Will they accept an inspection by SGS or QIMA before shipping?",
+  "zh": "可以接受第三方验货（SGS或QIMA）吗？",
+  "en": "Do you accept third-party inspection (SGS or QIMA)?",
+  "verify": "A “no” here is a red flag.",
+  "critical": false
+ },
+ "fob": {
+  "q": "Did you get a price FOB Dalian, with delivery time, in writing?",
+  "zh": "大连港离岸价（FOB）是多少？交货期多久？",
+  "en": "What is the FOB price at Dalian port, and how long is delivery?",
+  "verify": "Take a photo of the written quote.",
+  "critical": false
+ },
+ "usdealer": {
+  "q": "Is there a US dealer or US office that sells and services it?",
+  "zh": "在美国有经销商或售后服务吗？",
+  "en": "Is there a US dealer or US service for this?",
+  "verify": "Buy through the US dealer so service and warranty work in New Jersey.",
+  "critical": true
+ },
+ "english": {
+  "q": "Is the software and report in English?",
+  "zh": "软件和报告有英文版吗？",
+  "en": "Is the software and the report available in English?",
+  "verify": "Ask them to switch the demo to English and take a photo.",
+  "critical": false
+ },
+ "data": {
+  "q": "Is member data stored outside China, or can it stay on our own computer?",
+  "zh": "用户数据存在哪里？可以存在美国或本地吗？",
+  "en": "Where is user data stored? Can it stay in the US or on our own computer?",
+  "verify": "Health data on a Chinese server is a problem for a US clinic.",
+  "critical": true
+ },
+ "fire": {
+  "q": "Does the fabric have a fire-safety certificate (like CAL 117)?",
+  "zh": "面料有防火认证吗？比如美国CAL 117。",
+  "en": "Does the fabric have a fire-safety certificate, like US CAL 117?",
+  "verify": "Ask for the test report.",
+  "critical": false
+ },
+ "fcc": {
+  "q": "Does it have an FCC ID? It's printed on the band or box, like 2AXXX-ABC123.",
+  "zh": "有美国FCC认证吗？请提供FCC ID。",
+  "en": "Does it have US FCC certification? Please give the FCC ID.",
+  "verify": "Look it up on fccid.io. The company name must match the factory.",
+  "critical": true
+ },
+ "battery": {
+  "q": "Do they have the battery shipping papers: a UN38.3 test report and an MSDS?",
+  "zh": "电池有UN38.3测试报告和MSDS吗？",
+  "en": "Does the battery have a UN38.3 test report and an MSDS?",
+  "verify": "Without these, the bands can't be flown or shipped legally.",
+  "critical": true
+ },
+ "sdk": {
+  "q": "Do we get the app or SDK, and do we own the brand and all member data?",
+  "zh": "可以提供SDK或白标App吗？品牌和用户数据归我们所有吗？",
+  "en": "Can you provide an SDK or white-label app? Do we own the brand and all user data?",
+  "verify": "Get it in the contract. No owning the data = no deal.",
+  "critical": true
+ },
+ "claims": {
+  "q": "Is it sold as wellness only? Any blood-oxygen or ECG medical claim needs its own FDA clearance.",
+  "zh": "在美国是作为健康类（非医疗）产品销售吗？血氧或心电功能有FDA许可吗？",
+  "en": "Is it sold in the US as a wellness (non-medical) product? Do the SpO2 or ECG features have FDA clearance?",
+  "verify": "Wellness wording only on our box and app, unless there's a K-number.",
+  "critical": false
+ },
+ "ref": {
+  "q": "Will they give you 2 customers in the US or Europe that you can contact?",
+  "zh": "能提供两个美国或欧洲的客户作为参考吗？",
+  "en": "Can you give me two customers in the US or Europe as references?",
+  "verify": "Harris can check those names on ImportYeti (US customs records).",
+  "critical": false
+ }
 }
