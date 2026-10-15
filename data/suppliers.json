@@ -353,7 +353,28 @@
   "cert": "Says ETL. No file number found",
   "certOk": false,
   "risk": "Two addresses online. Confirm the factory before going. (浪鲸 is a different brand.)",
-  "web": ""
+  "web": "",
+  "about": "Guangzhou hot tub, sauna and swim spa maker. Sister companies in Hubei and Huizhou share the brand. Says 16+ years, private-label minimum about 20 sets.",
+  "clients": [
+   [
+    "US customs records: hot tubs shipped in 2026 to Southern Leisure Spas (Houston), Superior Wellness (Charleston SC) and Relaxation Spas (Los Angeles, 20 shipments)",
+    "v"
+   ],
+   [
+    "Hundreds of US shipments from its Hubei and Huizhou factories",
+    "v"
+   ]
+  ],
+  "connect": [
+   "Made-in-China.com store (chat in English): fr.made-in-china.com/co_sunrans",
+   "Ask the US dealers above how service and parts work"
+  ],
+  "fit": [
+   "Which company invoices, and which factory builds saunas vs hot tubs?",
+   "ETL file numbers for the saunas and for the spa electrics (UL 1563)?",
+   "Can we call one of your US dealers?"
+  ],
+  "flags": "Size figures differ between sources; several companies use the brand."
  },
  {
   "id": "sp-liya",
@@ -376,7 +397,21 @@
   "cert": "Builder, not a maker. Ask whose heaters they use",
   "certOk": false,
   "risk": "Check the license on gsxt.gov.cn first.",
-  "web": ""
+  "web": "",
+  "about": "Local Shenyang sauna and pool design-and-build company.",
+  "clients": [
+   [
+    "Ask to see a finished project in Shenyang",
+    "c"
+   ]
+  ],
+  "connect": [
+   "Phone or Amap; visit in person this week"
+  ],
+  "fit": [
+   "Whose heaters and controls do you use? Are they UL/ETL listed?",
+   "Can we see a finished sauna?"
+  ]
  },
  {
   "id": "sp-qlsauna",
@@ -398,7 +433,23 @@
   "cert": "Says ETL. No file number found",
   "certOk": false,
   "risk": "Infrared sauna specialist. Ask for the Intertek listing for the exact model.",
-  "web": "https://qlsauna.en.made-in-china.com"
+  "web": "https://qlsauna.en.made-in-china.com",
+  "about": "Xuzhou infrared sauna maker. Says founded 2006, exports to 40+ countries, $400–890 per unit, minimum 10.",
+  "clients": [
+   [
+    "No US customers found in customs records",
+    "c"
+   ]
+  ],
+  "connect": [
+   "Made-in-China.com store (chat in English): fr.made-in-china.com/co_qlsauna"
+  ],
+  "fit": [
+   "ETL or CSA listing number for US models?",
+   "EMF (radiation) test report?",
+   "Shipped to US buyers before? Proof?"
+  ],
+  "flags": "Founding dates don't match; no independent record."
  },
  {
   "id": "sp-virlux",
@@ -420,7 +471,23 @@
   "cert": "One listing shows ETL (their claim)",
   "certOk": false,
   "risk": "New company. Audit the factory before ordering.",
-  "web": ""
+  "web": "",
+  "about": "Guangzhou hot tub and swim spa seller, factory said to be in Heyuan. Listing says “since 2026”. Swim spas $9–12k.",
+  "clients": [
+   [
+    "None found",
+    "c"
+   ]
+  ],
+  "connect": [
+   "Made-in-China.com store (chat in English)"
+  ],
+  "fit": [
+   "Heyuan factory address and business license?",
+   "Which spa controls (Balboa or Gecko) and are they UL listed?",
+   "How many swim spas shipped to the US?"
+  ],
+  "flags": "Very new; another company also uses the Virlux name. Visit before trusting."
  },
  {
   "id": "sp-swankia",
@@ -442,7 +509,22 @@
   "cert": "Says UL. Not verified",
   "certOk": false,
   "risk": "Says it started in 1997. Ask for the UL file number.",
-  "web": ""
+  "web": "",
+  "about": "Says founded 1997, 30,000 m² in Foshan: saunas, hot tubs, swim spas, pools.",
+  "clients": [
+   [
+    "None found",
+    "c"
+   ]
+  ],
+  "connect": [
+   "Made-in-China.com store (chat in English)"
+  ],
+  "fit": [
+   "UL certificate number and which product it covers?",
+   "Any US customers?"
+  ],
+  "flags": "UL claim unverified."
  },
  {
   "id": "sp-hiq",
@@ -464,7 +546,27 @@
   "cert": "No ETL found",
   "certOk": false,
   "risk": "Real exporter (95% export). ETL not proven.",
-  "web": ""
+  "web": "",
+  "about": "Zhuhai maker of ice-bath chillers, tubs and pods. Says 95% export.",
+  "clients": [
+   [
+    "Exhibited at FIBO Cologne 2026 (big fitness fair)",
+    "v"
+   ],
+   [
+    "“600+ brands in 110 countries”",
+    "c"
+   ]
+  ],
+  "connect": [
+   "Global Sources store: hi-qgroup.manufacturer.globalsources.com"
+  ],
+  "fit": [
+   "UL/ETL listing for the chiller?",
+   "Which compressor and refrigerant?",
+   "Name a US brand we can call"
+  ],
+  "flags": "No US shipments found in customs records."
  },
  {
   "id": "sp-quanguan",
@@ -486,7 +588,23 @@
   "cert": "Says ETL. Not verified",
   "certOk": false,
   "risk": "Ask for the ETL listing for the exact chiller.",
-  "web": "https://quanguan.en.made-in-china.com"
+  "web": "https://quanguan.en.made-in-china.com",
+  "about": "Ice-bath equipment company, about 2 years old. Not the same as the older Quanguan industrial chiller company.",
+  "clients": [
+   [
+    "None found",
+    "c"
+   ]
+  ],
+  "connect": [
+   "Made-in-China.com store (chat in English)"
+  ],
+  "fit": [
+   "Are you related to Quanguan Intelligent (industrial chillers)?",
+   "Factory address?",
+   "Electrical certificates?"
+  ],
+  "flags": "Brand-new company; location not confirmed."
  },
  {
   "id": "sp-syochi",
@@ -508,7 +626,24 @@
   "cert": "ETL badge on listings (their claim)",
   "certOk": false,
   "risk": "Small and young (2020).",
-  "web": ""
+  "web": "",
+  "about": "Shenzhen chiller maker, part of Yongcheng Optoelectronics. Says 6,000+ units a month and US service stations. 1HP chillers about $670–1,850.",
+  "clients": [
+   [
+    "Exhibited at the HFA (IHRSA) fitness show 2025 in the US",
+    "v"
+   ]
+  ],
+  "connect": [
+   "Alibaba store chat",
+   "IHRSA/HFA exhibitor page"
+  ],
+  "fit": [
+   "ETL/UL listing number?",
+   "Where are the US service stations?",
+   "How do warranty claims work?"
+  ],
+  "flags": "Founding year and capacity claims conflict."
  },
  {
   "id": "sp-merican",
@@ -530,7 +665,27 @@
   "cert": "FDA registered (FEI 3015993373), but no 510(k)",
   "certOk": false,
   "risk": "Registration is not clearance. Without a K-number, no.",
-  "web": ""
+  "web": "",
+  "about": "Guangzhou (Huadu) red light maker, founded 2008. Says 18,000 m², 130+ patents.",
+  "clients": [
+   [
+    "US customs: 62 shipments incl. to Beeman Group (Studio City, CA), “beauty bed”",
+    "v"
+   ],
+   [
+    "“30,000+ organizations”",
+    "c"
+   ]
+  ],
+  "connect": [
+   "Global Sources store: merican.manufacturer.globalsources.com"
+  ],
+  "fit": [
+   "The exact K-number for each bed model?",
+   "ETL/UL for the US 120V/240V version?",
+   "US service and parts?"
+  ],
+  "flags": "Says FDA cleared, but no K-number found."
  },
  {
   "id": "sp-walton",
@@ -552,7 +707,22 @@
   "cert": "FDA ✓ K242638, but only for its G1/G3/G4/G6 panels",
   "certOk": false,
   "risk": "Probably not a full-body bed. Ask if a bed is covered.",
-  "web": ""
+  "web": "",
+  "about": "Shenzhen LED maker. Holds FDA clearance K242638 (Nov 2024) for its G1/G3/G4/G6 light machines.",
+  "clients": [
+   [
+    "No customers found",
+    "c"
+   ]
+  ],
+  "connect": [
+   "No public contact found. Ask at CMEF or through the FDA filing contact"
+  ],
+  "fit": [
+   "Is the G-series a bed or a panel? Wavelengths and power?",
+   "Will you make it under our brand?",
+   "Does your FDA clearance cover our label?"
+  ]
  },
  {
   "id": "sp-ahead",
@@ -574,7 +744,22 @@
   "cert": "FDA ✓ K251042 (M500, L6)",
   "certOk": false,
   "risk": "Not sure the M500 is a bed. Ask.",
-  "web": ""
+  "web": "",
+  "about": "Guangzhou company. Holds FDA clearance K251042 (June 2025) for its M500 and L6 light systems.",
+  "clients": [
+   [
+    "No customers found",
+    "c"
+   ]
+  ],
+  "connect": [
+   "No public contact found"
+  ],
+  "fit": [
+   "Is the M500 a full-body bed?",
+   "Are you related to Merican (also Guangzhou, also M models)?",
+   "ETL listing?"
+  ]
  },
  {
   "id": "sp-dongjilian",
@@ -596,7 +781,23 @@
   "cert": "FDA ✓ K233536 air compression recovery system",
   "certOk": true,
   "risk": "Best US paperwork in this group; small online presence.",
-  "web": ""
+  "web": "",
+  "about": "Shenzhen maker with its own FDA clearances: K233536 (air compression recovery system, 2023) and K222206 (leg massager).",
+  "clients": [
+   [
+    "US customs: 73 shipments; top US customer is NORMATEC (air leg massagers)",
+    "v"
+   ]
+  ],
+  "connect": [
+   "No public channel found. Use the address on its FDA filing, or ask at CMEF"
+  ],
+  "fit": [
+   "Can you make a Normatec-class boot under our brand?",
+   "Minimum order? Does your FDA clearance cover our label?",
+   "How many zones and what pressure range?"
+  ],
+  "flags": "Never market it as “made by Normatec's factory”."
  },
  {
   "id": "sp-sunlion",
@@ -618,7 +819,23 @@
   "cert": "Says 510(k), no K-number given",
   "certOk": false,
   "risk": "May be quoting another company's clearance. Get the K-number.",
-  "web": "https://sunlion.en.made-in-china.com"
+  "web": "https://sunlion.en.made-in-china.com",
+  "about": "Xiamen maker of recovery boots and hospital beds, founded 2010.",
+  "clients": [
+   [
+    "None found",
+    "c"
+   ]
+  ],
+  "connect": [
+   "Made-in-China.com store (chat in English)"
+  ],
+  "fit": [
+   "The 510(k) number?",
+   "Factory or trading company?",
+   "Any US clients?"
+  ],
+  "flags": "Its “MFi” badge is an Apple program, not medical. No FDA clearance found."
  },
  {
   "id": "sp-welltek",
@@ -640,6 +857,249 @@
   "cert": "Says UL and FDA. None found",
   "certOk": false,
   "risk": "Consumer grade.",
-  "web": "https://welltekcn.en.made-in-china.com"
+  "web": "https://welltekcn.en.made-in-china.com",
+  "about": "Shenzhen (Bao'an) company, 2018. Boots, cold therapy, leg massagers. Probably a trading company.",
+  "clients": [
+   [
+    "None found",
+    "c"
+   ]
+  ],
+  "connect": [
+   "Made-in-China.com store (chat in English): m.made-in-china.com/company-welltekcn"
+  ],
+  "fit": [
+   "Is the factory on your own license?",
+   "Whose FDA clearance covers the product?",
+   "Audit report?"
+  ],
+  "flags": "Likely a middleman; no FDA clearance found."
+ },
+ {
+  "id": "sp-jstyle",
+  "items": [
+   "band"
+  ],
+  "en": "J-Style (Joint Chinese Ltd)",
+  "zh": "",
+  "city": "Dongguan HQ · Shenzhen wearables",
+  "meet": "Not confirmed at CMEF. Ask for a video call and samples. They exhibit at Global Sources Hong Kong.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "海外销售经理",
+   "hǎiwài xiāoshòu jīnglǐ",
+   "Overseas sales manager"
+  ],
+  "how": "Fly Shenyang → Shenzhen, about 4h (estimate).",
+  "cert": "FCC filings under code 2AB73. FDA claim not verified",
+  "certOk": false,
+  "risk": "Closest to a WHOOP-style screenless band. Don't copy WHOOP's look: WHOOP sues lookalikes.",
+  "web": "",
+  "about": "Says founded 2004, 15,000 m² factory. Makes screenless bands (2208A: heart rate, HRV, skin temp) and smart rings.",
+  "clients": [
+   [
+    "Nordic Semiconductor press release: uses their chip in a ready-made smart ring",
+    "v"
+   ],
+   [
+    "Rings: minimum 500, 20–35 days",
+    "c"
+   ]
+  ],
+  "connect": [
+   "Global Sources and Alibaba stores"
+  ],
+  "fit": [
+   "Can you put our logo and our app on the 2208A band?",
+   "Do we get an SDK so data goes to our US server, not yours?",
+   "FCC ID for this exact band, and which lab tested it?"
+  ]
+ },
+ {
+  "id": "sp-viatom",
+  "items": [
+   "band"
+  ],
+  "en": "Viatom (Lepu Medical group)",
+  "zh": "",
+  "city": "Bao'an, Shenzhen · US office in Arcadia, CA",
+  "meet": "Check the CMEF app (they list at medical fairs).",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "海外销售经理",
+   "hǎiwài xiāoshòu jīnglǐ",
+   "Overseas sales manager"
+  ],
+  "how": "Fly Shenyang → Shenzhen, about 4h (estimate).",
+  "cert": "FDA ✓ K191088 (Checkme O2 wrist oximeter)",
+  "certOk": true,
+  "risk": "Best route if we want a real medical blood-oxygen claim. No private-label program found.",
+  "web": "",
+  "about": "Shenzhen medical wearables company (O2Ring, Checkme). Part of Lepu Medical.",
+  "clients": [
+   [
+    "Its devices plug into the MedM remote-monitoring platform",
+    "v"
+   ]
+  ],
+  "connect": [
+   "US office in Arcadia, California",
+   "CMEF app"
+  ],
+  "fit": [
+   "Will you make a band under our brand?",
+   "Which FDA clearance would cover it?",
+   "Data: can it stay on our servers?"
+  ]
+ },
+ {
+  "id": "sp-zepp",
+  "items": [
+   "band"
+  ],
+  "en": "Zepp Health (Huami, Amazfit)",
+  "zh": "华米",
+  "city": "Hefei",
+  "meet": "Not confirmed at CMEF. Ask for a video call and samples.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "海外销售经理",
+   "hǎiwài xiāoshòu jīnglǐ",
+   "Overseas sales manager"
+  ],
+  "how": "Fly Shenyang → Hefei, about 2h30m (estimate).",
+  "cert": "NYSE-listed (ZEPP). Top quality",
+  "certOk": true,
+  "risk": "Now focused on its own Amazfit brand (Helio Strap, $99). May not do small private-label orders.",
+  "web": "",
+  "about": "Built the Xiaomi Mi Band. Listed in New York. Makes Amazfit watches and the Helio Strap (screenless band).",
+  "clients": [
+   [
+    "Xiaomi (Mi Band), still a reported business line",
+    "v"
+   ]
+  ],
+  "connect": [
+   "Amazfit business contact via zepp.com"
+  ],
+  "fit": [
+   "Would you private-label the Helio Strap for a clinic?",
+   "Minimum order?",
+   "Can we get the data into our own app?"
+  ]
+ },
+ {
+  "id": "sp-linktop",
+  "items": [
+   "band"
+  ],
+  "en": "Xiamen Linktop Technology",
+  "zh": "",
+  "city": "Xiamen",
+  "meet": "Not confirmed at CMEF. Ask for a video call and samples. Exhibits at IFA Berlin.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "海外销售经理",
+   "hǎiwài xiāoshòu jīnglǐ",
+   "Overseas sales manager"
+  ],
+  "how": "Fly Shenyang → Xiamen, about 3h45m (estimate).",
+  "cert": "Australian medical listing ✓. FDA claimed, not found",
+  "certOk": false,
+  "risk": "Medical-grade partner, but check any FDA claim.",
+  "web": "",
+  "about": "Medical-grade wearables and OEM: NexRing smart ring, Vitals360 monitor.",
+  "clients": [
+   [
+    "Listed as a medical device in Australia (TGA)",
+    "v"
+   ]
+  ],
+  "connect": [
+   "IFA Berlin exhibitor; contact via their website"
+  ],
+  "fit": [
+   "Show us the FDA K-number",
+   "OEM terms and minimum order?",
+   "SDK and data hosting?"
+  ]
+ },
+ {
+  "id": "sp-starmax",
+  "items": [
+   "band"
+  ],
+  "en": "Starmax",
+  "zh": "",
+  "city": "Shenzhen · factory in Dongguan",
+  "meet": "Not confirmed at CMEF. Ask for a video call and samples.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "海外销售经理",
+   "hǎiwài xiāoshòu jīnglǐ",
+   "Overseas sales manager"
+  ],
+  "how": "Fly Shenyang → Shenzhen, about 4h (estimate).",
+  "cert": "No FDA. Consumer grade",
+  "certOk": false,
+  "risk": "High-volume consumer factory. Fine for a basic band, not medical claims.",
+  "web": "",
+  "about": "Consumer smart band maker. Says 6,000 m² factory, 1M+ units capacity, 100+ patents.",
+  "clients": [
+   [
+    "Its Runmefit app: “25M users”",
+    "c"
+   ]
+  ],
+  "connect": [
+   "Alibaba / Global Sources"
+  ],
+  "fit": [
+   "Minimum order with our logo?",
+   "Can we use our own app?",
+   "FCC ID?"
+  ]
+ },
+ {
+  "id": "sp-uniquescale",
+  "items": [
+   "scale"
+  ],
+  "en": "Shenzhen Unique Scales",
+  "zh": "",
+  "city": "Longgang, Shenzhen",
+  "meet": "Not confirmed at CMEF. Ask for a video call and samples.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "海外销售经理",
+   "hǎiwài xiāoshòu jīnglǐ",
+   "Overseas sales manager"
+  ],
+  "how": "Fly Shenyang → Shenzhen, about 4h (estimate).",
+  "cert": "Ships to Hume Health (customs records)",
+  "certOk": true,
+  "risk": "Customs records point to it, but neither company has confirmed it.",
+  "web": "",
+  "about": "Shenzhen digital scale factory.",
+  "clients": [
+   [
+    "US customs records: digital scales shipped to Hume Health (maker of the Body Pod), latest July 2026. Shipping marks say “HUMEHEALTH”",
+    "v"
+   ]
+  ],
+  "connect": [
+   "Ask at CMEF or find them on Alibaba / Made-in-China"
+  ],
+  "fit": [
+   "Can you make a body-composition scale like the one you make for a US brand, with our logo?",
+   "Bluetooth: FCC ID? SDK for our app?",
+   "Minimum order and price?"
+  ]
  }
 ]

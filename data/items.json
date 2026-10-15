@@ -18,7 +18,69 @@
    "ref",
    "fob"
   ],
-  "faq": []
+  "faq": [
+   [
+    "Which factory makes Hume's products?",
+    "Hume's Body Pod scale: US customs records show it shipped from Shenzhen Unique Scales. Hume's band: not found. No customs record, FCC filing or teardown names its maker."
+   ],
+   [
+    "Which factory makes the best bands?",
+    "For a WHOOP-style band with our logo: J-Style. Top quality: Zepp (made the Xiaomi Mi Band), but it may not take small orders. For a real medical blood-oxygen claim: Viatom (FDA-cleared)."
+   ],
+   [
+    "Who makes WHOOP and Oura?",
+    "Not public. WHOOP's FCC filing is under WHOOP itself. Oura says it makes in Finland and elsewhere, not China. Ultrahuman builds in Texas and India."
+   ],
+   [
+    "Can we copy the WHOOP look?",
+    "No. WHOOP has sued Chinese lookalike bands and won. Get our own design and an IP promise in the contract."
+   ],
+   [
+    "Do we need FDA approval?",
+    "Not for wellness (heart rate, HRV, sleep, general SpO2) with no disease claims. Anything like “detects AFib” or “sleep apnea” needs an FDA 510(k)."
+   ],
+   [
+    "What else does it need for the US?",
+    "An FCC ID (it uses Bluetooth), battery shipping papers (UN38.3), and a silicone strap tested for Prop 65. The FCC may stop accepting some mainland-China test labs, so ask which lab tested it."
+   ],
+   [
+    "Where does member data go?",
+    "Must be our own US server, through an SDK. No band vendor we found promises to keep data out of China, so put it in the contract."
+   ],
+   [
+    "How many do we have to buy?",
+    "Usually 500+ units with our logo (J-Style says 500 for rings). Ask each one."
+   ]
+  ]
+ },
+ {
+  "id": "scale",
+  "ic": "⚖️",
+  "name": "Pulse smart scale (like Hume Body Pod)",
+  "zh": "体脂秤（白标定制）",
+  "what": "A body-composition scale with our logo that syncs to the Pulse app. Optional add-on to the band.",
+  "us": "Hume Body Pod: retail price varies",
+  "cn": "Quote needed (private label)",
+  "need": 1,
+  "checks": [
+   "fcc",
+   "sdk",
+   "data",
+   "claims",
+   "lic",
+   "ref",
+   "fob"
+  ],
+  "faq": [
+   [
+    "Who makes Hume's scale?",
+    "US customs records show Shenzhen Unique Scales shipping scales to Hume Health. It's the strongest lead, but neither company has confirmed it."
+   ],
+   [
+    "Is it a medical device?",
+    "Not if it's sold for wellness (weight, body fat, muscle). No disease claims."
+   ]
+  ]
  },
  {
   "id": "skin",
