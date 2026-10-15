@@ -73,7 +73,25 @@ def check_scripts(html):
         raise SystemExit("script syntax error, not building:\n" + r.stderr.strip().splitlines()[-1])
 
 
+def inject_data():
+    """Put data/*.json into the app source, so the claude.ai artifact and the
+    China build carry the same lists."""
+    d = ROOT / "data"
+    load = lambda n: json.loads((d / n).read_text(encoding="utf-8"))
+    js = ("/*DATA*/const BUY=" + json.dumps(load("items.json"), ensure_ascii=False)
+          + ",SUP=" + json.dumps(load("suppliers.json"), ensure_ascii=False)
+          + ",FUN=" + json.dumps(load("fun.json"), ensure_ascii=False)
+          + ",CK=" + json.dumps(load("checks.json"), ensure_ascii=False) + ";/*/DATA*/")
+    assert "</script" not in js.lower()
+    src = SRC.read_text(encoding="utf-8")
+    new, n = re.subn(r"/\*DATA\*/.*?/\*/DATA\*/", lambda m: js, src, flags=re.S)
+    assert n == 1, "data markers not found in src/app.html"
+    if new != src:
+        SRC.write_text(new, encoding="utf-8")
+
+
 def main():
+    inject_data()
     html = SRC.read_text(encoding="utf-8")
     html, n = re.subn(r'<link rel="(?:preconnect|stylesheet)" href="https://fonts\.g[^"]*"[^>]*>\n?', "", html)
     assert n == 3, f"expected 3 Google Fonts links, removed {n}"

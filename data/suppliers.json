@@ -1,0 +1,489 @@
+[
+ {
+  "id": "co-mindray",
+  "items": [
+   "ultra"
+  ],
+  "en": "Mindray",
+  "zh": "深圳迈瑞生物医疗电子股份有限公司",
+  "city": "Shenzhen · US office in Mahwah, NJ",
+  "meet": "CMEF Beijing, Oct 21–24. Booth numbers aren't public yet: search the name in the CMEF app. Expected to exhibit.",
+  "addr": "深圳市南山区高新技术产业园区科技南十二路迈瑞大厦",
+  "addrEn": "Mindray Building, Keji 12th Rd South, Nanshan, Shenzhen",
+  "ask": [
+   "北美区域经理",
+   "běiměi qūyù jīnglǐ",
+   "North America regional manager"
+  ],
+  "how": "Meet at CMEF. No need to fly to Shenzhen. Their US office: 800 MacArthur Blvd, Mahwah NJ, 201-995-8000, about 40 min from 510.",
+  "cert": "FDA ✓ TE Air: K231685, K240906",
+  "certOk": true,
+  "risk": "Lowest risk. Ask them to pass you to Mindray North America for the US price.",
+  "web": ""
+ },
+ {
+  "id": "co-edan",
+  "items": [
+   "ultra"
+  ],
+  "en": "Edan",
+  "zh": "深圳市理邦精密仪器股份有限公司",
+  "city": "Shenzhen · US office in San Diego",
+  "meet": "Not confirmed at CMEF yet. Search the CMEF app.",
+  "addr": "深圳市坪山区坑梓街道金沙社区金辉路15号",
+  "addrEn": "15 Jinhui Rd, Kengzi, Pingshan, Shenzhen",
+  "ask": [
+   "北美区域经理",
+   "běiměi qūyù jīnglǐ",
+   "North America regional manager"
+  ],
+  "how": "Fly Shenyang → Shenzhen, about 4h (estimate). Better: deal with Edan USA from New Jersey.",
+  "cert": "FDA ✓ Nano C5: K251268",
+  "certOk": true,
+  "risk": "Get US service and warranty terms in writing.",
+  "web": ""
+ },
+ {
+  "id": "co-sonoscape",
+  "items": [
+   "ultra"
+  ],
+  "en": "SonoScape",
+  "zh": "深圳开立生物医疗科技股份有限公司",
+  "city": "Shenzhen · US office in Dallas",
+  "meet": "CMEF Beijing, Oct 21–24. Booth numbers aren't public yet: search the name in the CMEF app. Listed in a fair preview.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "超声产品经理",
+   "chāoshēng chǎnpǐn jīnglǐ",
+   "Ultrasound product manager"
+  ],
+  "how": "Meet at CMEF.",
+  "cert": "FDA on some models (e.g. K252498). Handheld not confirmed",
+  "certOk": false,
+  "risk": "Ask which exact handheld model is FDA-cleared.",
+  "web": ""
+ },
+ {
+  "id": "co-meicet",
+  "items": [
+   "skin"
+  ],
+  "en": "Meicet (Shanghai May Skin)",
+  "zh": "上海美肤信息技术有限公司",
+  "city": "Shanghai (Minhang)",
+  "meet": "Not found at CMEF. WhatsApp +86 182 2118 9532 or info@meicet.com for a video demo.",
+  "addr": "",
+  "addrEn": "6F, Bldg 7, 7001 Zhongchun Rd, Minhang, Shanghai",
+  "ask": [
+   "海外销售经理",
+   "hǎiwài xiāoshòu jīnglǐ",
+   "Overseas sales manager"
+  ],
+  "how": "Shanghai is about 2h15m by air from Shenyang (estimate). Only worth it after a quote.",
+  "cert": "In the US device list, but no FDA clearance found",
+  "certOk": false,
+  "risk": "Use it as a photo tool only. No medical claims in the US.",
+  "web": "https://www.meicet.com"
+ },
+ {
+  "id": "co-visbody",
+  "items": [
+   "body"
+  ],
+  "en": "Visbody",
+  "zh": "西安维塑智能科技有限公司",
+  "city": "Xi'an",
+  "meet": "Probably not at CMEF. They're at the Canton Fair in Guangzhou, Oct 31–Nov 4, booth 21.2B13-16. Ask for a video demo.",
+  "addr": "",
+  "addrEn": "555 Shanghua Rd, Weiyang, Xi'an",
+  "ask": [
+   "海外销售经理",
+   "hǎiwài xiāoshòu jīnglǐ",
+   "Overseas sales manager"
+  ],
+  "how": "Fly Shenyang → Xi'an, about 2h45m (estimate).",
+  "cert": "No UL/ETL or FDA found",
+  "certOk": false,
+  "risk": "Member data must not sit on a Chinese server.",
+  "web": "https://visbody.com"
+ },
+ {
+  "id": "sp-haier",
+  "items": [
+   "fridge"
+  ],
+  "en": "Haier Biomedical",
+  "zh": "青岛海尔生物医疗股份有限公司",
+  "city": "Qingdao · sold in the US",
+  "meet": "No trip needed. Buy the US 115V model (HYC-68A or HYC-290) from Genesee Scientific in the US.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "海外销售经理",
+   "hǎiwài xiāoshòu jīnglǐ",
+   "Overseas sales manager"
+  ],
+  "how": "No trip needed.",
+  "cert": "UL listed on some US models; check the exact one",
+  "certOk": false,
+  "risk": "Pick a model that meets the CDC vaccine-storage spec.",
+  "web": ""
+ },
+ {
+  "id": "sp-saikang",
+  "items": [
+   "iv",
+   "chairs"
+  ],
+  "en": "Jiangsu Saikang Medical",
+  "zh": "江苏赛康医疗设备股份有限公司",
+  "city": "Zhangjiagang, Jiangsu",
+  "meet": "Check the CMEF app. If not there, ask for a video call first.",
+  "addr": "张家港市现代农业示范园区乐红路35号",
+  "addrEn": "35 Lehong Rd, Modern Agricultural Park, Zhangjiagang",
+  "ask": [
+   "国际业务部经理",
+   "guójì yèwù bù jīnglǐ",
+   "International business manager"
+  ],
+  "how": "Fly Shenyang → Shanghai (about 2h15m), then about 2h by car (estimates).",
+  "cert": "FDA registration not found",
+  "certOk": false,
+  "risk": "Established, listed company. Ask for the FDA registration number.",
+  "web": ""
+ },
+ {
+  "id": "sp-medi",
+  "items": [
+   "iv"
+  ],
+  "en": "Zhangjiagang Medi Medical",
+  "zh": "",
+  "city": "Jinfeng Town, Zhangjiagang",
+  "meet": "Not confirmed at CMEF. Message them for a video demo; visit only if the quote is good.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "外贸经理",
+   "wàimào jīnglǐ",
+   "Foreign trade manager"
+  ],
+  "how": "Fly Shenyang → Shanghai (about 2h15m), then about 2h by car (estimates).",
+  "cert": "CE only. No FDA found",
+  "certOk": false,
+  "risk": "Infusion chairs MK-F02, MK-F05. Needs US FDA registration.",
+  "web": "https://www.medik-medical.com"
+ },
+ {
+  "id": "sp-sunrans",
+  "items": [
+   "sauna",
+   "pool"
+  ],
+  "en": "Sunrans",
+  "zh": "广州市尚雷仕卫浴有限公司",
+  "city": "Zengcheng, Guangzhou",
+  "meet": "Not confirmed at CMEF. Message them for a video demo; visit only if the quote is good. Big at the Guangzhou pool & spa expo.",
+  "addr": "",
+  "addrEn": "38-4 Lisan Ave, Zengjiang St, Zengcheng, Guangzhou",
+  "ask": [
+   "外贸经理",
+   "wàimào jīnglǐ",
+   "Foreign trade manager"
+  ],
+  "how": "Fly Shenyang → Guangzhou, about 3h45m (estimate), then about 1h by car.",
+  "cert": "Says ETL. No file number found",
+  "certOk": false,
+  "risk": "Two addresses online. Confirm the factory before going. (浪鲸 is a different brand.)",
+  "web": ""
+ },
+ {
+  "id": "sp-liya",
+  "items": [
+   "sauna",
+   "pool"
+  ],
+  "en": "Shenyang Liya Sauna & Pool",
+  "zh": "沈阳利雅桑拿泳池设备有限公司",
+  "city": "Shenyang (local)",
+  "meet": "Here in Shenyang. Call first; address not verified.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "经理",
+   "jīnglǐ",
+   "Manager"
+  ],
+  "how": "Local. Get the address on Amap or by phone.",
+  "cert": "Builder, not a maker. Ask whose heaters they use",
+  "certOk": false,
+  "risk": "Check the license on gsxt.gov.cn first.",
+  "web": ""
+ },
+ {
+  "id": "sp-qlsauna",
+  "items": [
+   "sauna"
+  ],
+  "en": "Xuzhou QLSauna",
+  "zh": "",
+  "city": "Xuzhou, Jiangsu",
+  "meet": "Not confirmed at CMEF. Message them for a video demo; visit only if the quote is good.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "外贸业务员",
+   "wàimào yèwùyuán",
+   "Export sales rep"
+  ],
+  "how": "Fly Shenyang → Xuzhou, about 2h30m (estimate).",
+  "cert": "Says ETL. No file number found",
+  "certOk": false,
+  "risk": "Infrared sauna specialist. Ask for the Intertek listing for the exact model.",
+  "web": "https://qlsauna.en.made-in-china.com"
+ },
+ {
+  "id": "sp-virlux",
+  "items": [
+   "pool"
+  ],
+  "en": "Virlux (Guangzhou)",
+  "zh": "",
+  "city": "Guangzhou · factory in Heyuan",
+  "meet": "Not confirmed at CMEF. Message them for a video demo; visit only if the quote is good.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "外贸经理",
+   "wàimào jīnglǐ",
+   "Foreign trade manager"
+  ],
+  "how": "Fly Shenyang → Guangzhou, about 3h45m (estimate), then about 2.5h by car to Heyuan.",
+  "cert": "One listing shows ETL (their claim)",
+  "certOk": false,
+  "risk": "New company. Audit the factory before ordering.",
+  "web": ""
+ },
+ {
+  "id": "sp-swankia",
+  "items": [
+   "pool"
+  ],
+  "en": "Swankia",
+  "zh": "",
+  "city": "Foshan, Guangdong",
+  "meet": "Not confirmed at CMEF. Message them for a video demo; visit only if the quote is good.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "外贸经理",
+   "wàimào jīnglǐ",
+   "Foreign trade manager"
+  ],
+  "how": "Fly Shenyang → Guangzhou, about 3h45m (estimate), then about 1h by car to Foshan.",
+  "cert": "Says UL. Not verified",
+  "certOk": false,
+  "risk": "Says it started in 1997. Ask for the UL file number.",
+  "web": ""
+ },
+ {
+  "id": "sp-hiq",
+  "items": [
+   "plunge"
+  ],
+  "en": "Zhuhai Hi-Q Technology",
+  "zh": "",
+  "city": "Zhuhai, Guangdong",
+  "meet": "Exhibited at FIBO Cologne 2026. Not confirmed at CMEF.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "海外销售",
+   "hǎiwài xiāoshòu",
+   "Overseas sales"
+  ],
+  "how": "Fly Shenyang → Zhuhai, about 4h (estimate).",
+  "cert": "No ETL found",
+  "certOk": false,
+  "risk": "Real exporter (95% export). ETL not proven.",
+  "web": ""
+ },
+ {
+  "id": "sp-quanguan",
+  "items": [
+   "plunge"
+  ],
+  "en": "Guangdong Quanguan Health",
+  "zh": "",
+  "city": "Dongguan, Guangdong",
+  "meet": "Not confirmed at CMEF. Message them for a video demo; visit only if the quote is good.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "外贸经理",
+   "wàimào jīnglǐ",
+   "Foreign trade manager"
+  ],
+  "how": "Fly Shenyang → Shenzhen, about 4h (estimate), then about 1h by car.",
+  "cert": "Says ETL. Not verified",
+  "certOk": false,
+  "risk": "Ask for the ETL listing for the exact chiller.",
+  "web": "https://quanguan.en.made-in-china.com"
+ },
+ {
+  "id": "sp-syochi",
+  "items": [
+   "plunge"
+  ],
+  "en": "SYOCHI (Shenzhen Xinyonggao)",
+  "zh": "",
+  "city": "Shenzhen",
+  "meet": "Not confirmed at CMEF. Message them for a video demo; visit only if the quote is good.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "海外销售",
+   "hǎiwài xiāoshòu",
+   "Overseas sales"
+  ],
+  "how": "Fly Shenyang → Shenzhen, about 4h (estimate).",
+  "cert": "ETL badge on listings (their claim)",
+  "certOk": false,
+  "risk": "Small and young (2020).",
+  "web": ""
+ },
+ {
+  "id": "sp-merican",
+  "items": [
+   "red"
+  ],
+  "en": "Merican",
+  "zh": "",
+  "city": "Huadu, Guangzhou",
+  "meet": "Not confirmed at CMEF. Message them for a video demo; visit only if the quote is good.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "外贸经理",
+   "wàimào jīnglǐ",
+   "Foreign trade manager"
+  ],
+  "how": "Fly Shenyang → Guangzhou, about 3h45m (estimate). Huadu is 30–40 min from the airport.",
+  "cert": "FDA registered (FEI 3015993373), but no 510(k)",
+  "certOk": false,
+  "risk": "Registration is not clearance. Without a K-number, no.",
+  "web": ""
+ },
+ {
+  "id": "sp-walton",
+  "items": [
+   "red"
+  ],
+  "en": "Shenzhen Walton Technology",
+  "zh": "",
+  "city": "Shenzhen",
+  "meet": "Not confirmed at CMEF. Message them for a video demo; visit only if the quote is good.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "注册专员",
+   "zhùcè zhuānyuán",
+   "Regulatory officer"
+  ],
+  "how": "Fly Shenyang → Shenzhen, about 4h (estimate).",
+  "cert": "FDA ✓ K242638, but only for its G1/G3/G4/G6 panels",
+  "certOk": false,
+  "risk": "Probably not a full-body bed. Ask if a bed is covered.",
+  "web": ""
+ },
+ {
+  "id": "sp-ahead",
+  "items": [
+   "red"
+  ],
+  "en": "Guangzhou Ahead Intelligent Tech",
+  "zh": "",
+  "city": "Guangzhou",
+  "meet": "Not confirmed at CMEF. Message them for a video demo; visit only if the quote is good.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "海外销售经理",
+   "hǎiwài xiāoshòu jīnglǐ",
+   "Overseas sales manager"
+  ],
+  "how": "Fly Shenyang → Guangzhou, about 3h45m (estimate).",
+  "cert": "FDA ✓ K251042 (M500, L6)",
+  "certOk": false,
+  "risk": "Not sure the M500 is a bed. Ask.",
+  "web": ""
+ },
+ {
+  "id": "sp-dongjilian",
+  "items": [
+   "boots"
+  ],
+  "en": "Shenzhen Dongjilian Medical",
+  "zh": "",
+  "city": "Shenzhen",
+  "meet": "Not confirmed at CMEF. Message them for a video demo; visit only if the quote is good.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "外贸经理",
+   "wàimào jīnglǐ",
+   "Foreign trade manager"
+  ],
+  "how": "Fly Shenyang → Shenzhen, about 4h (estimate).",
+  "cert": "FDA ✓ K233536 air compression recovery system",
+  "certOk": true,
+  "risk": "Best US paperwork in this group; small online presence.",
+  "web": ""
+ },
+ {
+  "id": "sp-sunlion",
+  "items": [
+   "boots"
+  ],
+  "en": "Xiamen Sun Lion",
+  "zh": "",
+  "city": "Xiamen, Fujian",
+  "meet": "Not confirmed at CMEF. Message them for a video demo; visit only if the quote is good.",
+  "addr": "",
+  "addrEn": "",
+  "ask": [
+   "海外销售经理",
+   "hǎiwài xiāoshòu jīnglǐ",
+   "Overseas sales manager"
+  ],
+  "how": "Fly Shenyang → Xiamen, about 3h45m (estimate).",
+  "cert": "Says 510(k), no K-number given",
+  "certOk": false,
+  "risk": "May be quoting another company's clearance. Get the K-number.",
+  "web": "https://sunlion.en.made-in-china.com"
+ },
+ {
+  "id": "sp-welltek",
+  "items": [
+   "boots"
+  ],
+  "en": "Shenzhen Welltek",
+  "zh": "",
+  "city": "Bao'an, Shenzhen",
+  "meet": "Not confirmed at CMEF. Message them for a video demo; visit only if the quote is good.",
+  "addr": "",
+  "addrEn": "Meishengzhigu, 2026 Songbai Rd, Bao'an, Shenzhen",
+  "ask": [
+   "外贸经理",
+   "wàimào jīnglǐ",
+   "Foreign trade manager"
+  ],
+  "how": "Fly Shenyang → Shenzhen, about 4h (estimate), then about 30 min by car.",
+  "cert": "Says UL and FDA. None found",
+  "certOk": false,
+  "risk": "Consumer grade.",
+  "web": "https://welltekcn.en.made-in-china.com"
+ }
+]
